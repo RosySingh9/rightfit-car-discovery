@@ -108,11 +108,26 @@ ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:14p
 ol.steps li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px}
 ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:700;font-size:1.4rem;line-height:1.1;color:var(--route)}
 .releases{display:grid;gap:0}
-.rel{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.rel{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:baseline}
 .rel .ver{font-family:var(--mono);font-weight:500}
 .status{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .status.shipped{color:var(--good)}
 
+
+/* before/after rows (Feed Doctor) */
+.ba{display:grid;gap:0}
+.ba-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px;align-items:center;padding:9px 0;border-bottom:1px dotted var(--rule)}
+.ba-row:last-child{border-bottom:0}
+.ba-bars{display:grid;gap:4px}
+.ba-bars .line{display:grid;grid-template-columns:44px minmax(0,1fr) 48px;gap:8px;align-items:center;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.ba-bars .bar{height:7px}
+.ba-bars .before>span{background:var(--muted)}
+.ba-bars .after>span{background:var(--route)}
+.ba-bars .v{text-align:right;color:var(--ink)}
+.ba-row.warn .after>span{background:var(--bad)}
+@media (max-width:560px){.ba-row{grid-template-columns:1fr}}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
+.duo>div{display:grid;gap:6px;align-content:start}
 details{border-top:1px solid var(--rule);padding-top:12px}
 summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em}
 details .stack{margin-top:12px}
@@ -127,10 +142,10 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 <div class="wrap">
 
 <header class="hero">
-  <div class="meta"><span>RightFit</span><span>Release v0.1 · Research</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
+  <div class="meta"><span>RightFit</span><span>Release v0.2 · Data foundation</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
   <h1>Can a shopper describe their life in one sentence and find the right car?</h1>
   <p class="thesis">Vehicle search works when shoppers talk in filters. <em>It breaks when they talk like people.</em></p>
-  <p class="lede">RightFit is an AI discovery agent I'm building in public, release by release. Release v0.1 looks at how real shoppers describe what they want, and tests whether a major retailer's search box understands them.</p>
+  <p class="lede">RightFit is an AI discovery agent I'm building in public, release by release. v0.1 looked at how real shoppers describe what they want and whether a major retailer's search box understands them. v0.2 asks whether the inventory data can answer them at all.</p>
 </header>
 
 <section class="sticker" aria-labelledby="h-result">
@@ -212,6 +227,59 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
   </div>
 </section>
 
+<section class="sticker" aria-labelledby="h-feed">
+  <div class="sticker-head"><h2 id="h-feed">Feed Doctor</h2><span class="eyebrow">v0.2 · 4 synthetic dealer feeds · 720 listings</span></div>
+  <div class="sticker-body">
+    <p class="lede">Can the inventory answer the shopper? Before an agent can find "a truck that can tow 7,000 lbs", each truck needs a tow rating. No dealer feed sends one.</p>
+    <div class="compare" style="border:1px solid var(--rule)">
+      <div>
+        <span class="eyebrow">Agent-ready listings</span>
+        <span class="big num">0<span class="muted" style="font-size:.45em"> → </span>454</span>
+        <p class="small">0 of 720 as the dealers sent them. 454 of 575 shoppable listings after cleaning and enrichment.</p>
+      </div>
+      <div>
+        <span class="eyebrow">v0.1 shopper queries the data can answer</span>
+        <span class="big num">0<span class="muted" style="font-size:.45em"> → </span>10</span>
+        <p class="small">Plus 6 partly. Massaging seats, leather, vehicle size and finance terms aren't in any feed yet.</p>
+      </div>
+    </div>
+    <div class="ba" aria-label="Share of listings where a search filter can use each field, as sent versus after cleaning">
+      <div class="ba-row"><span>Tow rating</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.3%"></span></div><span class="v num">99.3%</span></div></div></div>
+      <div class="ba-row"><span>Horsepower</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.3%"></span></div><span class="v num">99.3%</span></div></div></div>
+      <div class="ba-row"><span>Seats and third row</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:98.8%"></span></div><span class="v num">98.8%</span></div></div></div>
+      <div class="ba-row"><span>Fuel economy or EV range</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:98.3%"></span></div><span class="v num">98.3%</span></div></div></div>
+      <div class="ba-row"><span>Collision braking (standard?)</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:17.4%"></span></div><span class="v num">17.4%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.8%"></span></div><span class="v num">99.8%</span></div></div></div>
+      <div class="ba-row"><span>Body type, correct</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:62.4%"></span></div><span class="v num">62.4%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.8%"></span></div><span class="v num">99.8%</span></div></div></div>
+      <div class="ba-row warn"><span>Drivetrain</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:47.1%"></span></div><span class="v num">47.1%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:82.3%"></span></div><span class="v num">82.3%</span></div></div></div>
+    </div>
+    <div class="duo">
+      <div>
+        <h3>Drivetrain is the blocker</h3>
+        <p class="small">The marketplace feed doesn't send drivetrain, and dealers bury it in trim names like "XLE AWD-i". At 82%, four of the twenty shopper queries stay unanswerable: AWD sedan, AWD wagon, 4x4 for camping, AWD minivan. The fix is decoding the VIN, not more text rules.</p>
+      </div>
+      <div>
+        <h3>99% on what I planned for. 37% on what I didn't.</h3>
+        <p class="small">The pipeline caught 331 of 333 planted issues with no false flags. On a hold-out dealer whose problems I wrote afterward, it handled 32 of 87, and 23 bad listings got through, including a price of $3,489,500. Every new dealer feed needs its own quality gate.</p>
+      </div>
+    </div>
+    <p class="small muted">Synthetic feeds. Specs come from an illustrative trim-level reference table, close to published figures but not verified. Pipeline in DuckDB SQL, rerunnable with one command.</p>
+  </div>
+</section>
+
 <section class="two" aria-label="Plan">
   <div class="stack">
     <span class="eyebrow">What I'm building</span>
@@ -229,7 +297,8 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     <h2>Releases</h2>
     <div class="releases">
       <div class="rel"><span class="ver">v0.1</span><span>Intent map, findability audit, PR/FAQ</span><span class="status shipped">Shipped</span></div>
-      <div class="rel"><span class="ver">v0.2</span><span>Feed Doctor: inventory data quality scorecard and SQL</span><span class="status">Next</span></div>
+      <div class="rel"><span class="ver">v0.2</span><span>Feed Doctor: clean, enriched inventory and a data quality scorecard</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.2.1</span><span>VIN decode for drivetrain; sanity gates for price, miles, dates</span><span class="status">Next</span></div>
       <div class="rel"><span class="ver">v0.3</span><span>Discovery agent with "why this car"</span><span class="status">Planned</span></div>
       <div class="rel"><span class="ver">v0.4</span><span>Evals on every change, public scoreboard</span><span class="status">Planned</span></div>
       <div class="rel"><span class="ver">v0.5</span><span>Search by monthly payment, assumptions visible</span><span class="status">Planned</span></div>

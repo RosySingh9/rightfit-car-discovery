@@ -1,0 +1,91 @@
+StockNo,VIN,Year,Make,Model,Trim,BodyStyle,Drivetrain,Price,Mileage,ExteriorColor,DealerName,DealerZip,LastUpdated
+STK72000,JTMX5SC28NM714970,2022,Toyota,RAV4 Prime,SE AWD-i,SUV,,"$29,995","54,241 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72001,2T35CFVX0MR416538,2021,Toyota,RAV4 Hybrid,XLE,4D Sport Utility,AWD,"$24,295","43,981 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72002,4S4TWKLVXP2341270,23,Subaru,Impreza,Sport,5D Hatchback,AWD,"$23,395","27,756 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72003,2T3HGA21XRO803517,2024,Toyota,Camry,LE AWD-i,4D Sedan,,"$28,195","32,474 mi",Black,Garland Auto Outlet,75040,2026-10-24
+STK72004,5XY4VLC2XPW230172,2023,Kia,Sorento Hybrid,EX,Sport Utility,FWD,"$34,895.00","45,721 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72005,JM3DYZWF6PL403135,2023,Mazda,CX-5,Turbo,4D Sport Utility,AWD,"$28,395","33,071 mi",Gray,Garland Auto Outlet,75040,08/09/2026
+STK72006,2T38PLNKXR7741768,2024,Toyota,Hilander,XLE,4D Sport Utility,AWD,"$37,695","28,919 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72007,3FMCNX6E4RB79551O,2024,Ford,Mustang Mach-E,Premium All Wheel Drive,Sport Utility,,"$36,895","20,555 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72008,4T1FYDDL7P7722416,2023,Toyota,Corolla,LE,4D Sedan,FWD,"$24,395",25.0k mi,Gray,Garland Auto Outlet,75040,2026-10-24
+STK72009,4T1NLNS84PL507680,2023,Toyota,Prius,LE,Hatchback,AWD,"$27,395","53,797 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72010,2T3N6LW35PC765283,2023,Toyota,Corolla,LE,Sedan,FWD,"$23,295","46,981 mi",Gray,Garland Auto Outlet,75040,07/31/2026
+STK72011,5TD9F34C8RW629620,2024,Toyota,Grand Highlander,XLE,4D Sport Utility,FWD,"$38,095","21,142 mi",Black,Garland Auto Outlet,75040,2026-10-24
+STK72012,4S4A42Y90NN493806,2022,Subaru,OUTBACK Wilderness,Onyx XT,Wagon,AWD,"$25,295","51,495 mi",Red,Garland Auto Outlet,75040,07/31/2026
+STK72013,3FML2KV51MJ142278,2021,Ford,Mustang Mach-E,Premium,4D Wagon,AWD,"$25,195","86,434 mi",Gray,Garland Auto Outlet,75040,07/31/2026
+STK72014,5XYANCB1XRN643892,2024,Kia,Sorento Hybrid,EX,4D Sport Utility,FWD,"$39,995","8,708 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72015,4S4E91WZ8MW504561,2021,Subaru,Outback,Premium,4D Wagon,AWD,"$17,795",89.8k mi,Green,Garland Auto Outlet,75040,2026-10-24
+STK72016,4T1M3KV59RY299104,2024,Toyota,Rav4 Hyb,LE,4D Wagon,AWD,"$32,895","22,168 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72017,1FT7B7KF6PH445547,2023,Ford,F 150,XLT 2.7L,Pickup,RWD,"$38,695","38,245 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72018,2T3WP7A16S8072989,2025,Toyota,Corolla Cross Hybrid,SE Symmetrical AWD,4D Sport Utility,,"$34,795",17.4k mi,Gray,Garland Auto Outlet,75040,2026-10-24
+STK72019,4T14LVMY5P6124886,2023,Toyota,Sienna,XLE,Passenger Van,AWD,"$36,495",32.8k mi,Gray,Garland Auto Outlet,75040,2026-10-24
+STK72020,JM34R49E2RZ825535,2024,Mazda,CX-90,Preferred Symmetrical AWD,SUV,,"$38,695.00","24,882 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72021,5FN0RYET6R9659732,2024,Honda,Civic,Si,4D Sedan,FWD,"$28,395","24,484 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72022,JF2102A77PT877431,2023,Subaru,Forester,Premium,SUV,AWD,"$23,595","55,785 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72023,JTMG9C9C1PN108045,2023,Toyota,RAV4 Prime,SE All Wheel Drive,4D Sport Utility,,"$33,695","37,474 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72024,5J6287PE6RF924104,2024,Honda,CR V,EX,SUV,AWD,"$28,095","19,119 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72025,5J6EJBVG0RL734938,2024,Honda,CR-V,EX AWD-i,SUV,,"$27,895",24.2k mi,White,Garland Auto Outlet,75040,2026-10-24
+STK72026,3GNSW82M2NP183482,2022,Chevrolet,Trax,LS Symmetrical AWD,4D Sport Utility,,"$19,895","60,629 mi",Black,Garland Auto Outlet,75040,2026-10-24
+STK72027,4T1LSF7D2SD610685,2025,Toyota,Prius,LE All Wheel Drive,Hatchback,,"$35,295","4,403 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72028,JTM3W3ZR3SN341753,2025,Toyota,Tacoma,TRD Sport 4X4,Crew Cab Pickup,,"$44,095","20,655 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72029,5FNG0CPJ3P6305642,2023,Honda,CR V,EX,SUV,FWD,"$25,195","31,040 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72030,5TDGCKJF9PK785114,2023,Toyota,Corolla,LE,4D Sedan,FWD,"$24,095","31,004 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72031,2T3VX86V2S0017158,2025,Toyota,Prius,LE,Wagon,AWD,"$35,095","8,370 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72032,5TDS60DZ7S6306041,2025,Toyota,Grand Highlandr,XLE,Wagon,AWD,"$41,895","11,902 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72033,1FT4UAY83P7437625,2023,Ford,Mustang Mach-E,Premium,4D Sport Utility,RWD,"$33,495","27,817 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72034,4T10MT8F1S5877290,2025,Toyota,Corolla Cross Hybrid,SE,SUV,AWD,"$35,095","11,018 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72035,2HGTDRZB2S6815421,2025,Honda,Civic,Si,4D Sedan,FWD,"$31,795","8,650 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72036,2T3LGL2S0S3835573,2025,Toyota,Grand Highlander,XLE AWD-i,4D Sport Utility,,"$41,995","9,860 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72037,3FMU7WBS2N9109512,2022,Ford,F 150,XLT 3.5L,Crew Cab Pickup,4WD,"$38,895","39,127 mi",Green,Garland Auto Outlet,75040,09/15/2026
+STK72038,5FNHZKYPXPA926364,2023,Honda,CR-V Hybrid,Sport,Sport Utility,FWD,"$27,895","53,855 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72039,JF2DECC90PN727684,2023,Subaru,Impreza,Sport,5D Hatchback,AWD,"$23,195",32.0k mi,Red,Garland Auto Outlet,75040,2026-10-24
+STK72040,4T1LU9MP6RA831616,2024,Toyota,Hilander,Limited AWD-i,4D Sport Utility,,"$37,495","33,453 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72041,JTMO7S2S1PK282590,2023,Toyota,Prius,LE Symmetrical AWD,Hatchback,,"$28,395","32,341 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72042,5TDA0Z577RD251997,2024,Toyota,Grand Highlander Hybrid,Limited MAX,4D Sport Utility,AWD,"$46,795","21,403 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72043,5XYK88YS1PT901489,2023,Kia,Telluride,EX,Sport Utility,FWD,"$34,395","58,192 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72044,5XY1NB4E7NR25O087,2022,Kia,Telluride,EX Symmetrical AWD,4D Sport Utility,,"$32,595","34,607 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72045,5FN83PA76RS818443,2024,Honda,Civic,Si,Sedan,FWD,"$28,195.00","28,415 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72046,JTM2JZTA5SX737770,2025,Toyota,Rav4 Hyb,XSE Symmetrical AWD,SUV,,"$36,695","6,044 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72047,3FMWK5S88PA668876,2023,Ford,F 150,XLT 2.7L,Pickup,RWD,"$38,995","31,477 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72048,5FN6OEY59S2615903,2025,Honda,Pilot,EX-L All Wheel Drive,Sport Utility,,"$43,495","5,362 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72049,5TDR4HNT8RN405190,2024,Toyota,Highlander Hybrid,Limited Symmetrical AWD,SUV,,"$40,295","20,179 mi",Blue,Garland Auto Outlet,75040,08/25/2026
+STK72050,5XYX563D1M0619300,2021,Kia,Telluride,EX,4D Sport Utility,FWD,"$27,995","71,887 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72051,JTMYH5FK4SF785012,2025,Toyota,Grand Highlander Hybrid,Limited MAX,4D Sport Utility,AWD,"$51,295","15,135 mi",Black,Garland Auto Outlet,75040,2026-10-24
+STK72052,KL773ZPP1RM7O4269,2024,Chevrolet,Equinox EV,2LT,SUV,AWD,"$32,695","20,510 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72053,5XYJAY3L0SC745342,2025,Kia,Telluride,EX,SUV,FWD,"$43,495","11,197 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72054,7SAES8GL7SP349950,2025,Tesla,Model-Y,Long Range Symmetrical AWD,Wagon,,"$46,395","9,791 mi",Blue,Garland Auto Outlet,75040,09/13/2026
+STK72055,JTM75VT37PY066060,2023,Toyota,RAV4 Hybrid,LE Symmetrical AWD,4D Sport Utility,,"$29,695","32,825 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72056,2T3MY48G8MW042467,2021,Toyota,Hilander,Limited,Sport Utility,FWD,"$29,595",18.0k mi,Black,Garland Auto Outlet,75040,2026-10-24
+STK72057,5J6HYB5C2SJ562077,2025,Honda,Pilot,EX-L,Sport Utility,AWD,"$42,895.00","16,148 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72058,JTM8L7NN3PG487316,2023,Toyota,Rav4 Hyb,LE,4D Sport Utility,AWD,"$29,195","42,864 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72059,JF2U9EH90RK149597,2024,Subaru,OUTBACK Wilderness,Onyx XT,Wagon,AWD,"$32,095","17,358 mi",Silver,Garland Auto Outlet,75040,09/04/2026
+STK72060,5XYLMCFX7RY332929,2024,Kia,Sorento Hybrid,EX,4D Wagon,FWD,"$39,395","20,042 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72061,3FMEWFJ35M5450734,2021,Ford,Mustang Mach-E,Premium,Wagon,RWD,"$26,795.00","54,876 mi",Black,Garland Auto Outlet,75040,2026-10-24
+STK72062,JM35P4DH9KE179824,2019,Mazda,CX-3,Sport,Sport Utility,FWD,"$11,795","116,600 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72063,5XYE74MH2MD329227,2021,Kia,Telluride,EX,SUV,AWD,"$29,795","35,441 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72064,4T1XPHXD6S9222585,2025,Toyota,RAV4,LE,4D Sport Utility,FWD,"$31,595","16,350 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72065,4T1KFY7M3PN527O22,2023,Toyota,bZ4X,XLE,SUV,AWD,"$28,795","31,530 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72066,4S4RZ40L0M9952704,2021,Subaru,Impreza,Sport AWD-i,Wagon,,"$18,295","54,802 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72067,5TDG9ELP5RJ393102,2024,Toyota,Camry,LE,Sedan,FWD,"$28,895","17,913 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72068,5J6KKAUW1S4404924,2025,Honda,CR-V,EX,4D Wagon,AWD,"$30,995","12,230 mi",Green,Garland Auto Outlet,75040,2026-10-24
+STK72069,2T3NKPDM8NP164969,2022,Toyota,Rav4 Hyb,XSE Symmetrical AWD,SUV,,"$25,695.00","63,005 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72070,2HG60D7WXR9462081,2024,Honda,Civic,Si,Sedan,FWD,"$28,495","22,434 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72071,JM15J6F48MB907444,2021,Mazda,CX-3,Sport,Sport Utility,AWD,"$18,295","50,522 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72072,5FN2EX2A0P8312871,2023,Honda,Civic,Si,Sedan,FWD,"$25,795","29,220 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72073,4S434ZBT5NE91871O,2022,Subaru,Impreza,Sport,5D Hatchback,AWD,"$20,495","47,670 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72074,4T1J9KBS2M7387812,2021,Toyota,Sienna,XLE,Minivan,AWD,"$29,895","46,760 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72075,JM31ATLE0RB409229,2024,Mazda,CX-5,Turbo Symmetrical AWD,Wagon,,"$32,095","11,953 mi",White,Garland Auto Outlet,75040,08/06/2026
+STK72076,5TDSKRNL8RE132507,2024,Toyota,Grand Highlander Hybrid,XLE Symmetrical AWD,Sport Utility,,"$40,695","13,809 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72077,5TDWAJ9SXPS047805,2023,Toyota,RAV4,Adventure,Sport Utility,AWD,"$25,595","35,345 mi",Silver,Garland Auto Outlet,75040,2026-10-24
+STK72078,5TDCMWUW2NF852186,2022,Toyota,RAV4,XLE All Wheel Drive,Sport Utility,,"$23,795","28,738 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72079,KL7AZFPM9SG883528,2025,Chevrolet,Equinox EV,2LT,Sport Utility,FWD,"$35,895","15,013 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72080,JTM3BB251RM188142,2024,Toyota,Grand Highlandr,XLE,4D Sport Utility,AWD,"$38,495","12,677 mi",Gray,Garland Auto Outlet,75040,2026-10-24
+STK72081,5FNEUXZ18NS074077,2022,Honda,Civic,Sport,Sedan,FWD,"$19,995.00","62,034 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72082,5TDGKKYWXPW101995,2023,Toyota,RAV4,Adventure,SUV,AWD,"$24,995","47,652 mi",Blue,Garland Auto Outlet,75040,2026-10-24
+STK72083,5TDC0XH55PR988994,2023,Toyota,Rav4 Hyb,XSE AWD-i,SUV,,"$29,595","35,574 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72084,4T103UYBXRS333324,2024,Toyota,Highlander Hybrid,XLE,SUV,AWD,"$39,995","25,819 mi",White,Garland Auto Outlet,75040,2026-10-24
+STK72085,3FM77SK34MW415822,2021,Ford,F-150,XLT 3.5L,Crew Cab Pickup,RWD,"$35,095",50.3k mi,Black,Garland Auto Outlet,75040,2026-10-24
+STK72086,KL7KGVV23R3236937,2024,Chevrolet,Equinox EV,2LT,4D Sport Utility,AWD,"$32,995","14,669 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72087,5NMWVGL80RA125737,2024,Hyundai,Santa Fe Hybrid,SEL,SUV,AWD,"$38,895","34,242 mi",Black,Garland Auto Outlet,75040,2026-10-24
+STK72088,2HGZV76H0RB535910,2024,Honda,CR-V,EX,Sport Utility,AWD,"$27,795","25,935 mi",Red,Garland Auto Outlet,75040,2026-10-24
+STK72089,1FTWYECS7ML148080,2021,Ford,F-150,XLT 3.5L Four Wheel Drive,Pickup,,"$33,795","75,762 mi",Blue,Garland Auto Outlet,75040,2026-10-24

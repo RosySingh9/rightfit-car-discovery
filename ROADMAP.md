@@ -2,11 +2,17 @@
 
 Each item becomes a GitHub issue labeled `now`, `next` or `later`. Priorities come from the v0.1 audit: fix what breaks most often for real shoppers.
 
-## Now (v0.2: data foundation)
-- [ ] **Feed Doctor:** synthetic multi-dealer feed with realistic mess (trim spellings, duplicate VINs, stale listings, missing tow and range fields, wrong body types)
-- [ ] Normalization and enrichment rules; a data quality scorecard per feed (completeness, accuracy, freshness)
-- [ ] SQL for every metric, in the repo
-- [ ] 5 short interviews with recent car buyers; update the intent map
+## Done (v0.2: data foundation)
+- [x] Feed Doctor: synthetic multi-dealer feeds with realistic problems
+- [x] Normalization, enrichment, data quality scorecard, SQL in the repo
+- [x] Hold-out dealer evaluation
+- [x] Buyer interview guide
+
+## Now (v0.2.1: fixes from the hold-out)
+- [ ] VIN decode for drivetrain, body and engine (unblocks 4 audit queries)
+- [ ] Sanity gates: price range, miles per year, unparseable dates held back
+- [ ] Broader drivetrain-in-trim patterns
+- [ ] Run 5 buyer interviews; update the intent map
 
 ## Next (v0.3–v0.4: agent and evals)
 - [ ] Intent extraction to a fixed schema (constraints, exclusions, preferences, context)

@@ -1,0 +1,53 @@
+make,model,trim,year_from,year_to,body_type,drivetrains,seats,third_row,transmission,powertrain,hp,tow_lbs,cargo_cuft,mpg_combined,ev_range_mi,aeb_std,lane_departure_std,blind_spot_std,adaptive_cruise_std
+Toyota,RAV4,LE,2021,2025,suv,FWD|AWD,5,0,automatic,gas,203,1500,37.6,30,,1,1,1,1
+Toyota,RAV4,XLE,2021,2025,suv,FWD|AWD,5,0,automatic,gas,203,1500,37.6,30,,1,1,1,1
+Toyota,RAV4,Adventure,2021,2025,suv,AWD,5,0,automatic,gas,203,3500,37.5,27,,1,1,1,1
+Toyota,RAV4,Limited,2021,2025,suv,FWD|AWD,5,0,automatic,gas,203,1500,37.6,29,,1,1,1,1
+Toyota,RAV4 Hybrid,LE,2021,2025,suv,AWD,5,0,automatic,hybrid,219,1750,37.6,41,,1,1,1,1
+Toyota,RAV4 Hybrid,XLE,2021,2025,suv,AWD,5,0,automatic,hybrid,219,1750,37.6,40,,1,1,1,1
+Toyota,RAV4 Hybrid,XSE,2021,2025,suv,AWD,5,0,automatic,hybrid,219,1750,37.6,40,,1,1,1,1
+Toyota,RAV4 Prime,SE,2021,2025,suv,AWD,5,0,automatic,plug-in hybrid,302,2500,33.5,38,42,1,1,1,1
+Toyota,Highlander,XLE,2021,2025,suv,FWD|AWD,8,1,automatic,gas,265,5000,40.6,24,,1,1,1,1
+Toyota,Highlander,Limited,2021,2025,suv,FWD|AWD,7,1,automatic,gas,265,5000,40.6,24,,1,1,1,1
+Toyota,Highlander Hybrid,XLE,2021,2025,suv,FWD|AWD,8,1,automatic,hybrid,243,3500,40.6,35,,1,1,1,1
+Toyota,Highlander Hybrid,Limited,2021,2025,suv,AWD,7,1,automatic,hybrid,243,3500,40.6,35,,1,1,1,1
+Toyota,Grand Highlander,XLE,2024,2025,suv,FWD|AWD,8,1,automatic,gas,265,5000,57.9,24,,1,1,1,1
+Toyota,Grand Highlander Hybrid,XLE,2024,2025,suv,FWD|AWD,8,1,automatic,hybrid,245,3500,57.9,36,,1,1,1,1
+Toyota,Grand Highlander Hybrid,Limited MAX,2024,2025,suv,AWD,7,1,automatic,hybrid,362,5000,57.9,27,,1,1,1,1
+Toyota,Sienna,LE,2021,2025,minivan,FWD|AWD,8,1,automatic,hybrid,245,3500,75.2,36,,1,1,1,1
+Toyota,Sienna,XLE,2021,2025,minivan,FWD|AWD,7,1,automatic,hybrid,245,3500,75.2,36,,1,1,1,1
+Toyota,Camry,LE,2021,2024,sedan,FWD|AWD,5,0,automatic,gas,203,1000,15.1,32,,1,1,0,1
+Toyota,Camry,XSE V6,2021,2024,sedan,FWD,5,0,automatic,gas,301,1000,15.1,26,,1,1,1,1
+Toyota,Camry,SE,2025,2025,sedan,FWD|AWD,5,0,automatic,hybrid,225,1000,15.1,47,,1,1,1,1
+Toyota,Corolla,LE,2021,2025,sedan,FWD,5,0,automatic,gas,169,0,13.1,35,,1,1,0,1
+Toyota,Corolla Cross,L,2022,2025,suv,FWD|AWD,5,0,automatic,gas,169,1500,25.5,31,,1,1,0,1
+Toyota,Corolla Cross Hybrid,SE,2023,2025,suv,AWD,5,0,automatic,hybrid,196,1500,21.5,42,,1,1,1,1
+Toyota,Prius,LE,2023,2025,hatchback,FWD|AWD,5,0,automatic,hybrid,194,0,23.8,57,,1,1,1,1
+Toyota,Tacoma,TRD Sport,2024,2025,pickup,RWD|4WD,5,0,automatic,gas,278,6500,,21,,1,1,1,1
+Toyota,Tundra,SR5,2022,2025,pickup,RWD|4WD,6,0,automatic,gas,389,11000,,19,,1,1,1,1
+Toyota,4Runner,SR5,2021,2024,suv,RWD|4WD,5,0,automatic,gas,270,5000,47.2,17,,1,1,1,1
+Toyota,bZ4X,XLE,2023,2025,suv,FWD|AWD,5,0,automatic,electric,201,1500,27.7,,252,1,1,1,1
+Honda,CR-V,EX,2023,2025,suv,FWD|AWD,5,0,automatic,gas,190,1500,39.3,30,,1,1,1,1
+Honda,CR-V Hybrid,Sport,2023,2025,suv,FWD|AWD,5,0,automatic,hybrid,204,1000,39.3,40,,1,1,1,1
+Honda,Pilot,EX-L,2023,2025,suv,FWD|AWD,8,1,automatic,gas,285,5000,48.4,22,,1,1,1,1
+Honda,Odyssey,EX-L,2021,2025,minivan,FWD,8,1,automatic,gas,280,3000,89.8,22,,1,1,1,1
+Honda,Civic,Sport,2022,2025,sedan,FWD,5,0,automatic,gas,158,0,14.8,33,,1,1,0,1
+Honda,Civic,Si,2022,2025,sedan,FWD,5,0,manual,gas,200,0,14.4,31,,1,1,0,1
+Subaru,Outback,Premium,2021,2025,wagon,AWD,5,0,automatic,gas,182,2700,32.6,28,,1,1,0,1
+Subaru,Outback,Onyx XT,2021,2025,wagon,AWD,5,0,automatic,gas,260,3500,32.6,25,,1,1,1,1
+Subaru,Forester,Premium,2021,2025,suv,AWD,5,0,automatic,gas,182,1500,28.9,29,,1,1,1,1
+Subaru,Impreza,Sport,2021,2025,hatchback,AWD,5,0,automatic,gas,152,0,20.4,30,,1,1,0,1
+Mazda,CX-5,Preferred,2022,2025,suv,AWD,5,0,automatic,gas,187,2000,30.8,26,,1,1,1,1
+Mazda,CX-5,Turbo,2022,2025,suv,AWD,5,0,automatic,gas,256,2000,30.8,24,,1,1,1,1
+Mazda,CX-3,Sport,2019,2021,suv,FWD|AWD,5,0,automatic,gas,148,0,12.4,29,,1,1,0,0
+Mazda,CX-90,Preferred,2024,2025,suv,AWD,8,1,automatic,gas,280,5000,40.1,25,,1,1,1,1
+Mazda,CX-90 PHEV,Premium,2024,2025,suv,AWD,7,1,automatic,plug-in hybrid,323,3500,40.1,25,26,1,1,1,1
+Kia,Telluride,EX,2021,2025,suv,FWD|AWD,8,1,automatic,gas,291,5000,46,22,,1,1,1,1
+Kia,Sorento Hybrid,EX,2021,2025,suv,FWD|AWD,6,1,automatic,hybrid,227,1650,38.5,37,,1,1,1,1
+Hyundai,Santa Fe Hybrid,SEL,2024,2025,suv,AWD,7,1,automatic,hybrid,231,2000,40.5,34,,1,1,1,1
+Ford,F-150,XLT 2.7L,2021,2025,pickup,RWD|4WD,6,0,automatic,gas,325,10100,,20,,1,1,1,0
+Ford,F-150,XLT 3.5L,2021,2025,pickup,RWD|4WD,6,0,automatic,gas,400,13500,,19,,1,1,1,0
+Ford,Mustang Mach-E,Premium,2021,2024,suv,RWD|AWD,5,0,automatic,electric,290,0,29.7,,260,1,1,1,1
+Chevrolet,Equinox EV,2LT,2024,2025,suv,FWD|AWD,5,0,automatic,electric,213,1500,26.4,,319,1,1,1,0
+Chevrolet,Trax,LS,2020,2022,suv,FWD|AWD,5,0,automatic,gas,155,1000,18.7,28,,1,1,0,0
+Tesla,Model Y,Long Range,2021,2025,suv,AWD,5,0,automatic,electric,384,3500,30.2,,310,1,1,1,1

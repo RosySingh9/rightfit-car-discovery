@@ -1,0 +1,21 @@
+query_id,query,fields,not_modeled
+Q01,3 row SUV under $45k not a minivan,body_type|third_row|price,
+Q02,fun AWD sedan for snowy commute under $25k,drivetrain|body_type|price,
+Q03,first car for teen with automatic emergency braking and lane departure warning under $20k,aeb_std|lane_departure_std|price,
+Q04,sports sedan 300 hp under $30k 2022 or newer,body_type|hp|price|year,
+Q05,quiet luxury sedan with massaging seats,body_type,massage seats; cabin noise
+Q06,reliable AWD wagon that can tow a small trailer under $20k,drivetrain|body_type|tow_lbs|price,
+Q07,reliable car good gas mileage leather seats low miles under $20k,mpg_combined|miles|price,leather seats
+Q08,SUV that can tow a car and fits in a garage under $20k,body_type|tow_lbs|price,vehicle dimensions
+Q09,4x4 for camping that can tow a trailer under $40k,drivetrain|tow_lbs|price,
+Q10,reliable automatic hatchback under $20k room for 2 dogs,transmission|body_type|price,
+Q11,quiet hybrid that fits a stroller and is easy to park under $50k,powertrain|cargo_cuft|price,vehicle dimensions
+Q12,eco friendly family car for twins and a double stroller under $25k,powertrain|third_row|cargo_cuft|price,
+Q13,RAV4 hybrid under $30k,model|powertrain|price,
+Q14,Highlander hybrid or Grand Highlander,model|powertrain,
+Q15,car under $400 a month,price,finance terms (v0.5)
+Q16,safe car for my teenager,aeb_std|lane_departure_std|blind_spot_std,crash-test ratings
+Q17,truck that can tow 7000 lbs,body_type|tow_lbs,
+Q18,electric SUV with 300 miles of range,powertrain|body_type|ev_range_mi,
+Q19,minivan with AWD,body_type|drivetrain,
+Q20,Toyota with third row and good gas mileage,make|third_row|mpg_combined,

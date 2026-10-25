@@ -1,0 +1,425 @@
+{
+ "feeds": [
+  {
+   "feed": "A",
+   "received": 200,
+   "shoppable": 200,
+   "issues_flagged": 87,
+   "core_fields_usable_as_sent_pct": 0.0
+  },
+  {
+   "feed": "B",
+   "received": 170,
+   "shoppable": 164,
+   "issues_flagged": 68,
+   "core_fields_usable_as_sent_pct": 0.0
+  },
+  {
+   "feed": "C",
+   "received": 260,
+   "shoppable": 131,
+   "issues_flagged": 176,
+   "core_fields_usable_as_sent_pct": 0.0
+  },
+  {
+   "feed": "D",
+   "received": 90,
+   "shoppable": 80,
+   "issues_flagged": 81,
+   "core_fields_usable_as_sent_pct": 0.0
+  }
+ ],
+ "agent_ready": [
+  {
+   "stage": "before",
+   "listings": 720,
+   "agent_ready": 0
+  },
+  {
+   "stage": "after",
+   "listings": 575,
+   "agent_ready": 454
+  }
+ ],
+ "fields": [
+  {
+   "field": "cargo_cuft",
+   "before_pct": 0.0,
+   "after_pct": 99.8
+  },
+  {
+   "field": "hp",
+   "before_pct": 0.0,
+   "after_pct": 99.3
+  },
+  {
+   "field": "mpg_or_range",
+   "before_pct": 0.0,
+   "after_pct": 98.3
+  },
+  {
+   "field": "powertrain",
+   "before_pct": 0.0,
+   "after_pct": 99.8
+  },
+  {
+   "field": "seats",
+   "before_pct": 0.0,
+   "after_pct": 98.8
+  },
+  {
+   "field": "third_row",
+   "before_pct": 0.0,
+   "after_pct": 99.8
+  },
+  {
+   "field": "tow_lbs",
+   "before_pct": 0.0,
+   "after_pct": 99.3
+  },
+  {
+   "field": "transmission",
+   "before_pct": 0.0,
+   "after_pct": 99.8
+  },
+  {
+   "field": "blind_spot_std",
+   "before_pct": 15.3,
+   "after_pct": 99.8
+  },
+  {
+   "field": "lane_departure_std",
+   "before_pct": 15.8,
+   "after_pct": 99.8
+  },
+  {
+   "field": "aeb_std",
+   "before_pct": 17.4,
+   "after_pct": 99.8
+  },
+  {
+   "field": "drivetrain",
+   "before_pct": 47.1,
+   "after_pct": 82.3
+  },
+  {
+   "field": "miles",
+   "before_pct": 56.7,
+   "after_pct": 100.0
+  },
+  {
+   "field": "body_type",
+   "before_pct": 62.4,
+   "after_pct": 99.8
+  },
+  {
+   "field": "trim",
+   "before_pct": 64.0,
+   "after_pct": 95.7
+  },
+  {
+   "field": "model",
+   "before_pct": 93.2,
+   "after_pct": 100.0
+  },
+  {
+   "field": "vin",
+   "before_pct": 97.8,
+   "after_pct": 100.0
+  },
+  {
+   "field": "fresh",
+   "before_pct": 98.5,
+   "after_pct": 100.0
+  },
+  {
+   "field": "price",
+   "before_pct": 98.6,
+   "after_pct": 100.0
+  },
+  {
+   "field": "year",
+   "before_pct": 99.9,
+   "after_pct": 100.0
+  },
+  {
+   "field": "make",
+   "before_pct": 100.0,
+   "after_pct": 100.0
+  }
+ ],
+ "queries": [
+  {
+   "query_id": "Q01",
+   "query": "3 row SUV under $45k not a minivan",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "body_type, third_row",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q02",
+   "query": "fun AWD sedan for snowy commute under $25k",
+   "answerable_before": "no",
+   "answerable_after": "no",
+   "missing_before": "drivetrain, body_type",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q03",
+   "query": "first car for teen with automatic emergency braking and lane departure warning under $20k",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "aeb_std, lane_departure_std",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q04",
+   "query": "sports sedan 300 hp under $30k 2022 or newer",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "body_type, hp",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q05",
+   "query": "quiet luxury sedan with massaging seats",
+   "answerable_before": "no",
+   "answerable_after": "partly",
+   "missing_before": "body_type",
+   "not_modeled": "massage seats; cabin noise"
+  },
+  {
+   "query_id": "Q06",
+   "query": "reliable AWD wagon that can tow a small trailer under $20k",
+   "answerable_before": "no",
+   "answerable_after": "no",
+   "missing_before": "drivetrain, body_type, tow_lbs",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q07",
+   "query": "reliable car good gas mileage leather seats low miles under $20k",
+   "answerable_before": "no",
+   "answerable_after": "partly",
+   "missing_before": "mpg_combined, miles",
+   "not_modeled": "leather seats"
+  },
+  {
+   "query_id": "Q08",
+   "query": "SUV that can tow a car and fits in a garage under $20k",
+   "answerable_before": "no",
+   "answerable_after": "partly",
+   "missing_before": "body_type, tow_lbs",
+   "not_modeled": "vehicle dimensions"
+  },
+  {
+   "query_id": "Q09",
+   "query": "4x4 for camping that can tow a trailer under $40k",
+   "answerable_before": "no",
+   "answerable_after": "no",
+   "missing_before": "drivetrain, tow_lbs",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q10",
+   "query": "reliable automatic hatchback under $20k room for 2 dogs",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "transmission, body_type",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q11",
+   "query": "quiet hybrid that fits a stroller and is easy to park under $50k",
+   "answerable_before": "no",
+   "answerable_after": "partly",
+   "missing_before": "powertrain, cargo_cuft",
+   "not_modeled": "vehicle dimensions"
+  },
+  {
+   "query_id": "Q12",
+   "query": "eco friendly family car for twins and a double stroller under $25k",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "powertrain, third_row, cargo_cuft",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q13",
+   "query": "RAV4 hybrid under $30k",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "model, powertrain",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q14",
+   "query": "Highlander hybrid or Grand Highlander",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "model, powertrain",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q15",
+   "query": "car under $400 a month",
+   "answerable_before": "partly",
+   "answerable_after": "partly",
+   "missing_before": null,
+   "not_modeled": "finance terms (v0.5)"
+  },
+  {
+   "query_id": "Q16",
+   "query": "safe car for my teenager",
+   "answerable_before": "no",
+   "answerable_after": "partly",
+   "missing_before": "aeb_std, lane_departure_std, blind_spot_std",
+   "not_modeled": "crash-test ratings"
+  },
+  {
+   "query_id": "Q17",
+   "query": "truck that can tow 7000 lbs",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "body_type, tow_lbs",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q18",
+   "query": "electric SUV with 300 miles of range",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "powertrain, body_type, ev_range_mi",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q19",
+   "query": "minivan with AWD",
+   "answerable_before": "no",
+   "answerable_after": "no",
+   "missing_before": "body_type, drivetrain",
+   "not_modeled": null
+  },
+  {
+   "query_id": "Q20",
+   "query": "Toyota with third row and good gas mileage",
+   "answerable_before": "no",
+   "answerable_after": "yes",
+   "missing_before": "third_row, mpg_combined",
+   "not_modeled": null
+  }
+ ],
+ "detection_planted": [
+  {
+   "issue_type": "duplicate_vin",
+   "planted": 110,
+   "flagged": 110,
+   "caught": 110
+  },
+  {
+   "issue_type": "drivetrain_in_trim",
+   "planted": 55,
+   "flagged": 55,
+   "caught": 55
+  },
+  {
+   "issue_type": "drivetrain_missing",
+   "planted": 40,
+   "flagged": 40,
+   "caught": 40
+  },
+  {
+   "issue_type": "body_mislabel",
+   "planted": 25,
+   "flagged": 25,
+   "caught": 25
+  },
+  {
+   "issue_type": "trim_missing",
+   "planted": 23,
+   "flagged": 23,
+   "caught": 23
+  },
+  {
+   "issue_type": "odometer_km",
+   "planted": 22,
+   "flagged": 22,
+   "caught": 22
+  },
+  {
+   "issue_type": "model_alias",
+   "planted": 20,
+   "flagged": 20,
+   "caught": 20
+  },
+  {
+   "issue_type": "stale_listing",
+   "planted": 11,
+   "flagged": 11,
+   "caught": 11
+  },
+  {
+   "issue_type": "model_typo",
+   "planted": 11,
+   "flagged": 11,
+   "caught": 11
+  },
+  {
+   "issue_type": "vin_invalid",
+   "planted": 10,
+   "flagged": 8,
+   "caught": 8
+  },
+  {
+   "issue_type": "price_placeholder",
+   "planted": 6,
+   "flagged": 6,
+   "caught": 6
+  }
+ ],
+ "detection_holdout": [
+  {
+   "issue_type": "drivetrain_in_trim_variant",
+   "planted": 26,
+   "handled": 1
+  },
+  {
+   "issue_type": "model_alias_variant",
+   "planted": 18,
+   "handled": 16
+  },
+  {
+   "issue_type": "body_mislabel",
+   "planted": 10,
+   "handled": 7
+  },
+  {
+   "issue_type": "stale_us_date_format",
+   "planted": 9,
+   "handled": 0
+  },
+  {
+   "issue_type": "mileage_in_thousands",
+   "planted": 8,
+   "handled": 0
+  },
+  {
+   "issue_type": "vin_invalid",
+   "planted": 8,
+   "handled": 8
+  },
+  {
+   "issue_type": "price_with_cents",
+   "planted": 7,
+   "handled": 0
+  },
+  {
+   "issue_type": "two_digit_year",
+   "planted": 1,
+   "handled": 0
+  }
+ ],
+ "holdout_bad_listings_published": 23,
+ "holdout_listings_published": 80
+}

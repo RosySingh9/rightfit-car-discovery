@@ -1,0 +1,4203 @@
+[
+ {
+  "listing_id": "B0000",
+  "vehicle": {
+   "vin": "2T3VGNC21N6986217",
+   "ymm": "2022 Toyota Camry",
+   "trim": "xse v6"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 28095,
+  "odometer": {
+   "value": 53483,
+   "unit": "km"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0001",
+  "vehicle": {
+   "vin": "5J65YZ5U3P2831421",
+   "ymm": "2023 Honda Pilot",
+   "trim": "ex-l"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 35795,
+  "odometer": {
+   "value": 24536,
+   "unit": "mi"
+  },
+  "features": [
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0002",
+  "vehicle": {
+   "vin": "2T3D9C44XRT666928",
+   "ymm": "2024 Toyota RAV4 Hybrid",
+   "trim": "xle"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 32795,
+  "odometer": {
+   "value": 24109,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0003",
+  "vehicle": {
+   "vin": "5NM1Z3EH9R8579383",
+   "ymm": "2024 Hyundai Santa Fe Hybrid",
+   "trim": "sel"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 39095,
+  "odometer": {
+   "value": 31465,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0004",
+  "vehicle": {
+   "vin": "5TD6F2638SN161667",
+   "ymm": "2025 Toyota Camry",
+   "trim": "se"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 36895,
+  "odometer": {
+   "value": 8708,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0005",
+  "vehicle": {
+   "vin": "JTMWVWX56R3958295",
+   "ymm": "2024 Toyota RAV4 Hybrid",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 33695,
+  "odometer": {
+   "value": 7310,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0006",
+  "vehicle": {
+   "vin": "4T1AMJT54ML944759",
+   "ymm": "2021 Toyota RAV4",
+   "trim": "xle"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 18995,
+  "odometer": {
+   "value": 83710,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0007",
+  "vehicle": {
+   "vin": "JTMN31DN4RM302941",
+   "ymm": "2024 Toyota Corolla Cross Hybrid",
+   "trim": "se"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 31395,
+  "odometer": {
+   "value": 27991,
+   "unit": "mi"
+  },
+  "features": [
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0008",
+  "vehicle": {
+   "vin": "3FMGT4ZD9SY045944",
+   "ymm": "2025 Ford F-150",
+   "trim": "xlt 2.7l"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 47095,
+  "odometer": {
+   "value": 16893,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0009",
+  "vehicle": {
+   "vin": "5J66PZS64PW308320",
+   "ymm": "2023 Honda Civic",
+   "trim": "sport"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 23495,
+  "odometer": {
+   "value": 32469,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0010",
+  "vehicle": {
+   "vin": "JTMPS89U9RF742193",
+   "ymm": "2024 Toyota Tacoma",
+   "trim": "trd sport"
+  },
+  "drive": "4WD",
+  "body": "truck",
+  "price_usd": 40795,
+  "odometer": {
+   "value": 23343,
+   "unit": "km"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0011",
+  "vehicle": {
+   "vin": "2T35KN2W4RK012019",
+   "ymm": "2024 Toyota bZ4X",
+   "trim": "xle"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 31995,
+  "odometer": {
+   "value": 21847,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0012",
+  "vehicle": {
+   "vin": "5FN2T0YN4NF112902",
+   "ymm": "2022 Honda Odyssey",
+   "trim": "ex-l"
+  },
+  "drive": null,
+  "body": "minivan",
+  "price_usd": 32595,
+  "odometer": {
+   "value": 23656,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0013",
+  "vehicle": {
+   "vin": "2T3A2NPX3SR606114",
+   "ymm": "2025 Toyota RAV4 Hybrid",
+   "trim": "xse"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 36295,
+  "odometer": {
+   "value": 14114,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Alert",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0014",
+  "vehicle": {
+   "vin": "5J6XRL340NZ235113",
+   "ymm": "2022 Honda Civic",
+   "trim": "si"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 20495,
+  "odometer": {
+   "value": 147886,
+   "unit": "km"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0015",
+  "vehicle": {
+   "vin": "4T1T0ZYX7PC778836",
+   "ymm": "2023 Toyota Highlander",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 34495,
+  "odometer": {
+   "value": 29672,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0016",
+  "vehicle": {
+   "vin": "3FM13B7N5S8673263",
+   "ymm": "2025 Ford F-150",
+   "trim": "xlt 3.5l"
+  },
+  "drive": "4WD",
+  "body": "truck",
+  "price_usd": 51895,
+  "odometer": {
+   "value": 11109,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0017",
+  "vehicle": {
+   "vin": "JF290C6G3PF386757",
+   "ymm": "2023 Subaru Forester",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 24395,
+  "odometer": {
+   "value": 38263,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0018",
+  "vehicle": {
+   "vin": "2HG7B6S94SD506963",
+   "ymm": "2025 Honda CR-V Hybrid",
+   "trim": "sport"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 35595,
+  "odometer": {
+   "value": 11345,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0019",
+  "vehicle": {
+   "vin": "4S4GC9WV9SJ764032",
+   "ymm": "2025 Subaru Forester",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 30595,
+  "odometer": {
+   "value": 10971,
+   "unit": "mi"
+  },
+  "features": [],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0020",
+  "vehicle": {
+   "vin": "5J6AZ9KTXRE265668",
+   "ymm": "2024 Honda Odyssey",
+   "trim": "ex-l"
+  },
+  "drive": "FWD",
+  "body": "minivan",
+  "price_usd": 39095,
+  "odometer": {
+   "value": 26099,
+   "unit": "km"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0021",
+  "vehicle": {
+   "vin": "5TDRGR116RA490197",
+   "ymm": "2024 Toyota Sienna",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "minivan",
+  "price_usd": 1,
+  "odometer": {
+   "value": 18957,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0022",
+  "vehicle": {
+   "vin": "JTM1YA6E7RW724915",
+   "ymm": "2024 Toyota RAV4",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 29095,
+  "odometer": {
+   "value": 22686,
+   "unit": "km"
+  },
+  "features": [
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0023",
+  "vehicle": {
+   "vin": "1FTNHMWN2SZ247864",
+   "ymm": "2025 Ford F-150",
+   "trim": "xlt 2.7l"
+  },
+  "drive": null,
+  "body": "truck",
+  "price_usd": 47395,
+  "odometer": {
+   "value": 11526,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0024",
+  "vehicle": {
+   "vin": "4S4A6EMP9PT039598",
+   "ymm": "2023 Subaru Forester",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 24295,
+  "odometer": {
+   "value": 39979,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0025",
+  "vehicle": {
+   "vin": "2T3P8FNW7RU333257",
+   "ymm": "2024 Toyota RAV4 Hybrid",
+   "trim": "le"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 32795,
+  "odometer": {
+   "value": 25318,
+   "unit": "mi"
+  },
+  "features": [
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0026",
+  "vehicle": {
+   "vin": "JTMN24DS4S7791274",
+   "ymm": "2025 Toyota Highlander",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 42095,
+  "odometer": {
+   "value": 7707,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0027",
+  "vehicle": {
+   "vin": "2T395CDK4ST010701",
+   "ymm": "2025 Toyota Tacoma",
+   "trim": "trd sport"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 44395,
+  "odometer": {
+   "value": 14992,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0028",
+  "vehicle": {
+   "vin": "JM3DMMXY4RV157370",
+   "ymm": "2024 Mazda CX-90",
+   "trim": "preferred"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 38995,
+  "odometer": {
+   "value": 18587,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0029",
+  "vehicle": {
+   "vin": "JF2SX0F53NA824097",
+   "ymm": "2022 Subaru Impreza",
+   "trim": "sport"
+  },
+  "drive": null,
+  "body": "hatchback",
+  "price_usd": 20095,
+  "odometer": {
+   "value": 54640,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0030",
+  "vehicle": {
+   "vin": "5NMMBHX69RA805599",
+   "ymm": "2024 Hyundai Santa Fe Hybrid",
+   "trim": "sel"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 39895,
+  "odometer": {
+   "value": 14979,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0031",
+  "vehicle": {
+   "vin": "5TD1GY8J2PP800708",
+   "ymm": "2023 Toyota Camry",
+   "trim": "xse v6"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 30695,
+  "odometer": {
+   "value": 32462,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0032",
+  "vehicle": {
+   "vin": "5TDFSBVW9N1700526",
+   "ymm": "2022 Toyota Highlander Hybrid",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 31695,
+  "odometer": {
+   "value": 65203,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0033",
+  "vehicle": {
+   "vin": "3GNABT064NL517856",
+   "ymm": "2022 Chevrolet Trax",
+   "trim": "ls"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 20095,
+  "odometer": {
+   "value": 56980,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0034",
+  "vehicle": {
+   "vin": "2T3VC9E32PW752079",
+   "ymm": "2023 Toyota Highlander",
+   "trim": "limited"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 33695,
+  "odometer": {
+   "value": 46717,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0035",
+  "vehicle": {
+   "vin": "JTM3R03W3RW218317",
+   "ymm": "2024 Toyota RAV4",
+   "trim": "adventure"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 28295,
+  "odometer": {
+   "value": 47415,
+   "unit": "km"
+  },
+  "features": [
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0036",
+  "vehicle": {
+   "vin": "2HG1K4RUXRE003155",
+   "ymm": "2024 Honda Odyssey",
+   "trim": "ex-l"
+  },
+  "drive": "FWD",
+  "body": "minivan",
+  "price_usd": 38695,
+  "odometer": {
+   "value": 25111,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0037",
+  "vehicle": {
+   "vin": "3GNW4AFK6NE125863",
+   "ymm": "2022 Chevrolet Trax",
+   "trim": "ls"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 20995,
+  "odometer": {
+   "value": 40238,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0038",
+  "vehicle": {
+   "vin": "2T37YT7C3S4899956",
+   "ymm": "2025 Toyota Highlander Hybrid",
+   "trim": "limited"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 44495,
+  "odometer": {
+   "value": 7957,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0039",
+  "vehicle": {
+   "vin": "5XY4XEXC4MS051878",
+   "ymm": "2021 Kia Sorento Hybrid",
+   "trim": "ex"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 28495,
+  "odometer": {
+   "value": 58662,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0040",
+  "vehicle": {
+   "vin": "3GNL4PFE1RC581786",
+   "ymm": "2024 Chevrolet Equinox EV",
+   "trim": "2lt"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 32295,
+  "odometer": {
+   "value": 28897,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0041",
+  "vehicle": {
+   "vin": "5XYMC8CK7MY419493",
+   "ymm": "2021 Kia Sorento Hybrid",
+   "trim": "ex"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 26695,
+  "odometer": {
+   "value": 95674,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0042",
+  "vehicle": {
+   "vin": "2T3FC42F5SU224160",
+   "ymm": "2025 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 41695,
+  "odometer": {
+   "value": 15714,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0043",
+  "vehicle": {
+   "vin": "JTMD901F0RL451855",
+   "ymm": "2024 Toyota Highlander Hybrid",
+   "trim": "xle"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 40295,
+  "odometer": {
+   "value": 20964,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0044",
+  "vehicle": {
+   "vin": "5XYHDZ9V6SC477823",
+   "ymm": "2025 Kia Telluride",
+   "trim": "ex"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 43295,
+  "odometer": {
+   "value": 15447,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0045",
+  "vehicle": {
+   "vin": "JM3ZRTN20S7018413",
+   "ymm": "2025 Mazda CX-90 PHEV",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 48895,
+  "odometer": {
+   "value": 24968,
+   "unit": "km"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0046",
+  "vehicle": {
+   "vin": "JM3H7JLB2NU502341",
+   "ymm": "2022 Mazda CX-5",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 21395,
+  "odometer": {
+   "value": 61394,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0047",
+  "vehicle": {
+   "vin": "4T1GZMZ64RY286982",
+   "ymm": "2024 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": "4WD",
+  "body": "suv",
+  "price_usd": 32195,
+  "odometer": {
+   "value": 24643,
+   "unit": "mi"
+  },
+  "features": [
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0048",
+  "vehicle": {
+   "vin": "4T19BGVB5MR287692",
+   "ymm": "2021 Toyota RAV4",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 21995,
+  "odometer": {
+   "value": 37888,
+   "unit": "km"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0049",
+  "vehicle": {
+   "vin": "JTMPF8ZB3N7523494",
+   "ymm": "2022 Toyota RAV4 Hybrid",
+   "trim": "xse"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 26995,
+  "odometer": {
+   "value": 36168,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0050",
+  "vehicle": {
+   "vin": "5TD7J19T4SX463308",
+   "ymm": "2025 Toyota RAV4",
+   "trim": "le"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 31595,
+  "odometer": {
+   "value": 15026,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0051",
+  "vehicle": {
+   "vin": "5FN2CR3T7ST705385",
+   "ymm": "2025 Honda Pilot",
+   "trim": "ex-l"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 43295,
+  "odometer": {
+   "value": 9280,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0052",
+  "vehicle": {
+   "vin": "5TDTU2TW2RZ016702",
+   "ymm": "2024 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 37995,
+  "odometer": {
+   "value": 37304,
+   "unit": "km"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0053",
+  "vehicle": {
+   "vin": "4T128WNT5PU864595",
+   "ymm": "2023 Toyota Prius",
+   "trim": "le"
+  },
+  "drive": null,
+  "body": "hatchback",
+  "price_usd": 27995,
+  "odometer": {
+   "value": 65615,
+   "unit": "km"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0054",
+  "vehicle": {
+   "vin": "2T3LZYFV4MN901996",
+   "ymm": "2021 Toyota RAV4",
+   "trim": "le"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 20495,
+  "odometer": {
+   "value": 54903,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0055",
+  "vehicle": {
+   "vin": "JTMC52XD0M8481944",
+   "ymm": "2021 Toyota RAV4",
+   "trim": "xle"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 20995,
+  "odometer": {
+   "value": 44280,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Alert",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0056",
+  "vehicle": {
+   "vin": "5TDRNDDS0SH573859",
+   "ymm": "2025 Toyota Corolla Cross",
+   "trim": "l"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 29695,
+  "odometer": {
+   "value": 12819,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0057",
+  "vehicle": {
+   "vin": "2T34KJRE0P5237440",
+   "ymm": "2023 Toyota RAV4",
+   "trim": "adventure"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 26495,
+  "odometer": {
+   "value": 18451,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0058",
+  "vehicle": {
+   "vin": "4T18XG2T7P6945514",
+   "ymm": "2023 Toyota RAV4",
+   "trim": "limited"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 1,
+  "odometer": {
+   "value": 43504,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0059",
+  "vehicle": {
+   "vin": "3GNN7GLE8M3797681",
+   "ymm": "2021 Chevrolet Trax",
+   "trim": "ls"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 18295,
+  "odometer": {
+   "value": 56651,
+   "unit": "mi"
+  },
+  "features": [],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0060",
+  "vehicle": {
+   "vin": "2T3D96UL4SN999709",
+   "ymm": "2025 Toyota Corolla Cross Hybrid",
+   "trim": "se"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 34995,
+  "odometer": {
+   "value": 13112,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0061",
+  "vehicle": {
+   "vin": "5TDEVS6J7SU601087",
+   "ymm": "2025 Toyota Sienna",
+   "trim": "le"
+  },
+  "drive": null,
+  "body": "minivan",
+  "price_usd": 44795,
+  "odometer": {
+   "value": 4061,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0062",
+  "vehicle": {
+   "vin": "JTM3M8800NL426992",
+   "ymm": "2022 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 26295,
+  "odometer": {
+   "value": 41025,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0063",
+  "vehicle": {
+   "vin": "JTM1LXHJ6MY901995",
+   "ymm": "2021 Toyota Camry",
+   "trim": "le"
+  },
+  "drive": null,
+  "body": "sedan",
+  "price_usd": 19795,
+  "odometer": {
+   "value": 68895,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0064",
+  "vehicle": {
+   "vin": "JF2CLM0J9SD304686",
+   "ymm": "2025 Subaru Impreza",
+   "trim": "sport"
+  },
+  "drive": "AWD",
+  "body": "hatchback",
+  "price_usd": 28895,
+  "odometer": {
+   "value": 9512,
+   "unit": "mi"
+  },
+  "features": [
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0065",
+  "vehicle": {
+   "vin": "4T1A6WR00R9575549",
+   "ymm": "2024 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": "RWD",
+  "body": "suv",
+  "price_usd": 31395,
+  "odometer": {
+   "value": 41748,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0066",
+  "vehicle": {
+   "vin": "5NML9Y615SU044605",
+   "ymm": "2025 Hyundai Santa Fe Hybrid",
+   "trim": "sel"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 43695,
+  "odometer": {
+   "value": 8692,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0067",
+  "vehicle": {
+   "vin": "2HGAJZFD2R3628133",
+   "ymm": "2024 Honda CR-V",
+   "trim": "ex"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 28395,
+  "odometer": {
+   "value": 14470,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0068",
+  "vehicle": {
+   "vin": "2HGKAZ2L0P0924915",
+   "ymm": "2023 Honda Civic",
+   "trim": "sport"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 23395,
+  "odometer": {
+   "value": 35461,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0069",
+  "vehicle": {
+   "vin": "JF2SW8LSXSR042582",
+   "ymm": "2025 Subaru Outback",
+   "trim": "onyx xt"
+  },
+  "drive": null,
+  "body": "wagon",
+  "price_usd": 35495,
+  "odometer": {
+   "value": 6419,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0070",
+  "vehicle": {
+   "vin": "JM3V3M5M2L8476263",
+   "ymm": "2020 Mazda CX-3",
+   "trim": "sport"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 13895,
+  "odometer": {
+   "value": 171152,
+   "unit": "km"
+  },
+  "features": [
+   "Lane Departure Warning"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0071",
+  "vehicle": {
+   "vin": "4T14GGZRXN6157297",
+   "ymm": "2022 Toyota Camry",
+   "trim": "le"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 22195,
+  "odometer": {
+   "value": 60307,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0072",
+  "vehicle": {
+   "vin": "KL7HE78U0N3909279",
+   "ymm": "2022 Chevrolet Trax",
+   "trim": "ls"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 21095,
+  "odometer": {
+   "value": 37312,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0073",
+  "vehicle": {
+   "vin": "JM3HPZ274NU192883",
+   "ymm": "2022 Mazda CX-5",
+   "trim": "turbo"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 24495,
+  "odometer": {
+   "value": 63647,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0074",
+  "vehicle": {
+   "vin": "JM1YHJHS0R7003735",
+   "ymm": "2024 Mazda CX-90",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 38695,
+  "odometer": {
+   "value": 24502,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0075",
+  "vehicle": {
+   "vin": "JF2ESKHB3S5113109",
+   "ymm": "2025 Subaru Forester",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 30695,
+  "odometer": {
+   "value": 9147,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0076",
+  "vehicle": {
+   "vin": "JM3BPJJ99SA535811",
+   "ymm": "2025 Mazda CX-5",
+   "trim": "preferred"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 30995,
+  "odometer": {
+   "value": 9206,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0077",
+  "vehicle": {
+   "vin": "JM3ZNZCC5R1028684",
+   "ymm": "2024 Mazda CX-5",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 27395,
+  "odometer": {
+   "value": 29253,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0078",
+  "vehicle": {
+   "vin": "JTMLGVBC4SL536349",
+   "ymm": "2025 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 1,
+  "odometer": {
+   "value": 6574,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0079",
+  "vehicle": {
+   "vin": "JF2TX4U1XN3351766",
+   "ymm": "2022 Subaru Outback",
+   "trim": "premium"
+  },
+  "drive": null,
+  "body": "wagon",
+  "price_usd": 21995,
+  "odometer": {
+   "value": 43951,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0080",
+  "vehicle": {
+   "vin": "KL7JEGA80S1138151",
+   "ymm": "2025 Chevrolet Equinox EV",
+   "trim": "2lt"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 36295,
+  "odometer": {
+   "value": 6970,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Warning",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0081",
+  "vehicle": {
+   "vin": "2T3R9M1A1MM914380",
+   "ymm": "2021 Toyota RAV4 Hybrid",
+   "trim": "le"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 23495,
+  "odometer": {
+   "value": 61051,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0082",
+  "vehicle": {
+   "vin": "4S4Z2EJW7SF995132",
+   "ymm": "2025 Subaru Outback",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "wagon",
+  "price_usd": 30595,
+  "odometer": {
+   "value": 9897,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0083",
+  "vehicle": {
+   "vin": "2HGU63B58S7752609",
+   "ymm": "2025 Honda Civic",
+   "trim": "si"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 31495,
+  "odometer": {
+   "value": 14221,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0084",
+  "vehicle": {
+   "vin": "3FMAJEKS3RG700500",
+   "ymm": "2024 Ford Mustang Mach-E",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 36695,
+  "odometer": {
+   "value": 24336,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0085",
+  "vehicle": {
+   "vin": "2HGFHEUC6R9556841",
+   "ymm": "2024 Honda Civic",
+   "trim": "si"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 29095,
+  "odometer": {
+   "value": 16551,
+   "unit": "km"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0086",
+  "vehicle": {
+   "vin": "JTM5HMHA6S4264421",
+   "ymm": "2025 Toyota Camry",
+   "trim": "se"
+  },
+  "drive": "AWD",
+  "body": "sedan",
+  "price_usd": 36695,
+  "odometer": {
+   "value": 13352,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0087",
+  "vehicle": {
+   "vin": "JM1RKY6S6SP465322",
+   "ymm": "2025 Mazda CX-5",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 30695,
+  "odometer": {
+   "value": 13898,
+   "unit": "mi"
+  },
+  "features": [
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0088",
+  "vehicle": {
+   "vin": "2T3DWA247RL878489",
+   "ymm": "2024 Toyota Tundra",
+   "trim": "sr5"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 46095,
+  "odometer": {
+   "value": 31725,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0089",
+  "vehicle": {
+   "vin": "3FM2TD7F2RU703653",
+   "ymm": "2024 Ford F-150",
+   "trim": "xlt 3.5l"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 46995,
+  "odometer": {
+   "value": 24748,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0090",
+  "vehicle": {
+   "vin": "5TDZJYBA0S2481697",
+   "ymm": "2025 Toyota Sienna",
+   "trim": "le"
+  },
+  "drive": "AWD",
+  "body": "minivan",
+  "price_usd": 44395,
+  "odometer": {
+   "value": 11238,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0091",
+  "vehicle": {
+   "vin": "JM1EYWTJ7S9735076",
+   "ymm": "2025 Mazda CX-90",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 42895,
+  "odometer": {
+   "value": 11414,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0092",
+  "vehicle": {
+   "vin": "JTMHRMSM9PT095246",
+   "ymm": "2023 Toyota Tundra",
+   "trim": "sr5"
+  },
+  "drive": "4x4",
+  "body": "truck",
+  "price_usd": 41795,
+  "odometer": {
+   "value": 40601,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0093",
+  "vehicle": {
+   "vin": "4T1JEBNT3P7255386",
+   "ymm": "2023 Toyota Tundra",
+   "trim": "sr5"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 41795,
+  "odometer": {
+   "value": 40412,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0094",
+  "vehicle": {
+   "vin": "5TD4WZKA0PC485414",
+   "ymm": "2023 Toyota RAV4 Hybrid",
+   "trim": "xse"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 29295,
+  "odometer": {
+   "value": 39893,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0095",
+  "vehicle": {
+   "vin": "5J6CLFKT5SL581599",
+   "ymm": "2025 Honda CR-V",
+   "trim": "ex"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 31195,
+  "odometer": {
+   "value": 13251,
+   "unit": "km"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0096",
+  "vehicle": {
+   "vin": "JTMV19W12R0673649",
+   "ymm": "2024 Toyota Tundra",
+   "trim": "sr5"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 46195,
+  "odometer": {
+   "value": 29309,
+   "unit": "mi"
+  },
+  "features": [
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0097",
+  "vehicle": {
+   "vin": "5TDXCF8DXN6825332",
+   "ymm": "2022 Toyota Highlander Hybrid",
+   "trim": "limited"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 32795,
+  "odometer": {
+   "value": 70730,
+   "unit": "km"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0098",
+  "vehicle": {
+   "vin": "JF291CK03P8439967",
+   "ymm": "2023 Subaru Forester",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 1,
+  "odometer": {
+   "value": 38316,
+   "unit": "km"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0099",
+  "vehicle": {
+   "vin": "4T1NSWTDXSF166278",
+   "ymm": "2025 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 41895,
+  "odometer": {
+   "value": 13450,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0100",
+  "vehicle": {
+   "vin": "5TDD8B2X8R0633741",
+   "ymm": "2024 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 37595,
+  "odometer": {
+   "value": 31249,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0101",
+  "vehicle": {
+   "vin": "4T1S932J7SH828939",
+   "ymm": "2025 Toyota RAV4",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 31695,
+  "odometer": {
+   "value": 13196,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0102",
+  "vehicle": {
+   "vin": "JTMVL1UE8M4669494",
+   "ymm": "2021 Toyota RAV4 Hybrid",
+   "trim": "le"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 22895,
+  "odometer": {
+   "value": 72200,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0103",
+  "vehicle": {
+   "vin": "1FTX51822PN598405",
+   "ymm": "2023 Ford F-150",
+   "trim": "xlt 3.5l"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 42195,
+  "odometer": {
+   "value": 44495,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0104",
+  "vehicle": {
+   "vin": "4T1FNT1N2MS393853",
+   "ymm": "2021 Toyota Highlander Hybrid",
+   "trim": "limited"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 29095,
+  "odometer": {
+   "value": 99540,
+   "unit": "km"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0105",
+  "vehicle": {
+   "vin": "JM3Z8V4S6M8016730",
+   "ymm": "2021 Mazda CX-3",
+   "trim": "sport"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 19495,
+  "odometer": {
+   "value": 26563,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0106",
+  "vehicle": {
+   "vin": "JTMW2CJR1P2244791",
+   "ymm": "2023 Toyota Camry",
+   "trim": "xse v6"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 31495,
+  "odometer": {
+   "value": 18317,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0107",
+  "vehicle": {
+   "vin": "5TD0SFNP4R6830020",
+   "ymm": "2024 Toyota Highlander",
+   "trim": "limited"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 38795,
+  "odometer": {
+   "value": 5733,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0108",
+  "vehicle": {
+   "vin": "2T3NG04H1S8509888",
+   "ymm": "2025 Toyota Camry",
+   "trim": "se"
+  },
+  "drive": "AWD",
+  "body": "sedan",
+  "price_usd": 36495,
+  "odometer": {
+   "value": 16971,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0109",
+  "vehicle": {
+   "vin": "4T1BEZBT8R1240020",
+   "ymm": "2024 Toyota Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 37695,
+  "odometer": {
+   "value": 28864,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0110",
+  "vehicle": {
+   "vin": "5TD2NZVS8PN211980",
+   "ymm": "2023 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 29295,
+  "odometer": {
+   "value": 29421,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0111",
+  "vehicle": {
+   "vin": "5FNWF8LE9RZ145140",
+   "ymm": "2024 Honda CR-V Hybrid",
+   "trim": "sport"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 32195,
+  "odometer": {
+   "value": 21192,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0112",
+  "vehicle": {
+   "vin": "5TDVF6V48RH896574",
+   "ymm": "2024 Toyota Camry",
+   "trim": "xse v6"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 33495,
+  "odometer": {
+   "value": 33316,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0113",
+  "vehicle": {
+   "vin": "5J670P456P5037333",
+   "ymm": "2023 Honda Civic",
+   "trim": "sport"
+  },
+  "drive": null,
+  "body": "sedan",
+  "price_usd": 24295,
+  "odometer": {
+   "value": 25597,
+   "unit": "km"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0114",
+  "vehicle": {
+   "vin": "2T33BRYR6M3416720",
+   "ymm": "2021 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 22495,
+  "odometer": {
+   "value": 70347,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0115",
+  "vehicle": {
+   "vin": "JM3M47W18RU671301",
+   "ymm": "2024 Mazda CX-90",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 38895,
+  "odometer": {
+   "value": 21801,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0116",
+  "vehicle": {
+   "vin": "5TDW5DCT0RG376509",
+   "ymm": "2024 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 37895,
+  "odometer": {
+   "value": 25421,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0117",
+  "vehicle": {
+   "vin": "JTM74ZGD7M5766638",
+   "ymm": "2021 Toyota Highlander Hybrid",
+   "trim": "limited"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 29295,
+  "odometer": {
+   "value": 56696,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0118",
+  "vehicle": {
+   "vin": "JM168R0D8SG105308",
+   "ymm": "2025 Mazda CX-90 PHEV",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 49095,
+  "odometer": {
+   "value": 12205,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0119",
+  "vehicle": {
+   "vin": "1FTA8G251MM581759",
+   "ymm": "2021 Ford F-150",
+   "trim": "xlt 3.5l"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 36495,
+  "odometer": {
+   "value": 21286,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0120",
+  "vehicle": {
+   "vin": "JTMZKGVM0SK187270",
+   "ymm": "2025 Toyota Tacoma",
+   "trim": "trd sport"
+  },
+  "drive": "RWD",
+  "body": "truck",
+  "price_usd": 44495,
+  "odometer": {
+   "value": 20085,
+   "unit": "km"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0121",
+  "vehicle": {
+   "vin": "4T10483A9M5661943",
+   "ymm": "2021 Toyota Sienna",
+   "trim": "le"
+  },
+  "drive": "AWD",
+  "body": "minivan",
+  "price_usd": 29895,
+  "odometer": {
+   "value": 47476,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0122",
+  "vehicle": {
+   "vin": "5FNM3F965SS858894",
+   "ymm": "2025 Honda Odyssey",
+   "trim": "ex-l"
+  },
+  "drive": "FWD",
+  "body": "minivan",
+  "price_usd": 42695,
+  "odometer": {
+   "value": 15405,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0123",
+  "vehicle": {
+   "vin": "JM36XDF94KA113926",
+   "ymm": "2019 Mazda CX-3",
+   "trim": "sport"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 14595,
+  "odometer": {
+   "value": 61474,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0124",
+  "vehicle": {
+   "vin": "2T34ZS9B5NR531719",
+   "ymm": "2022 Toyota RAV4",
+   "trim": "le"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 23495,
+  "odometer": {
+   "value": 35234,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0125",
+  "vehicle": {
+   "vin": "5XYDW9Z14MR246120",
+   "ymm": "2021 Kia Sorento Hybrid",
+   "trim": "ex"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 27895,
+  "odometer": {
+   "value": 71772,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0126",
+  "vehicle": {
+   "vin": "5NM4BH029RP876838",
+   "ymm": "2024 Hyundai Santa Fe Hybrid",
+   "trim": "sel"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 39495,
+  "odometer": {
+   "value": 35780,
+   "unit": "km"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0127",
+  "vehicle": {
+   "vin": "3GNU024P5S1150960",
+   "ymm": "2025 Chevrolet Equinox EV",
+   "trim": "2lt"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 36195,
+  "odometer": {
+   "value": 16049,
+   "unit": "km"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0128",
+  "vehicle": {
+   "vin": "5TD4YCA46SL782876",
+   "ymm": "2025 Toyota Tacoma",
+   "trim": "trd sport"
+  },
+  "drive": "4WD",
+  "body": "truck",
+  "price_usd": 44095,
+  "odometer": {
+   "value": 20328,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0129",
+  "vehicle": {
+   "vin": "4T1EJPBT4S5019333",
+   "ymm": "2025 Toyota RAV4",
+   "trim": "adventure"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 31595,
+  "odometer": {
+   "value": 14600,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0130",
+  "vehicle": {
+   "vin": "4T1LAFFA5NJ698728",
+   "ymm": "2022 Toyota Corolla",
+   "trim": "le"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 20895,
+  "odometer": {
+   "value": 54224,
+   "unit": "mi"
+  },
+  "features": [
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0131",
+  "vehicle": {
+   "vin": "5TD2KW1C1SX893913",
+   "ymm": "2025 Toyota Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 41895,
+  "odometer": {
+   "value": 13074,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0132",
+  "vehicle": {
+   "vin": "4T1EP4W21PS857438",
+   "ymm": "2023 Toyota Highlander",
+   "trim": "limited"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 33795,
+  "odometer": {
+   "value": 44334,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0133",
+  "vehicle": {
+   "vin": "4T1XTWAJXRS032273",
+   "ymm": "2024 Toyota RAV4 Prime",
+   "trim": "se"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 37195,
+  "odometer": {
+   "value": 28452,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0134",
+  "vehicle": {
+   "vin": "2T3NMX1BXML489495",
+   "ymm": "2021 Toyota RAV4",
+   "trim": "limited"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 20395,
+  "odometer": {
+   "value": 56373,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Warning",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0135",
+  "vehicle": {
+   "vin": "JTMXUL2Y8SV163993",
+   "ymm": "2025 Toyota Camry",
+   "trim": "se"
+  },
+  "drive": null,
+  "body": "sedan",
+  "price_usd": 36895,
+  "odometer": {
+   "value": 9299,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0136",
+  "vehicle": {
+   "vin": "3GNM7YEH9NL071399",
+   "ymm": "2022 Chevrolet Trax",
+   "trim": "ls"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 21195,
+  "odometer": {
+   "value": 36400,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Keeping Assist"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0137",
+  "vehicle": {
+   "vin": "2T385GWK2RB312553",
+   "ymm": "2024 Toyota RAV4 Hybrid",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 33395,
+  "odometer": {
+   "value": 12282,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0138",
+  "vehicle": {
+   "vin": "JM3WT36A5MC732297",
+   "ymm": "2021 Mazda CX-3",
+   "trim": "sport"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 17495,
+  "odometer": {
+   "value": 67435,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0139",
+  "vehicle": {
+   "vin": "JM1HLMA05RT832879",
+   "ymm": "2024 Mazda CX-5",
+   "trim": "preferred"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 27395,
+  "odometer": {
+   "value": 29904,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0140",
+  "vehicle": {
+   "vin": "4S4R6YCC2MZ457738",
+   "ymm": "2021 Subaru Impreza",
+   "trim": "sport"
+  },
+  "drive": "AWD",
+  "body": "hatchback",
+  "price_usd": 18095,
+  "odometer": {
+   "value": 58463,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Keeping Assist",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0141",
+  "vehicle": {
+   "vin": "4S417674XS5089072",
+   "ymm": "2025 Subaru Outback",
+   "trim": "onyx xt"
+  },
+  "drive": "AWD",
+  "body": "wagon",
+  "price_usd": 35395,
+  "odometer": {
+   "value": 6762,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Keeping Assist",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0142",
+  "vehicle": {
+   "vin": "4S4U7BPT6MB201500",
+   "ymm": "2021 Subaru Impreza",
+   "trim": "sport"
+  },
+  "drive": "AWD",
+  "body": "hatchback",
+  "price_usd": 16995,
+  "odometer": {
+   "value": 79499,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Keeping Assist"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0143",
+  "vehicle": {
+   "vin": "5TDAHM3S6RJ008749",
+   "ymm": "2024 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": "RWD",
+  "body": "suv",
+  "price_usd": 32595,
+  "odometer": {
+   "value": 17378,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0144",
+  "vehicle": {
+   "vin": "7SAP7ZCH5PF237162",
+   "ymm": "2023 Tesla Model Y",
+   "trim": "long range"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 38195,
+  "odometer": {
+   "value": 29971,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0145",
+  "vehicle": {
+   "vin": "2HG3MLX07PR312438",
+   "ymm": "2023 Honda CR-V Hybrid",
+   "trim": "sport"
+  },
+  "drive": "FWD",
+  "body": "suv",
+  "price_usd": 28895,
+  "odometer": {
+   "value": 53748,
+   "unit": "km"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Alert",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0146",
+  "vehicle": {
+   "vin": "JTMLP7P46RZ898008",
+   "ymm": "2024 Toyota Grand Highlander Hybrid",
+   "trim": "limited max"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 46495,
+  "odometer": {
+   "value": 27073,
+   "unit": "mi"
+  },
+  "features": [
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0147",
+  "vehicle": {
+   "vin": "JM12009C0NT595735",
+   "ymm": "2022 Mazda CX-5",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 21895,
+  "odometer": {
+   "value": 50656,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0148",
+  "vehicle": {
+   "vin": "JM32KJ8Y7RS708726",
+   "ymm": "2024 Mazda CX-90",
+   "trim": "preferred"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 38495,
+  "odometer": {
+   "value": 28938,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0149",
+  "vehicle": {
+   "vin": "JTM7HAW13SG020654",
+   "ymm": "2025 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 41895,
+  "odometer": {
+   "value": 11566,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0150",
+  "vehicle": {
+   "vin": "JTMHZG7C0M2469536",
+   "ymm": "2021 Toyota Camry",
+   "trim": "le"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 20095,
+  "odometer": {
+   "value": 62636,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0151",
+  "vehicle": {
+   "vin": "JM1EMWFV5RC004508",
+   "ymm": "2024 Mazda CX-90 PHEV",
+   "trim": "premium"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 45195,
+  "odometer": {
+   "value": 10792,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0152",
+  "vehicle": {
+   "vin": "2T3X2FZ78R1695135",
+   "ymm": "2024 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": "RWD",
+  "body": "crossover",
+  "price_usd": 1,
+  "odometer": {
+   "value": 22222,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning"
+  ],
+  "dealer": {
+   "name": "Allen Pre-Owned",
+   "zip": "75013"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0153",
+  "vehicle": {
+   "vin": "5TDDFTG45SN537777",
+   "ymm": "2025 Toyota Tundra",
+   "trim": "sr5"
+  },
+  "drive": "4WD",
+  "body": "truck",
+  "price_usd": 1,
+  "odometer": {
+   "value": 10599,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0154",
+  "vehicle": {
+   "vin": "4T12VKYM1SS671709",
+   "ymm": "2025 Toyota RAV4",
+   "trim": "xle"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 31595,
+  "odometer": {
+   "value": 15954,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0155",
+  "vehicle": {
+   "vin": "2T3UWM659P1069184",
+   "ymm": "2023 Toyota 4Runner",
+   "trim": "sr5"
+  },
+  "drive": null,
+  "body": "suv",
+  "price_usd": 29095,
+  "odometer": {
+   "value": 32944,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Departure Warning",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0156",
+  "vehicle": {
+   "vin": "4S4NUN4G1M4065013",
+   "ymm": "2021 Subaru Outback",
+   "trim": "premium"
+  },
+  "drive": null,
+  "body": "wagon",
+  "price_usd": 19195,
+  "odometer": {
+   "value": 62138,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "McKinney Auto Mall",
+   "zip": "75070"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0157",
+  "vehicle": {
+   "vin": "5TDZVSXW1SS895092",
+   "ymm": "2025 Toyota Corolla",
+   "trim": "le"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 29895,
+  "odometer": {
+   "value": 9912,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0158",
+  "vehicle": {
+   "vin": "5J6F1AE11RJ919103",
+   "ymm": "2024 Honda Civic",
+   "trim": "sport"
+  },
+  "drive": null,
+  "body": "sedan",
+  "price_usd": 25795,
+  "odometer": {
+   "value": 30240,
+   "unit": "mi"
+  },
+  "features": [
+   "Lane Departure Alert",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0159",
+  "vehicle": {
+   "vin": "2T358AP47P0541861",
+   "ymm": "2023 Toyota RAV4 Prime",
+   "trim": "se"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 34495,
+  "odometer": {
+   "value": 20473,
+   "unit": "mi"
+  },
+  "features": [
+   "Blind Spot Monitor",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0160",
+  "vehicle": {
+   "vin": "JTM7AC4F6R0392474",
+   "ymm": "2024 Toyota RAV4",
+   "trim": "le"
+  },
+  "drive": null,
+  "body": "crossover",
+  "price_usd": 28295,
+  "odometer": {
+   "value": 28781,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Lane Keeping Assist",
+   "Blind Spot Monitor"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0161",
+  "vehicle": {
+   "vin": "5XYSBSH59N4991832",
+   "ymm": "2022 Kia Sorento Hybrid",
+   "trim": "ex"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 32395,
+  "odometer": {
+   "value": 36525,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Keeping Assist",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0162",
+  "vehicle": {
+   "vin": "4T1AKNRH2NN661944",
+   "ymm": "2022 Toyota Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 30895,
+  "odometer": {
+   "value": 44077,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0163",
+  "vehicle": {
+   "vin": "4T1Y3BBG7NU150585",
+   "ymm": "2022 Toyota Highlander Hybrid",
+   "trim": "limited"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 33395,
+  "odometer": {
+   "value": 31501,
+   "unit": "mi"
+  },
+  "features": [
+   "Pre-Collision System",
+   "Blind Spot Information",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-23T08:00:00Z"
+ },
+ {
+  "listing_id": "B0164",
+  "vehicle": {
+   "vin": "JTML1MDR4PU775897",
+   "ymm": "2023 Toyota Corolla Cross",
+   "trim": "l"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 24495,
+  "odometer": {
+   "value": 23523,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Plano Auto Group",
+   "zip": "75093"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0165",
+  "vehicle": {
+   "vin": "4T1Y5C9K3M6939880",
+   "ymm": "2021 Toyota Corolla",
+   "trim": "le"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 18595,
+  "odometer": {
+   "value": 63232,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Alert",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0166",
+  "vehicle": {
+   "vin": "5FNUS1S24NB625011",
+   "ymm": "2022 Honda Civic",
+   "trim": "sport"
+  },
+  "drive": "FWD",
+  "body": "sedan",
+  "price_usd": 20495,
+  "odometer": {
+   "value": 83592,
+   "unit": "km"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Lane Departure Warning",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Dallas North Autos",
+   "zip": "75252"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ },
+ {
+  "listing_id": "B0167",
+  "vehicle": {
+   "vin": "4T1MREV38SZ509822",
+   "ymm": "2025 Toyota Grand Highlander",
+   "trim": "xle"
+  },
+  "drive": "AWD",
+  "body": "suv",
+  "price_usd": 41395,
+  "odometer": {
+   "value": 22201,
+   "unit": "mi"
+  },
+  "features": [
+   "Collision Mitigation Braking",
+   "Blind Spot Information",
+   "Dynamic Radar Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-22T08:00:00Z"
+ },
+ {
+  "listing_id": "B0168",
+  "vehicle": {
+   "vin": "2T3KVZGA5R3826043",
+   "ymm": "2024 Toyota Highlander",
+   "trim": "xle"
+  },
+  "drive": "FWD",
+  "body": "crossover",
+  "price_usd": 38395,
+  "odometer": {
+   "value": 13844,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Lane Departure Warning",
+   "Blind Spot Monitor",
+   "Adaptive Cruise Control"
+  ],
+  "dealer": {
+   "name": "Richardson Car Co",
+   "zip": "75080"
+  },
+  "updated_at": "2026-10-25T08:00:00Z"
+ },
+ {
+  "listing_id": "B0169",
+  "vehicle": {
+   "vin": "2T3FNH357RM752767",
+   "ymm": "2024 Toyota RAV4 Hybrid",
+   "trim": "xse"
+  },
+  "drive": "AWD",
+  "body": "crossover",
+  "price_usd": 32695,
+  "odometer": {
+   "value": 26340,
+   "unit": "mi"
+  },
+  "features": [
+   "Automatic Emergency Braking",
+   "Blind Spot Information"
+  ],
+  "dealer": {
+   "name": "Frisco Motors",
+   "zip": "75034"
+  },
+  "updated_at": "2026-10-24T08:00:00Z"
+ }
+]
