@@ -1,0 +1,22 @@
+[
+ {"id":"Q01","q":"3 row SUV under $45k not a minivan","src":"Jalopnik reader, Denver, twins on the way","constraints":["SUV","third row","<=45000","not minivan"]},
+ {"id":"Q02","q":"fun AWD sedan for snowy commute under $25k","src":"Jalopnik reader, Pennsylvania","constraints":["AWD","sedan","<=25000"]},
+ {"id":"Q03","q":"first car for teen with automatic emergency braking and lane departure warning under $20k","src":"Jalopnik reader, Los Angeles","constraints":["AEB","lane departure","<=20000"]},
+ {"id":"Q04","q":"sports sedan 300 hp under $30k 2022 or newer","src":"Jalopnik reader, San Francisco","constraints":["sedan",">=300hp","<=30000","year>=2022"]},
+ {"id":"Q05","q":"quiet luxury sedan with massaging seats","src":"Jalopnik reader, NYC","constraints":["sedan","massage seats","luxury"]},
+ {"id":"Q06","q":"reliable AWD wagon that can tow a small trailer under $20k","src":"Jalopnik reader, LA to Maine","constraints":["AWD","wagon","towing","<=20000"]},
+ {"id":"Q07","q":"reliable car good gas mileage leather seats low miles under $20k","src":"Jalopnik reader, Austin","constraints":["mpg","leather","low miles","<=20000"]},
+ {"id":"Q08","q":"SUV that can tow a car and fits in a garage under $20k","src":"Jalopnik reader, Philadelphia","constraints":["SUV","towing","not too big","<=20000"]},
+ {"id":"Q09","q":"4x4 for camping that can tow a trailer under $40k","src":"Jalopnik reader, Sunnyvale","constraints":["4WD","towing","<=40000"]},
+ {"id":"Q10","q":"reliable automatic hatchback under $20k room for 2 dogs","src":"Jalopnik reader, Houston","constraints":["automatic","hatchback","<=20000"]},
+ {"id":"Q11","q":"quiet hybrid that fits a stroller and is easy to park under $50k","src":"Jalopnik reader, San Francisco","constraints":["hybrid","cargo room","compact","<=50000"]},
+ {"id":"Q12","q":"eco friendly family car for twins and a double stroller under $25k","src":"Jalopnik reader, Las Vegas","constraints":["hybrid/efficient","large cargo","<=25000"]},
+ {"id":"Q13","q":"RAV4 hybrid under $30k","src":"Common model+budget query","constraints":["Toyota RAV4","hybrid","<=30000"]},
+ {"id":"Q14","q":"Highlander hybrid or Grand Highlander","src":"Common comparison query","constraints":["Highlander Hybrid or Grand Highlander"]},
+ {"id":"Q15","q":"car under $400 a month","src":"Payment-first shopper","constraints":["monthly payment<=400"]},
+ {"id":"Q16","q":"safe car for my teenager","src":"Parent shopper (vague intent)","constraints":["high safety rating","modest size/power"]},
+ {"id":"Q17","q":"truck that can tow 7000 lbs","src":"Capability query","constraints":["truck","tow>=7000"]},
+ {"id":"Q18","q":"electric SUV with 300 miles of range","src":"EV capability query","constraints":["EV","SUV","range>=300"]},
+ {"id":"Q19","q":"minivan with AWD","src":"Feature query","constraints":["minivan","AWD"]},
+ {"id":"Q20","q":"Toyota with third row and good gas mileage","src":"Brand+need query","constraints":["Toyota","third row","efficient"]}
+]
