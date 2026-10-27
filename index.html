@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RightFit</title>
+<meta name="description" content="RightFit: an AI agent that finds the right car from one sentence. How shoppers talk, where search breaks, and what the agent does about it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column styled like a vehicle window sticker — ruled label blocks, spec rows, and one "shopper said / search heard" ledger as the centerpiece. */
+:root{
+  --paper:#f6f7f9;
+  --label:#ffffff;
+  --ink:#151a22;
+  --muted:#5a6372;
+  --rule:#d5dae2;
+  --route:#1f5fbf;      /* accent: interstate-sign blue */
+  --good:#1d7a4a;
+  --bad:#b4471b;
+  --bad-bg:#fbeee7;
+  --good-bg:#e8f4ed;
+  --chip:#eef1f6;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f131a;--label:#161b24;--ink:#e7ebf1;--muted:#9aa4b3;--rule:#2a3240;
+  --route:#6ea2f2;--good:#5cc18c;--bad:#f08a5d;--bad-bg:#2c1b14;--good-bg:#132619;--chip:#1f2632;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f131a;--label:#161b24;--ink:#e7ebf1;--muted:#9aa4b3;--rule:#2a3240;
+  --route:#6ea2f2;--good:#5cc18c;--bad:#f08a5d;--bad-bg:#2c1b14;--good-bg:#132619;--chip:#1f2632;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+.wrap{max-width:860px;margin:0 auto;display:grid;gap:48px}
+a{color:var(--route);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--route);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;text-wrap:balance;margin:0;letter-spacing:.005em}
+h1{font-size:clamp(2.6rem,7vw,4.4rem);text-transform:uppercase}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);text-transform:uppercase}
+h3{font-size:1.25rem;text-transform:uppercase;letter-spacing:.02em}
+p{margin:0;max-width:65ch}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.15rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.stack{display:grid;gap:14px}
+.num{font-variant-numeric:tabular-nums}
+
+/* hero */
+header.hero{display:grid;gap:18px;border-bottom:3px solid var(--ink);padding-bottom:28px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.thesis{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,1.9rem);font-weight:600;line-height:1.2;max-width:30ch;text-wrap:balance}
+.thesis em{font-style:normal;color:var(--route)}
+
+/* sticker block */
+.sticker{background:var(--label);border:2px solid var(--ink);display:grid}
+.sticker-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;padding:12px 18px;border-bottom:2px solid var(--ink);background:var(--ink);color:var(--label)}
+.sticker-head h2,.sticker-head h3{color:var(--label)}
+.sticker-head .eyebrow{color:var(--label);opacity:.8}
+.sticker-body{padding:20px 18px;display:grid;gap:22px}
+
+/* big comparison */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0}
+.compare>div{padding:18px;display:grid;gap:6px;align-content:start}
+.compare>div+div{border-left:1px solid var(--rule)}
+@media (max-width:560px){.compare>div+div{border-left:0;border-top:1px solid var(--rule)}}
+.big{font-family:var(--display);font-weight:700;font-size:3.6rem;line-height:1}
+.big.good{color:var(--good)}.big.bad{color:var(--bad)}
+.bar{height:10px;background:var(--chip);position:relative}
+.bar>span{position:absolute;inset:0 auto 0 0;display:block}
+.bar.good>span{background:var(--good)}.bar.bad>span{background:var(--bad)}
+.small{font-size:.88rem}
+
+/* ledger */
+.ledger{overflow-x:auto}
+.ledger table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem}
+.ledger th{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--ink)}
+.ledger td{padding:12px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.ledger td:first-child{font-weight:500;width:28%}
+.q{font-family:var(--mono);font-size:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font-family:var(--mono);font-size:.74rem;padding:2px 7px;background:var(--chip);border:1px solid var(--rule);white-space:nowrap}
+.chip.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.chip.miss{border-style:dashed;color:var(--muted);text-decoration:line-through}
+.verdict{display:inline-block;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:2px 6px;margin-bottom:4px}
+.verdict.bad{color:var(--bad);border:1px solid var(--bad)}
+.verdict.good{color:var(--good);border:1px solid var(--good)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:.82rem;color:var(--muted)}
+
+/* spec rows (intent map) */
+.specs{display:grid;gap:0}
+.spec{display:grid;grid-template-columns:minmax(0,1fr) 140px 52px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px dotted var(--rule)}
+.spec:last-child{border-bottom:0}
+.spec .bar{height:8px}
+.spec .bar>span{background:var(--route)}
+.spec.hl .bar>span{background:var(--bad)}
+.spec .v{font-family:var(--mono);font-size:.85rem;text-align:right}
+@media (max-width:520px){.spec{grid-template-columns:minmax(0,1fr) 52px}.spec .bar{grid-column:1/-1;order:3}}
+.callout{border-left:4px solid var(--route);padding:4px 0 4px 16px;font-family:var(--display);font-size:1.45rem;font-weight:600;line-height:1.25;text-wrap:balance}
+
+/* steps & releases */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:14px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px}
+ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:700;font-size:1.4rem;line-height:1.1;color:var(--route)}
+.releases{display:grid;gap:0}
+.rel{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.rel .ver{font-family:var(--mono);font-weight:500}
+.status{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.status.shipped{color:var(--good)}
+
+
+/* before/after rows (Feed Doctor) */
+.ba{display:grid;gap:0}
+.ba-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px;align-items:center;padding:9px 0;border-bottom:1px dotted var(--rule)}
+.ba-row:last-child{border-bottom:0}
+.ba-bars{display:grid;gap:4px}
+.ba-bars .line{display:grid;grid-template-columns:44px minmax(0,1fr) 48px;gap:8px;align-items:center;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.ba-bars .bar{height:7px}
+.ba-bars .before>span{background:var(--muted)}
+.ba-bars .after>span{background:var(--route)}
+.ba-bars .v{text-align:right;color:var(--ink)}
+.ba-row.warn .after>span{background:var(--bad)}
+@media (max-width:560px){.ba-row{grid-template-columns:1fr}}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
+.duo>div{display:grid;gap:6px;align-content:start}
+
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.cta a{font:600 .9rem var(--body);text-decoration:none;padding:9px 16px;border:2px solid var(--ink);color:var(--ink);background:var(--label)}
+.cta a.primary{background:var(--ink);color:var(--label)}
+.cta a:hover{border-color:var(--route)}
+.more{font-size:.88rem}
+.more a{font-weight:500}
+.status-line{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+details{border-top:1px solid var(--rule);padding-top:12px}
+summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em}
+details .stack{margin-top:12px}
+ul.plain{margin:0;padding-left:1.1em;display:grid;gap:6px;max-width:65ch}
+footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;font-size:.88rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.bar>span{transition:width .6s ease}}
+</style>
+
+<style>body{margin:0}</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="meta"><span>RightFit</span><span>Release v0.2 · Data foundation</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
+  <h1>Can a shopper describe their life in one sentence and find the right car?</h1>
+  <p class="thesis">Vehicle search works when shoppers talk in filters. <em>It breaks when they talk like people.</em></p>
+  <p class="lede">RightFit is an AI discovery agent I'm building in public, release by release. v0.1 looked at how real shoppers describe what they want and whether a major retailer's search box understands them. v0.2 asks whether the inventory data can answer them at all.</p>
+  <p class="status-line">Building in public · 2 of 6 releases shipped · the agent itself arrives in v0.3</p>
+  <div class="cta">
+    <a class="primary" href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">View the code on GitHub</a>
+    <a href="explorer.html">Explore the data with SQL</a>
+    <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/docs/prfaq.md" target="_blank" rel="noopener">Read the PR/FAQ</a>
+  </div>
+</header>
+
+<section class="sticker" aria-labelledby="h-result">
+  <div class="sticker-head"><h2 id="h-result">Findability audit</h2><span class="eyebrow">20 queries · CarMax free-text search · Oct 25, 2026</span></div>
+  <div class="compare">
+    <div>
+      <span class="eyebrow">Phrased like filters</span>
+      <span class="big good num">95%</span>
+      <div class="bar good" role="img" aria-label="95 percent"><span style="width:95%"></span></div>
+      <p class="small">of top-5 results fit every constraint. 4 queries such as "RAV4 hybrid under $30k". 11 of 11 constraints applied.</p>
+    </div>
+    <div>
+      <span class="eyebrow">Phrased like a person</span>
+      <span class="big bad num">37%</span>
+      <div class="bar bad" role="img" aria-label="37 percent"><span style="width:37%"></span></div>
+      <p class="small">of top-5 results fit. 16 queries with needs, numbers, features or "not". 30 of 49 constraints applied; 2 returned zero cars.</p>
+    </div>
+    <div>
+      <span class="eyebrow">Real shoppers who start from a need</span>
+      <span class="big num">13<span class="muted" style="font-size:.5em"> / 14</span></span>
+      <div class="bar" role="img" aria-label="13 of 14"><span style="width:92.9%;background:var(--route)"></span></div>
+      <p class="small">Only one of 14 shopper letters named a model they wanted. The rest described a situation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="h-ledger">
+  <span class="eyebrow">Shopper said / search heard</span>
+  <h2 id="h-ledger">Where it breaks</h2>
+  <div class="legend"><span class="chip">applied filter</span><span class="chip wrong">wrong filter</span><span class="chip miss">ignored</span></div>
+  <div class="ledger">
+    <table>
+      <thead><tr><th>Shopper typed</th><th>Search applied</th><th>What came back</th></tr></thead>
+      <tbody>
+        <tr><td class="q">3 row SUV under $45k not a minivan</td>
+          <td><div class="chips"><span class="chip">SUVs</span><span class="chip">Third row</span><span class="chip">Under $45,000</span><span class="chip wrong">+ Minivans</span></div></td>
+          <td><span class="verdict bad">Negation inverted</span><br>"Not a minivan" added a minivan filter. On Carvana, the top results were all minivans.</td></tr>
+        <tr><td class="q">safe car for my teenager</td>
+          <td><div class="chips"><span class="chip wrong">whole sentence as one keyword</span></div></td>
+          <td><span class="verdict bad">Zero results</span><br>0 cars. The shopper gets nothing to react to and no question back.</td></tr>
+        <tr><td class="q">truck that can tow 7000 lbs</td>
+          <td><div class="chips"><span class="chip">Large</span><span class="chip miss">Truck</span><span class="chip miss">Tow ≥ 7,000 lb</span></div></td>
+          <td><span class="verdict bad">Threshold dropped</span><br>Top 5 included a Dodge Challenger and an Audi Q7. One pickup.</td></tr>
+        <tr><td class="q">sports sedan 300 hp under $30k 2022 or newer</td>
+          <td><div class="chips"><span class="chip wrong">Midsize</span><span class="chip">2022+</span><span class="chip">Under $30,000</span><span class="chip miss">300 hp</span></div></td>
+          <td><span class="verdict bad">0 of 5 fit</span><br>Camry LE, Altima SV and a Jeep Wrangler.</td></tr>
+        <tr><td class="q">car under $400 a month</td>
+          <td><div class="chips"><span class="chip wrong">Under $24,000</span></div></td>
+          <td><span class="verdict bad">Hidden assumption</span><br>A payment became a sticker price. Term, rate and down payment were never shown or asked.</td></tr>
+        <tr><td class="q">reliable AWD wagon that can tow a small trailer under $20k</td>
+          <td><div class="chips"><span class="chip">Wagons</span><span class="chip">AWD</span><span class="chip">Under $20,000</span><span class="chip miss">Towing</span></div></td>
+          <td><span class="verdict bad">Catalog data</span><br>Impreza, Rogue Sport and HR-V came back labeled as wagons.</td></tr>
+        <tr><td class="q">RAV4 hybrid under $30k</td>
+          <td><div class="chips"><span class="chip">Toyota</span><span class="chip">RAV4</span><span class="chip">Hybrid</span><span class="chip">Under $30,000</span></div></td>
+          <td><span class="verdict good">5 of 5 fit</span><br>When the shopper already speaks in filters, search is excellent.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="more">Full report, all 20 queries and scoring: <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/audit/findability-audit.md" target="_blank" rel="noopener">findability audit</a>.</p>
+  <p><strong>Two kinds of failure.</strong> Some are about language: negation, comparisons, vague needs, thresholds. Many are about data: horsepower, tow rating, EV range and driver-assist features weren't filterable, and some body types were wrong. An AI agent can't reason over facts the inventory doesn't hold, so the agent and the inventory data have to be built together.</p>
+</section>
+
+<section class="sticker" aria-labelledby="h-intent">
+  <div class="sticker-head"><h2 id="h-intent">How shoppers talk</h2><span class="eyebrow">14 public shopper letters · coded on 10 signals</span></div>
+  <div class="sticker-body">
+    <div class="specs">
+      <div class="spec"><span>States a budget</span><div class="bar"><span style="width:100%"></span></div><span class="v num">14/14</span></div>
+      <div class="spec"><span>Uses a subjective word ("reliable", "quiet", "fun")</span><div class="bar"><span style="width:100%"></span></div><span class="v num">14/14</span></div>
+      <div class="spec"><span>A life event drives the purchase (baby, new job, move)</span><div class="bar"><span style="width:85.7%"></span></div><span class="v num">12/14</span></div>
+      <div class="spec"><span>Describes a use case, not a spec ("fit a double stroller")</span><div class="bar"><span style="width:78.6%"></span></div><span class="v num">11/14</span></div>
+      <div class="spec"><span>Says what they don't want, in their own words</span><div class="bar"><span style="width:57.1%"></span></div><span class="v num">8/14</span></div>
+      <div class="spec"><span>Another decision-maker (spouse, parents, employer)</span><div class="bar"><span style="width:50%"></span></div><span class="v num">7/14</span></div>
+      <div class="spec"><span>Uses a reference car (e.g. their current Passat wagon)</span><div class="bar"><span style="width:50%"></span></div><span class="v num">7/14</span></div>
+      <div class="spec"><span>Mentions a trade-in or resale</span><div class="bar"><span style="width:28.6%"></span></div><span class="v num">4/14</span></div>
+      <div class="spec"><span>Gives a non-price number (age, horsepower)</span><div class="bar"><span style="width:21.4%"></span></div><span class="v num">3/14</span></div>
+      <div class="spec hl"><span><strong>Names a specific model they want</strong></span><div class="bar"><span style="width:7.1%"></span></div><span class="v num">1/14</span></div>
+    </div>
+    <p class="callout">A search that starts with "pick a model" serves 1 shopper in 14.</p>
+    <p class="small muted">Phrases are condensed from the letters. Source: reader letters to Jalopnik's "What Car Should I Buy?" column. A small sample that skews toward enthusiasts, so the numbers are directional. Interviews with recent buyers are under way. <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/research/intent-map.md" target="_blank" rel="noopener">Full intent map</a>.</p>
+  </div>
+</section>
+
+<section class="sticker" aria-labelledby="h-feed">
+  <div class="sticker-head"><h2 id="h-feed">Feed Doctor</h2><span class="eyebrow">v0.2 · 4 synthetic dealer feeds · 720 listings</span></div>
+  <div class="sticker-body">
+    <p class="lede">Can the inventory answer the shopper? Before an agent can find "a truck that can tow 7,000 lbs", each truck needs a tow rating. No dealer feed sends one.</p>
+    <div class="compare" style="border:1px solid var(--rule)">
+      <div>
+        <span class="eyebrow">Agent-ready listings</span>
+        <span class="big num">0<span class="muted" style="font-size:.45em"> → </span>454</span>
+        <p class="small">0 of 720 as the dealers sent them. 454 of 575 shoppable listings after cleaning and enrichment.</p>
+      </div>
+      <div>
+        <span class="eyebrow">v0.1 shopper queries the data can answer</span>
+        <span class="big num">0<span class="muted" style="font-size:.45em"> → </span>10</span>
+        <p class="small">Plus 6 partly. Massaging seats, leather, vehicle size and finance terms aren't in any feed yet.</p>
+      </div>
+    </div>
+    <div class="ba" aria-label="Share of listings where a search filter can use each field, as sent versus after cleaning">
+      <div class="ba-row"><span>Tow rating</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.3%"></span></div><span class="v num">99.3%</span></div></div></div>
+      <div class="ba-row"><span>Horsepower</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.3%"></span></div><span class="v num">99.3%</span></div></div></div>
+      <div class="ba-row"><span>Seats and third row</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:98.8%"></span></div><span class="v num">98.8%</span></div></div></div>
+      <div class="ba-row"><span>Fuel economy or EV range</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:0%"></span></div><span class="v num">0%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:98.3%"></span></div><span class="v num">98.3%</span></div></div></div>
+      <div class="ba-row"><span>Collision braking (standard?)</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:17.4%"></span></div><span class="v num">17.4%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.8%"></span></div><span class="v num">99.8%</span></div></div></div>
+      <div class="ba-row"><span>Body type, correct</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:62.4%"></span></div><span class="v num">62.4%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:99.8%"></span></div><span class="v num">99.8%</span></div></div></div>
+      <div class="ba-row warn"><span>Drivetrain</span><div class="ba-bars">
+        <div class="line"><span>sent</span><div class="bar before"><span style="width:47.1%"></span></div><span class="v num">47.1%</span></div>
+        <div class="line"><span>clean</span><div class="bar after"><span style="width:82.3%"></span></div><span class="v num">82.3%</span></div></div></div>
+    </div>
+    <div class="duo">
+      <div>
+        <h3>Drivetrain is the blocker</h3>
+        <p class="small">The marketplace feed doesn't send drivetrain, and dealers bury it in trim names like "XLE AWD-i". At 82%, four of the twenty shopper queries stay unanswerable: AWD sedan, AWD wagon, 4x4 for camping, AWD minivan. The fix is decoding the VIN, not more text rules.</p>
+      </div>
+      <div>
+        <h3>99% on what I planned for. 37% on what I didn't.</h3>
+        <p class="small">The pipeline caught 331 of 333 planted issues with no false flags. On a hold-out dealer whose problems I wrote afterward, it handled 32 of 87, and 23 bad listings got through, including a price of $3,489,500. Every new dealer feed needs its own quality gate.</p>
+      </div>
+    </div>
+    <p class="small muted">Synthetic feeds. Specs come from an illustrative trim-level reference table, close to published figures but not verified. Pipeline in DuckDB SQL, rerunnable with one command.</p>
+    <p class="more"><a href="explorer.html">Run the queries yourself in the Feed Doctor Explorer</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/feed-doctor/README.md" target="_blank" rel="noopener">pipeline write-up and SQL</a></p>
+  </div>
+</section>
+
+<section class="two" aria-label="Plan">
+  <div class="stack">
+    <span class="eyebrow">What I'm building</span>
+    <h2>The agent</h2>
+    <ol class="steps">
+      <li><div><strong>Understand.</strong> Turn one message into a structured intent: constraints, exclusions, preferences, context.</div></li>
+      <li><div><strong>Ask, don't guess.</strong> One clarifying question when the intent is vague or the results would be empty.</div></li>
+      <li><div><strong>Clean the data.</strong> Normalize and enrich dealer feeds so tow rating, range, features and body type are facts the agent can use.</div></li>
+      <li><div><strong>Find and explain.</strong> Filters and facets, then ranking, then a one-line "why this car" built only from listing facts.</div></li>
+      <li><div><strong>Prove it.</strong> These 20 queries become a gold set, scored on every change and published as a scoreboard.</div></li>
+    </ol>
+  </div>
+  <div class="stack">
+    <span class="eyebrow">Ship log</span>
+    <h2>Releases</h2>
+    <div class="releases">
+      <div class="rel"><span class="ver">v0.1</span><span>Intent map, findability audit, PR/FAQ</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.2</span><span>Feed Doctor: clean, enriched inventory and a data quality scorecard</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.2.1</span><span>VIN decode for drivetrain; sanity gates for price, miles, dates</span><span class="status">Next</span></div>
+      <div class="rel"><span class="ver">v0.3</span><span>Discovery agent with "why this car"</span><span class="status">Planned</span></div>
+      <div class="rel"><span class="ver">v0.4</span><span>Evals on every change, public scoreboard</span><span class="status">Planned</span></div>
+      <div class="rel"><span class="ver">v0.5</span><span>Search by monthly payment, assumptions visible</span><span class="status">Planned</span></div>
+      <div class="rel"><span class="ver">v0.6</span><span>Responsible-ranking guardrails</span><span class="status">Planned</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sticker" aria-labelledby="h-prfaq">
+  <div class="sticker-head"><h2 id="h-prfaq">PR/FAQ: RightFit</h2><span class="eyebrow">Working-backwards draft · figures are hypotheses</span></div>
+  <div class="sticker-body">
+    <p class="lede">Shoppers describe their life, not a spec sheet, and see the cars that fit, each with a monthly payment whose assumptions are in plain view.</p>
+    <details>
+      <summary>Why the lender should build it</summary>
+      <div class="stack"><p>Payment is how most people actually budget. The lender is the one party that can show an honest, explained payment estimate next to every result, and it has a reason to care about trust and compliance from the start.</p></div>
+    </details>
+    <details>
+      <summary>How success is measured</summary>
+      <div class="stack"><ul class="plain">
+        <li><strong>North star:</strong> findability rate, the share of sessions that reach a vehicle page matching every hard constraint the shopper stated.</li>
+        <li><strong>Leading:</strong> zero-result rate, rephrase rate, time to first relevant result.</li>
+        <li><strong>Quality:</strong> constraints honored, negation accuracy, top-5 precision on a gold set, and invented specs in explanations (target: zero).</li>
+        <li><strong>Business:</strong> vehicle page to lead, and to credit application, against a control group.</li>
+        <li><strong>Data:</strong> attribute completeness and accuracy per feed, listing freshness.</li>
+      </ul></div>
+    </details>
+    <details>
+      <summary>Guardrails</summary>
+      <div class="stack"><ul class="plain">
+        <li>Ranking and payment estimates never use protected characteristics or proxies for them, and the agent never infers creditworthiness.</li>
+        <li>Every applied filter shows as a chip the shopper can remove.</li>
+        <li>Explanations use listing facts only; evals check this before each release.</li>
+        <li>Quality bars are agreed with the business owner, and launch waits until they're met.</li>
+      </ul></div>
+    </details>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="h-method">
+  <h3 id="h-method">Method and limits</h3>
+  <p class="small">Each query was typed exactly as written into the site's public search box, and the applied filters, result count and top 5 were recorded. Top-5 fit was judged by the author against public specs; two queries that couldn't be verified are left out of the fit score. One main site, one day, one location, a small sample. Cars.com showed a bot check and wasn't tested. On Toyota.com's public new-inventory search, the entry point is a grid of models with no free-text box on that page. That's one observation of one public page, and it says nothing about any internal or upcoming product. All queries, raw results and scoring are <a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">in the repo</a>.</p>
+</section>
+
+<footer>
+  <span><strong style="color:var(--ink)">Rosy Singh</strong> · Senior AI Product Manager · building AI products people trust and adopt</span>
+  <span><a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">GitHub: RosySingh9/rightfit-car-discovery</a></span>
+  <span>Independent concept using public and synthetic data only. Not affiliated with or endorsed by Toyota, Toyota Financial Services, CarMax, Carvana or Jalopnik.</span>
+</footer>
+
+</div>
+</body>
+</html>
