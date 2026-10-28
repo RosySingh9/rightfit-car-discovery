@@ -3,8 +3,8 @@
   {
    "feed": "A",
    "received": 200,
-   "shoppable": 200,
-   "issues_flagged": 87,
+   "shoppable": 199,
+   "issues_flagged": 88,
    "core_fields_usable_as_sent_pct": 0.0
   },
   {
@@ -24,8 +24,8 @@
   {
    "feed": "D",
    "received": 90,
-   "shoppable": 80,
-   "issues_flagged": 81,
+   "shoppable": 73,
+   "issues_flagged": 73,
    "core_fields_usable_as_sent_pct": 0.0
   }
  ],
@@ -37,70 +37,70 @@
   },
   {
    "stage": "after",
-   "listings": 575,
-   "agent_ready": 454
+   "listings": 567,
+   "agent_ready": 467
   }
  ],
  "fields": [
   {
    "field": "cargo_cuft",
    "before_pct": 0.0,
-   "after_pct": 99.8
+   "after_pct": 100.0
   },
   {
    "field": "hp",
    "before_pct": 0.0,
-   "after_pct": 99.3
+   "after_pct": 100.0
   },
   {
    "field": "mpg_or_range",
    "before_pct": 0.0,
-   "after_pct": 98.3
+   "after_pct": 99.8
   },
   {
    "field": "powertrain",
    "before_pct": 0.0,
-   "after_pct": 99.8
+   "after_pct": 100.0
   },
   {
    "field": "seats",
    "before_pct": 0.0,
-   "after_pct": 98.8
+   "after_pct": 99.5
   },
   {
    "field": "third_row",
    "before_pct": 0.0,
-   "after_pct": 99.8
+   "after_pct": 100.0
   },
   {
    "field": "tow_lbs",
    "before_pct": 0.0,
-   "after_pct": 99.3
+   "after_pct": 100.0
   },
   {
    "field": "transmission",
    "before_pct": 0.0,
-   "after_pct": 99.8
+   "after_pct": 100.0
   },
   {
    "field": "blind_spot_std",
    "before_pct": 15.3,
-   "after_pct": 99.8
+   "after_pct": 100.0
   },
   {
    "field": "lane_departure_std",
    "before_pct": 15.8,
-   "after_pct": 99.8
+   "after_pct": 100.0
   },
   {
    "field": "aeb_std",
    "before_pct": 17.4,
-   "after_pct": 99.8
+   "after_pct": 100.0
   },
   {
    "field": "drivetrain",
    "before_pct": 47.1,
-   "after_pct": 82.3
+   "after_pct": 82.5
   },
   {
    "field": "miles",
@@ -109,17 +109,22 @@
   },
   {
    "field": "body_type",
-   "before_pct": 62.4,
-   "after_pct": 99.8
+   "before_pct": 62.6,
+   "after_pct": 100.0
   },
   {
    "field": "trim",
    "before_pct": 64.0,
-   "after_pct": 95.7
+   "after_pct": 99.3
   },
   {
    "field": "model",
    "before_pct": 93.2,
+   "after_pct": 100.0
+  },
+  {
+   "field": "fresh",
+   "before_pct": 97.2,
    "after_pct": 100.0
   },
   {
@@ -128,22 +133,17 @@
    "after_pct": 100.0
   },
   {
-   "field": "fresh",
-   "before_pct": 98.5,
-   "after_pct": 100.0
-  },
-  {
    "field": "price",
    "before_pct": 98.6,
    "after_pct": 100.0
   },
   {
-   "field": "year",
-   "before_pct": 99.9,
+   "field": "make",
+   "before_pct": 100.0,
    "after_pct": 100.0
   },
   {
-   "field": "make",
+   "field": "year",
    "before_pct": 100.0,
    "after_pct": 100.0
   }
@@ -354,13 +354,13 @@
    "caught": 20
   },
   {
-   "issue_type": "stale_listing",
+   "issue_type": "model_typo",
    "planted": 11,
    "flagged": 11,
    "caught": 11
   },
   {
-   "issue_type": "model_typo",
+   "issue_type": "stale_listing",
    "planted": 11,
    "flagged": 11,
    "caught": 11
@@ -376,13 +376,19 @@
    "planted": 6,
    "flagged": 6,
    "caught": 6
+  },
+  {
+   "issue_type": "mileage_implausible",
+   "planted": 0,
+   "flagged": 1,
+   "caught": 0
   }
  ],
  "detection_holdout": [
   {
    "issue_type": "drivetrain_in_trim_variant",
    "planted": 26,
-   "handled": 1
+   "handled": 26
   },
   {
    "issue_type": "model_alias_variant",
@@ -392,17 +398,17 @@
   {
    "issue_type": "body_mislabel",
    "planted": 10,
-   "handled": 7
+   "handled": 10
   },
   {
    "issue_type": "stale_us_date_format",
    "planted": 9,
-   "handled": 0
+   "handled": 9
   },
   {
    "issue_type": "mileage_in_thousands",
    "planted": 8,
-   "handled": 0
+   "handled": 8
   },
   {
    "issue_type": "vin_invalid",
@@ -412,14 +418,14 @@
   {
    "issue_type": "price_with_cents",
    "planted": 7,
-   "handled": 0
+   "handled": 7
   },
   {
    "issue_type": "two_digit_year",
    "planted": 1,
-   "handled": 0
+   "handled": 1
   }
  ],
- "holdout_bad_listings_published": 23,
- "holdout_listings_published": 80
+ "holdout_bad_listings_published": 0,
+ "holdout_listings_published": 73
 }

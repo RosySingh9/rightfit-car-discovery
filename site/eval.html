@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RightFit Evaluation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a scoreboard. Two headline comparisons against v0.1's CarMax baseline, then the per-query ledger. */
+:root{
+  --paper:#f6f7f9;--label:#ffffff;--ink:#151a22;--muted:#5a6372;--rule:#d5dae2;--route:#1f5fbf;--good:#1d7a4a;--bad:#b4471b;--chip:#eef1f6;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0f131a;--label:#161b24;--ink:#e7ebf1;--muted:#9aa4b3;--rule:#2a3240;--route:#6ea2f2;--good:#5cc18c;--bad:#f08a5d;--chip:#1f2632;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f131a;--label:#161b24;--ink:#e7ebf1;--muted:#9aa4b3;--rule:#2a3240;--route:#6ea2f2;--good:#5cc18c;--bad:#f08a5d;--chip:#1f2632;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+h1,h2{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,5vw,3rem)} h2{font-size:1.5rem}
+p{margin:0;max-width:70ch}
+a{color:var(--route)}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:grid;gap:10px;border-bottom:3px solid var(--ink);padding-bottom:18px}
+.btn{font:600 .9rem var(--body);border:2px solid var(--ink);background:var(--ink);color:var(--label);padding:8px 16px;cursor:pointer}
+.btn.ghost{background:var(--label);color:var(--ink)}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,a:focus-visible{outline:2px solid var(--route);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.smsg{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:0;border:2px solid var(--ink);background:var(--label)}
+.cards>div{padding:16px;display:grid;gap:6px;align-content:start}
+.cards>div+div{border-left:1px solid var(--rule)}
+@media (max-width:620px){.cards>div+div{border-left:0;border-top:1px solid var(--rule)}}
+.vs{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;font-family:var(--mono);font-size:.78rem}
+.bar{height:10px;background:var(--chip);position:relative}
+.bar>span{position:absolute;inset:0 auto 0 0}
+.bar.them>span{background:var(--muted)} .bar.us>span{background:var(--route)}
+.big{font-family:var(--display);font-weight:700;font-size:3rem;line-height:1}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);background:var(--label)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.84rem}
+th{font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--ink)}
+td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+td.q{font-family:var(--mono);font-size:.8rem;width:30%}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{font-family:var(--mono);font-size:.7rem;padding:1px 6px;border:1px solid currentColor;white-space:nowrap}
+.pill.good{color:var(--good)} .pill.bad{color:var(--bad)} .pill.na{color:var(--muted)}
+.note{font-size:.82rem;color:var(--muted)}
+ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
+</style>
+
+<style>body{margin:0}</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow"><a href="index.html">← RightFit</a> · v0.3 · Evaluation</span>
+    <h1>Does RightFit understand shoppers better than search did?</h1>
+    <p>In v0.1, CarMax's search returned fitting cars in its top 5 results 95% of the time when the query read like filters, and 37% of the time when it read like a person. This page runs the same 20 queries through RightFit, live, and scores them the same way.</p>
+    <ul class="note">
+      <li><strong>Fit</strong> = a car in the top 5 meets every hard constraint the shopper stated. Each query's test is written in code, independently of the model.</li>
+      <li>Inventories differ: CarMax had tens of thousands of cars, RightFit has 567 synthetic ones. When fewer than 5 cars in stock fit, the bar is however many do. When none do, the query is scored on whether RightFit says so.</li>
+      <li>I wrote both the agent and the tests, so treat this as a first read, not proof. v0.4 adds a held-out query set and runs this on every change.</li>
+    </ul>
+    <div class="row"><button class="btn" id="run">Run the 20 queries</button><button class="btn ghost" id="copy" disabled>Copy results</button><span class="smsg" id="msg">About 20 model calls, well under one cent.</span></div>
+  </header>
+  <div class="cards" id="cards" hidden></div>
+  <div class="tablewrap"><table><thead><tr><th>#</th><th>Shopper typed</th><th>RightFit understood</th><th>Top-5 fit</th><th>Notes</th></tr></thead><tbody id="rows"></tbody></table></div>
+</div>
+
+<script src="agent/engine.js"></script>
+<script>
+(function(){
+  const $ = (s) => document.querySelector(s);
+  const esc = (x) => String(x).replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const CARMAX = { spec: 0.95, need: 0.37 };
+  let results = [];
+  $("#rows").innerHTML = RightFit.GOLD.map((g) => `<tr id="r-${g.id}"><td class="num">${g.id}</td><td class="q">${esc(g.q)}</td><td class="note">Not run yet</td><td></td><td></td></tr>`).join("");
+
+  $("#run").onclick = async () => {
+    $("#run").disabled = true; $("#copy").disabled = true; results = [];
+    const inv = await (await fetch("data/inventory.json")).json();
+    const cars = RightFit.toCars(inv);
+    for (const [i, g] of RightFit.GOLD.entries()) {
+      $("#msg").textContent = `Running ${i + 1} of ${RightFit.GOLD.length}…`;
+      let row;
+      try {
+        const r = await fetch("api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q: g.q }) });
+        const body = await r.json();
+        if (!r.ok) throw new Error(body.error || "Request failed");
+        const out = RightFit.search(cars, body.intent);
+        row = RightFit.scoreQuery(g, cars, out, body.intent);
+        row.understood = body.intent.understood;
+        row.filters = out.constraints.map((c) => c.label);
+        row.relaxedWhat = out.relaxed;
+        row.unsupported = body.intent.unsupported;
+        row.clarified = body.intent.needs_clarification;
+      } catch (e) { row = { id: g.id, style: g.style, q: g.q, error: e.message, scored: false }; }
+      results.push(row); paint(row, g);
+      await new Promise((r) => setTimeout(r, 250));
+    }
+    summary();
+    $("#msg").textContent = "Done. Copy the results and send them to Claude to publish the scoreboard.";
+    $("#run").disabled = false; $("#copy").disabled = false;
+  };
+
+  function paint(r, g){
+    let fit = '<span class="pill na">n/a</span>', notes = [];
+    if (r.error) notes.push(`<span class="pill bad">error</span> ${esc(r.error)}`);
+    else if (r.scored) fit = `<span class="pill ${r.fit === r.slots ? "good" : "bad"}">${r.fit} of ${r.slots}</span>`;
+    else if (r.available === 0) { fit = '<span class="pill na">none in stock</span>'; notes.push(r.relaxed ? "Said so and showed the closest cars." : (r.results === 0 ? "Returned nothing." : "Showed cars without saying none fit.")); }
+    if (r.relaxedWhat && r.relaxedWhat.length) notes.push("Loosened: " + esc(r.relaxedWhat.join(", ")));
+    if ("flaggedUnsupported" in r) notes.push(r.flaggedUnsupported ? "Said it can't check this." : "<span class=\"pill bad\">didn't flag the unsupported request</span>");
+    if (r.clarified) notes.push("Asked a clarifying question.");
+    if (g.note) notes.push(esc(g.note));
+    $(`#r-${r.id}`).innerHTML = `<td class="num">${r.id}<br><span class="note">${r.style}</span></td><td class="q">${esc(r.q)}</td>
+      <td>${esc(r.understood || "")}${r.filters ? `<br><span class="note">${esc(r.filters.join(" · "))}</span>` : ""}</td><td>${fit}</td><td class="note">${notes.join("<br>")}</td>`;
+  }
+
+  function rate(style){
+    const rs = results.filter((r) => r.style === style && r.scored);
+    const fit = rs.reduce((a, r) => a + r.fit, 0), slots = rs.reduce((a, r) => a + r.slots, 0);
+    return { fit, slots, pct: slots ? fit / slots : 0, n: rs.length };
+  }
+  function summary(){
+    const need = rate("need"), spec = rate("spec");
+    const none = results.filter((r) => r.available === 0);
+    const honest = none.filter((r) => r.relaxed).length;
+    const card = (title, us, them, detail) => `<div><span class="eyebrow">${title}</span><span class="big">${Math.round(us.pct * 100)}%</span>
+      <div class="vs"><span>RightFit</span><div class="bar us"><span style="width:${us.pct * 100}%"></span></div><span>${Math.round(us.pct * 100)}%</span>
+      <span>CarMax v0.1</span><div class="bar them"><span style="width:${them * 100}%"></span></div><span>${Math.round(them * 100)}%</span></div>
+      <span class="note">${detail}</span></div>`;
+    $("#cards").innerHTML =
+      card("Phrased like a person", need, CARMAX.need, `${need.fit} of ${need.slots} top-5 slots fit, across ${need.n} scored queries.`) +
+      card("Phrased like filters", spec, CARMAX.spec, `${spec.fit} of ${spec.slots} top-5 slots fit, across ${spec.n} scored queries.`) +
+      `<div><span class="eyebrow">When nothing in stock fits</span><span class="big">${honest} of ${none.length}</span><span class="note">queries where RightFit said no exact match and showed the closest cars, instead of silently showing the wrong ones.</span></div>`;
+    $("#cards").hidden = false;
+  }
+
+  $("#copy").onclick = async () => {
+    const text = JSON.stringify({ run_at: new Date().toISOString(), need: rate("need"), spec: rate("spec"), results }, null, 1);
+    try { await navigator.clipboard.writeText(text); $("#msg").textContent = "Copied. Paste it into the chat with Claude."; }
+    catch (e) { const ta = document.createElement("textarea"); ta.value = text; ta.style.width = "100%"; ta.rows = 8; document.querySelector(".wrap").appendChild(ta); ta.select(); $("#msg").textContent = "Select the text below and copy it."; }
+  };
+})();
+</script>
+
+</body>
+</html>

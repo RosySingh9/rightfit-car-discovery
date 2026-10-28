@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.3 · The agent · 2026-10-28
+
+**Added**
+- Live search on the project page: one sentence in, ranked cars out, each with a "why this car" line built only from listing data.
+- `site/api/search.js`: a Vercel function that asks GPT-4o-mini to fill a strict intent schema (constraints, exclusions, preferences, unsupported asks, a clarifying question).
+- `site/agent/engine.js`: filtering, loosening when nothing matches, ranking, explanations, facets and an illustrative payment estimate. Plain code, so results are checkable.
+- Removable filter chips, clickable facets, a clarifying question for vague requests, and honest notices for loosened constraints, unsupported asks and unknown drivetrains.
+- `site/eval.html`: runs the 20 v0.1 shopper queries live and scores them the same way as the CarMax audit.
+- `docs/agent.md`: how the agent works and why.
+
+**Included: v0.2.1 pipeline fixes**
+- Parsing: prices with cents, "13.0k mi", two-digit years, US-format dates, more drivetrain-in-trim patterns ("AWD-i", "Symmetrical AWD", "All Wheel Drive").
+- Sanity gates hold back listings with an impossible price, year, mileage or date.
+- Hold-out dealer: 85 of 87 problems handled (was 32), 0 bad listings published (was 23). That dealer has now been seen, so v0.4 tests against a fresh one.
+- Trade-off: the mileage gate also held back one genuine listing, a 2024 Telluride with 800 miles. In production, gated listings should go to a review queue rather than disappear.
+
 ## v0.2 · Feed Doctor: can the inventory answer the shopper? · 2026-10-25
 
 **Added**

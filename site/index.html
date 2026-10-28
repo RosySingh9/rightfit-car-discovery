@@ -36,7 +36,7 @@
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
-.wrap{max-width:860px;margin:0 auto;display:grid;gap:48px}
+.wrap{max-width:860px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
 a{color:var(--route);text-underline-offset:3px}
 a:focus-visible,summary:focus-visible{outline:2px solid var(--route);outline-offset:3px;border-radius:2px}
 h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;text-wrap:balance;margin:0;letter-spacing:.005em}
@@ -128,6 +128,51 @@ ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:70
 @media (max-width:560px){.ba-row{grid-template-columns:1fr}}
 .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
 .duo>div{display:grid;gap:6px;align-content:start}
+
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.cta a{font:600 .9rem var(--body);text-decoration:none;padding:9px 16px;border:2px solid var(--ink);color:var(--ink);background:var(--label)}
+.cta a.primary{background:var(--ink);color:var(--label)}
+.cta a:hover{border-color:var(--route)}
+.more{font-size:.88rem}
+.more a{font-weight:500}
+.status-line{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+
+/* ---------- v0.3 search ---------- */
+.searchbox{background:var(--label);border:2px solid var(--ink);display:grid}
+.searchbox .sticker-head{background:var(--route);border-bottom:2px solid var(--ink)}
+.sform{display:flex;gap:0;border:2px solid var(--ink)}
+.sform input{flex:1;min-width:0;width:100%;font:400 1.05rem var(--body);padding:12px 14px;border:0;background:var(--label);color:var(--ink)}
+.sform input:focus-visible{outline:2px solid var(--route);outline-offset:-4px}
+.sform button{font:700 1rem var(--display);text-transform:uppercase;letter-spacing:.04em;background:var(--ink);color:var(--label);border:0;padding:0 20px;cursor:pointer}
+.examples{display:flex;flex-wrap:wrap;gap:6px}
+.examples button,.opts button{font:500 .82rem var(--body);background:var(--chip);color:var(--ink);border:1px solid var(--rule);padding:5px 10px;cursor:pointer}
+.examples button:hover,.opts button:hover{border-color:var(--route)}
+.understood{font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.2}
+.applied{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.applied .chip{display:inline-flex;gap:6px;align-items:center;font-size:.78rem}
+.applied .chip button{border:0;background:none;color:var(--muted);cursor:pointer;font:600 .9rem var(--mono);padding:0 2px}
+.applied .chip button:hover{color:var(--bad)}
+.notice{font-size:.88rem;padding:8px 12px;border-left:4px solid var(--rule);background:var(--chip)}
+.notice.warn{border-left-color:var(--bad)}
+.notice.ask{border-left-color:var(--route)}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.sgrid{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:20px;align-items:start}
+@media (max-width:760px){.sgrid{grid-template-columns:1fr}}
+.cars{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px}
+.car{border:1px solid var(--rule);padding:12px;display:grid;gap:4px;align-content:start;background:var(--label)}
+.car .name{font-weight:600;line-height:1.3}
+.car .price{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1}
+.car .whyline{font-size:.84rem;color:var(--route)}
+.car .meta{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.facets{display:grid;gap:14px;font-size:.84rem}
+.facet h4{margin:0 0 4px;font:500 .72rem var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.facet button{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;width:100%;text-align:left;background:none;border:0;border-bottom:1px dotted var(--rule);padding:4px 0;font:inherit;color:var(--ink);cursor:pointer}
+.facet button:hover span:first-child{color:var(--route);text-decoration:underline}
+.facet button[disabled]{cursor:default}
+.facet button[disabled]:hover span:first-child{color:inherit;text-decoration:none}
+.facet .ct{font-family:var(--mono);color:var(--muted)}
+.smsg{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.smsg.err{color:var(--bad)}
 details{border-top:1px solid var(--rule);padding-top:12px}
 summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em}
 details .stack{margin-top:12px}
@@ -142,11 +187,41 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 <div class="wrap">
 
 <header class="hero">
-  <div class="meta"><span>RightFit</span><span>Release v0.2 · Data foundation</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
+  <div class="meta"><span>RightFit</span><span>Release v0.3 · The agent</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
   <h1>Can a shopper describe their life in one sentence and find the right car?</h1>
   <p class="thesis">Vehicle search works when shoppers talk in filters. <em>It breaks when they talk like people.</em></p>
   <p class="lede">RightFit is an AI discovery agent I'm building in public, release by release. v0.1 looked at how real shoppers describe what they want and whether a major retailer's search box understands them. v0.2 asks whether the inventory data can answer them at all.</p>
+  <p class="status-line">Building in public · 3 of 6 releases shipped · v0.3 adds the agent: try it below</p>
+  <div class="cta">
+    <a class="primary" href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">View the code on GitHub</a>
+    <a href="explorer.html">Explore the data with SQL</a>
+    <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/docs/prfaq.md" target="_blank" rel="noopener">Read the PR/FAQ</a>
+  </div>
 </header>
+
+<section class="searchbox" aria-labelledby="h-try">
+  <div class="sticker-head"><h2 id="h-try">Try RightFit</h2><span class="eyebrow">v0.3 · 567 synthetic listings</span></div>
+  <div class="sticker-body">
+    <form class="sform" id="sform" role="search">
+      <label for="q" class="sr" style="position:absolute;left:-9999px">Describe the car you need</label>
+      <input id="q" name="q" type="text" size="1" autocomplete="off" maxlength="300" placeholder="Describe the car you need, the way you'd tell a friend">
+      <button type="submit">Search</button>
+    </form>
+    <div class="examples" id="examples" aria-label="Example searches"></div>
+    <div id="sout" class="stack" aria-live="polite"></div>
+    <details class="how-it-works">
+      <summary>How it works</summary>
+      <div class="stack"><ul class="plain">
+        <li><strong>Understand:</strong> a language model (GPT-4o-mini) turns your sentence into structured filters, exclusions and preferences. That's all it does.</li>
+        <li><strong>Find:</strong> plain code filters and ranks the cleaned inventory from v0.2. The model never picks cars or states specs.</li>
+        <li><strong>Explain:</strong> each "why" line is built only from the listing's own data, so it can't invent a feature.</li>
+        <li><strong>Be honest:</strong> if nothing matches, it says which requirement it loosened. If you ask for something the data can't check, like leather seats, it says so.</li>
+        <li><strong>Measured:</strong> the 20 shopper queries from v0.1 run through the agent and are scored the same way CarMax was. <a href="eval.html">Run the evaluation</a>.</li>
+      </ul></div>
+    </details>
+    <p class="small muted">Synthetic inventory with illustrative specs. *Payment estimates assume 10% down, 60 months and 7.9% APR, for illustration only; they are not a credit offer.</p>
+  </div>
+</section>
 
 <section class="sticker" aria-labelledby="h-result">
   <div class="sticker-head"><h2 id="h-result">Findability audit</h2><span class="eyebrow">20 queries · CarMax free-text search · Oct 25, 2026</span></div>
@@ -204,6 +279,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       </tbody>
     </table>
   </div>
+  <p class="more">Full report, all 20 queries and scoring: <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/audit/findability-audit.md" target="_blank" rel="noopener">findability audit</a>.</p>
   <p><strong>Two kinds of failure.</strong> Some are about language: negation, comparisons, vague needs, thresholds. Many are about data: horsepower, tow rating, EV range and driver-assist features weren't filterable, and some body types were wrong. An AI agent can't reason over facts the inventory doesn't hold, so the agent and the inventory data have to be built together.</p>
 </section>
 
@@ -223,7 +299,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       <div class="spec hl"><span><strong>Names a specific model they want</strong></span><div class="bar"><span style="width:7.1%"></span></div><span class="v num">1/14</span></div>
     </div>
     <p class="callout">A search that starts with "pick a model" serves 1 shopper in 14.</p>
-    <p class="small muted">Phrases are condensed from the letters. Source: reader letters to Jalopnik's "What Car Should I Buy?" column. A small sample that skews toward enthusiasts, so the numbers are directional. Interviews with recent buyers come in v0.2.</p>
+    <p class="small muted">Phrases are condensed from the letters. Source: reader letters to Jalopnik's "What Car Should I Buy?" column. A small sample that skews toward enthusiasts, so the numbers are directional. Interviews with recent buyers are under way. <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/research/intent-map.md" target="_blank" rel="noopener">Full intent map</a>.</p>
   </div>
 </section>
 
@@ -276,7 +352,9 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
         <p class="small">The pipeline caught 331 of 333 planted issues with no false flags. On a hold-out dealer whose problems I wrote afterward, it handled 32 of 87, and 23 bad listings got through, including a price of $3,489,500. Every new dealer feed needs its own quality gate.</p>
       </div>
     </div>
+    <p class="small"><strong>v0.2.1 update:</strong> I fixed the parsing and added sanity gates (price range, miles per year, unreadable dates). The hold-out dealer is now 85 of 87 handled, with no bad listings published. That dealer is no longer unseen, though, so v0.4 tests against a fresh one.</p>
     <p class="small muted">Synthetic feeds. Specs come from an illustrative trim-level reference table, close to published figures but not verified. Pipeline in DuckDB SQL, rerunnable with one command.</p>
+    <p class="more"><a href="explorer.html">Run the queries yourself in the Feed Doctor Explorer</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/feed-doctor/README.md" target="_blank" rel="noopener">pipeline write-up and SQL</a></p>
   </div>
 </section>
 
@@ -298,9 +376,9 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     <div class="releases">
       <div class="rel"><span class="ver">v0.1</span><span>Intent map, findability audit, PR/FAQ</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.2</span><span>Feed Doctor: clean, enriched inventory and a data quality scorecard</span><span class="status shipped">Shipped</span></div>
-      <div class="rel"><span class="ver">v0.2.1</span><span>VIN decode for drivetrain; sanity gates for price, miles, dates</span><span class="status">Next</span></div>
-      <div class="rel"><span class="ver">v0.3</span><span>Discovery agent with "why this car"</span><span class="status">Planned</span></div>
-      <div class="rel"><span class="ver">v0.4</span><span>Evals on every change, public scoreboard</span><span class="status">Planned</span></div>
+      <div class="rel"><span class="ver">v0.2.1</span><span>Sanity gates; parsing fixes from the hold-out dealer</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.3</span><span>Discovery agent with "why this car"</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.4</span><span>Evals on every change, fresh hold-out dealer, public scoreboard</span><span class="status">Next</span></div>
       <div class="rel"><span class="ver">v0.5</span><span>Search by monthly payment, assumptions visible</span><span class="status">Planned</span></div>
       <div class="rel"><span class="ver">v0.6</span><span>Responsible-ranking guardrails</span><span class="status">Planned</span></div>
     </div>
@@ -339,14 +417,103 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 
 <section class="stack" aria-labelledby="h-method">
   <h3 id="h-method">Method and limits</h3>
-  <p class="small">Each query was typed exactly as written into the site's public search box, and the applied filters, result count and top 5 were recorded. Top-5 fit was judged by the author against public specs; two queries that couldn't be verified are left out of the fit score. One main site, one day, one location, a small sample. Cars.com showed a bot check and wasn't tested. On Toyota.com's public new-inventory search, the entry point is a grid of models with no free-text box on that page. That's one observation of one public page, and it says nothing about any internal or upcoming product. All queries, raw results and scoring are in the repo.</p>
+  <p class="small">Each query was typed exactly as written into the site's public search box, and the applied filters, result count and top 5 were recorded. Top-5 fit was judged by the author against public specs; two queries that couldn't be verified are left out of the fit score. One main site, one day, one location, a small sample. Cars.com showed a bot check and wasn't tested. On Toyota.com's public new-inventory search, the entry point is a grid of models with no free-text box on that page. That's one observation of one public page, and it says nothing about any internal or upcoming product. All queries, raw results and scoring are <a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">in the repo</a>.</p>
 </section>
 
 <footer>
   <span><strong style="color:var(--ink)">Rosy Singh</strong> · Senior AI Product Manager · building AI products people trust and adopt</span>
+  <span><a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">GitHub: RosySingh9/rightfit-car-discovery</a></span>
   <span>Independent concept using public and synthetic data only. Not affiliated with or endorsed by Toyota, Toyota Financial Services, CarMax, Carvana or Jalopnik.</span>
 </footer>
 
 </div>
+
+<script src="agent/engine.js"></script>
+<script>
+(function(){
+  const $ = (s) => document.querySelector(s);
+  const esc = (x) => String(x).replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const money = (n) => "$" + Math.round(n).toLocaleString("en-US");
+  const EX = ["3 row SUV under $45k, not a minivan", "truck that can tow 7000 lbs", "safe car for my teenager",
+              "electric SUV with 300 miles of range", "Highlander hybrid or Grand Highlander", "car under $400 a month"];
+  let CARS = null, state = null, shown = 8;
+  const out = $("#sout");
+
+  $("#examples").innerHTML = EX.map((e) => `<button type="button">${esc(e)}</button>`).join("");
+  $("#examples").querySelectorAll("button").forEach((b) => b.onclick = () => { $("#q").value = b.textContent; go(b.textContent); });
+  $("#sform").addEventListener("submit", (e) => { e.preventDefault(); go($("#q").value); });
+
+  async function inventory(){
+    if (CARS) return CARS;
+    const r = await fetch("data/inventory.json");
+    if (!r.ok) throw new Error("Couldn't load the inventory.");
+    CARS = RightFit.toCars(await r.json());
+    return CARS;
+  }
+
+  async function go(q){
+    q = (q || "").trim();
+    if (!q) { out.innerHTML = '<p class="smsg">Type what you need, or pick an example.</p>'; return; }
+    out.innerHTML = '<p class="smsg">Reading your request…</p>';
+    try {
+      const [cars, r] = await Promise.all([inventory(), fetch("api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q }) })]);
+      let body = null; try { body = await r.json(); } catch (_) {}
+      if (!r.ok || !body || !body.intent) throw new Error((body && body.error) || "Live search isn't available here. It runs on the published site.");
+      state = { q, intent: body.intent };
+      shown = 8;
+      draw();
+    } catch (e) {
+      out.innerHTML = `<p class="smsg err">${esc(e.message)}</p>`;
+    }
+  }
+
+  function draw(){
+    const { intent } = state;
+    const res = RightFit.search(CARS, intent);
+    let h = `<p class="understood">${esc(intent.understood)}</p>`;
+    if (res.constraints.length) {
+      h += '<div class="applied"><span class="eyebrow">Filters applied</span>' + res.constraints.map((c) =>
+        `<span class="chip">${esc(c.label)}<button type="button" data-k="${esc(c.key)}" aria-label="Remove ${esc(c.label)}">×</button></span>`).join("") + "</div>";
+    }
+    if (intent.needs_clarification && intent.clarifying_question) {
+      h += `<div class="notice ask"><strong>${esc(intent.clarifying_question)}</strong><div class="opts">` +
+        (intent.clarify_options || []).map((o) => `<button type="button" data-o="${esc(o)}">${esc(o)}</button>`).join("") +
+        "</div><span class=\"small muted\">Meanwhile, here are my best guesses.</span></div>";
+    }
+    if (res.relaxed.length) h += `<div class="notice warn">No exact matches in stock. To show the closest cars, I loosened: <strong>${esc(res.relaxed.join(", "))}</strong>.</div>`;
+    if ((intent.unsupported || []).length) h += `<div class="notice">I can't check <strong>${esc(intent.unsupported.join(", "))}</strong> yet. That information isn't in the inventory data.</div>`;
+    if (res.unknownDrive) h += `<div class="notice">${res.unknownDrive} more listing${res.unknownDrive === 1 ? "" : "s"} might match, but the dealer didn't say which drivetrain. That gap is in the v0.2 scorecard.</div>`;
+    h += `<div class="sgrid"><div class="stack"><p class="smsg">${res.count} car${res.count === 1 ? "" : "s"}${res.count > shown ? `, showing ${shown}` : ""}</p><div class="cars">`;
+    for (const r of res.results.slice(0, shown)) {
+      const c = r.car;
+      h += `<article class="car"><span class="name">${c.year} ${esc(c.make)} ${esc(c.model)} ${esc(c.trim || "")}</span>
+        <span class="price">${money(c.price)}</span><span class="whyline">${esc(r.why)}</span>
+        <span class="meta">${Math.round(c.miles).toLocaleString("en-US")} mi · ${esc(c.body_type)} · ${esc(c.drivetrain || "drivetrain unknown")} · ${esc(c.seller)}</span></article>`;
+    }
+    h += "</div>";
+    if (res.count > shown) h += '<button type="button" class="examples-more" id="more" style="justify-self:start;font:600 .85rem var(--body);border:2px solid var(--ink);background:var(--label);color:var(--ink);padding:6px 12px;cursor:pointer">Show more</button>';
+    h += '</div><aside class="facets" aria-label="Refine">';
+    const names = { body_type: "Body type", drivetrain: "Drivetrain", powertrain: "Powertrain", price: "Price" };
+    for (const [k, rows] of Object.entries(res.facets)) {
+      if (!rows.length) continue;
+      h += `<div class="facet"><h4>${names[k]}</h4>` + rows.map(([v, n]) =>
+        `<button type="button" data-f="${k}" data-v="${esc(v)}"${k === "price" || v === "Unknown" ? " disabled" : ""}><span>${esc(v)}</span><span class="ct">${n}</span></button>`).join("") + "</div>";
+    }
+    h += "</aside></div>";
+    out.innerHTML = h;
+    out.querySelectorAll(".applied button").forEach((b) => b.onclick = () => { state.intent = RightFit.withoutConstraint(state.intent, b.dataset.k); draw(); });
+    out.querySelectorAll(".opts button").forEach((b) => b.onclick = () => { const q2 = state.q + ". " + b.dataset.o; $("#q").value = q2; go(q2); });
+    out.querySelectorAll(".facet button:not([disabled])").forEach((b) => b.onclick = () => {
+      const hard = state.intent.hard, v = b.dataset.v;
+      if (b.dataset.f === "body_type") hard.body_types = [v.toLowerCase()];
+      if (b.dataset.f === "drivetrain") hard.drivetrains = [v];
+      if (b.dataset.f === "powertrain") hard.powertrains = [v.toLowerCase()];
+      draw();
+    });
+    const more = out.querySelector("#more"); if (more) more.onclick = () => { shown += 8; draw(); };
+  }
+})();
+</script>
+
 </body>
 </html>

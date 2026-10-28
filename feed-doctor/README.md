@@ -20,6 +20,21 @@ All feeds are **synthetic**. Specs in `data/reference/trims.csv` are **illustrat
 
 **Hold-out dealer (feed D), with problem variants written after the rules: only 32 of 87 handled.** 23 of the 80 hold-out listings that reached the clean inventory had a wrong value. For example, "$34,895.00" became a $3,489,500 price, "13.0k mi" became 130 miles, and stale listings with US-style dates (MM/DD/YYYY) passed as fresh.
 
+## v0.2.1 update (shipped with v0.3)
+
+I fixed what the hold-out exposed: prices with cents, "13.0k mi", two-digit years, US-format dates and more drivetrain patterns. I also added **sanity gates** that hold back any listing with an impossible price, year, mileage or date, whatever the parser did.
+
+| | v0.2 | v0.2.1 |
+|---|---|---|
+| Hold-out problems handled | 32 of 87 | **85 of 87** |
+| Bad hold-out listings published | 23 | **0** |
+| Agent-ready listings | 454 of 575 | 467 of 567 |
+| Planted issues caught (feeds A–C) | 331 of 333 | 331 of 333 |
+
+Two honest notes. First, the hold-out dealer has now been seen, so it no longer tests anything new; v0.4 adds a fresh one. Second, the mileage gate also held back one genuine listing, a 2024 Telluride with 800 miles. Gates trade a little recall for a lot of safety, so in production gated listings should go to a human review queue, not disappear.
+
+The tables above show v0.2. `out/scorecard.md` always shows the latest run.
+
 ## What this says about the product
 
 1. **The rules were 99% right on the problems I planned for, and 37% right on the ones I didn't.** A perfect score on your own test set is a warning sign, not a result. Every new dealer feed needs its own quality gate and monitoring before its listings reach shoppers.

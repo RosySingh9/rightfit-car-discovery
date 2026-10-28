@@ -29,4 +29,11 @@ UNION ALL SELECT feed, listing_id, 'odometer_km'         FROM n WHERE odometer_u
 UNION ALL SELECT feed, listing_id, 'price_placeholder'   FROM n WHERE price IS NULL OR price < 1000
 UNION ALL SELECT feed, listing_id, 'stale_listing'       FROM n WHERE last_seen < DATE '2026-10-25' - INTERVAL 30 DAY
 UNION ALL SELECT feed, listing_id, 'vin_invalid'         FROM n WHERE NOT vin_check_ok(vin)
-UNION ALL SELECT feed, listing_id, 'duplicate_vin'       FROM dup;
+UNION ALL SELECT feed, listing_id, 'duplicate_vin'       FROM dup
+-- v0.2.1 sanity gates: numbers that can't be right are held back, whatever the parser did
+UNION ALL SELECT feed, listing_id, 'price_out_of_range'  FROM n WHERE price > 150000
+UNION ALL SELECT feed, listing_id, 'year_invalid'        FROM n WHERE year IS NULL OR year < 1990 OR year > 2027
+UNION ALL SELECT feed, listing_id, 'mileage_implausible' FROM n WHERE miles IS NULL OR miles < 0
+                                                              OR (miles < 1000 AND year < 2025)
+                                                              OR miles > 45000 * greatest(2026 - year, 1)
+UNION ALL SELECT feed, listing_id, 'date_unparseable'    FROM n WHERE last_seen IS NULL;

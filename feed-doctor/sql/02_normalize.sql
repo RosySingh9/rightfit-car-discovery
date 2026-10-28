@@ -7,7 +7,7 @@ SELECT DISTINCT make, model, lower(regexp_replace(model, '[^A-Za-z0-9]', '', 'g'
 CREATE OR REPLACE TABLE norm_model AS
 WITH s AS (
   SELECT feed, listing_id, make, model_raw,
-         lower(regexp_replace(regexp_replace(model_raw, '\bHV\b', 'Hybrid', 'g'), '[^A-Za-z0-9]', '', 'g')) AS raw_key
+         lower(regexp_replace(regexp_replace(model_raw, '(?i)\b(HV|Hyb)\b', 'Hybrid', 'g'), '[^A-Za-z0-9]', '', 'g')) AS raw_key
   FROM stg_listings
 ), exact AS (
   SELECT s.feed, s.listing_id, r.model, 'exact' AS how
@@ -28,11 +28,12 @@ CREATE OR REPLACE TABLE norm_listings AS
 WITH base AS (
   SELECT l.*, nm.model, nm.model_match,
          -- drivetrain words found inside the trim text, e.g. "XLE All-Wheel Drive"
-         CASE WHEN regexp_matches(l.trim_raw, '(?i)all-wheel drive|\bawd\b') THEN 'AWD'
-              WHEN regexp_matches(l.trim_raw, '(?i)\b4wd\b|\b4x4\b') THEN '4WD'
+         -- v0.2.1: also "All Wheel Drive", "AWD-i", "Symmetrical AWD", "Four Wheel Drive"
+         CASE WHEN regexp_matches(l.trim_raw, '(?i)all[- ]wheel drive|\bawd\b') THEN 'AWD'
+              WHEN regexp_matches(l.trim_raw, '(?i)four[- ]wheel drive|\b4wd\b|\b4x4\b') THEN '4WD'
               WHEN regexp_matches(l.trim_raw, '(?i)\bfwd\b') THEN 'FWD'
               WHEN regexp_matches(l.trim_raw, '(?i)\brwd\b') THEN 'RWD' END AS drive_from_trim,
-         trim(regexp_replace(l.trim_raw, '(?i)\s*(all-wheel drive|awd|4wd|4x4|fwd|rwd)\s*$', '')) AS trim_clean
+         trim(regexp_replace(l.trim_raw, '(?i)\s*(symmetrical\s+)?(all[- ]wheel drive|four[- ]wheel drive|awd(-i)?|4wd|4x4|fwd|rwd)\s*$', '')) AS trim_clean
   FROM stg_listings l JOIN norm_model nm USING (feed, listing_id)
 ), trim_match AS (
   SELECT b.feed, b.listing_id, r.trim AS trim

@@ -21,7 +21,7 @@ Shoppers describe **needs**: "twins on the way", "tow my track car", "not a mini
 | Listings that arrive from dealer feeds ready for an AI agent (v0.2) | **0 of 720**; after cleaning and enrichment, **454 of 575** |
 | Cleaning rules on problems they were designed for, vs a dealer they had never seen (v0.2) | **99%** vs **37%** |
 
-→ [Shopper intent map](research/intent-map.md) · [Findability audit](audit/findability-audit.md) · [PR/FAQ](docs/prfaq.md) · [Feed Doctor](feed-doctor/README.md) · [Buyer interview guide](research/interview-guide.md)
+→ **[Try the agent](https://rightfit-car-discovery-site.vercel.app/)** · [How the agent works](docs/agent.md) · [Shopper intent map](research/intent-map.md) · [Findability audit](audit/findability-audit.md) · [PR/FAQ](docs/prfaq.md) · [Feed Doctor](feed-doctor/README.md) · [Buyer interview guide](research/interview-guide.md)
 
 ## What I'm building
 
@@ -37,9 +37,9 @@ Shoppers describe **needs**: "twins on the way", "tow my track car", "not a mini
 |---|---|---|
 | **v0.1** | Shopper intent map, findability audit (20 queries), PR/FAQ | ✅ Shipped |
 | **v0.2** | Feed Doctor: messy dealer feeds → clean, enriched inventory; data quality scorecard in SQL; hold-out evaluation | ✅ Shipped |
-| v0.2.1 | VIN decode for drivetrain; sanity gates for price, miles and dates | Next |
-| v0.3 | Discovery agent: intent → filters and facets → ranked results with "why this car" | Planned |
-| v0.4 | Evals run on every change (GitHub Actions) + scoreboard | Planned |
+| **v0.2.1** | Parsing fixes and sanity gates from the hold-out dealer | ✅ Shipped |
+| **v0.3** | Discovery agent: one sentence → filters and facets → ranked results with "why this car"; live evaluation page | ✅ Shipped |
+| v0.4 | Evals on every change, a fresh hold-out dealer and query set, public scoreboard | Next |
 | v0.5 | Search by monthly payment | Planned |
 | v0.6 | Responsible-ranking guardrails | Planned |
 
@@ -50,9 +50,9 @@ See [CHANGELOG.md](CHANGELOG.md) and [ROADMAP.md](ROADMAP.md).
 ```
 research/     shopper letters (coded), intent map, buyer interview guide
 audit/        test queries, raw results, scoring, findability report
-docs/         PR/FAQ and product decisions
+docs/         PR/FAQ, agent design
 feed-doctor/  inventory pipeline (DuckDB SQL), synthetic feeds, evals, scorecard
-site/         the project page
+site/         the project page, the agent (api/, agent/), evaluation and SQL explorer pages
 ```
 
 ## Principles

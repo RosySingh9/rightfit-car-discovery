@@ -42,7 +42,8 @@ SELECT n.feed, n.listing_id, n.vin, n.year, n.make, n.model, n.trim, n.trim_matc
        CAST(coalesce(r.blind_spot_std, my.blind_spot_std) AS INT) AS blind_spot_std,
        CAST(coalesce(r.adaptive_cruise_std, my.adaptive_cruise_std) AS INT) AS adaptive_cruise_std,
        NOT EXISTS (SELECT 1 FROM detected_issues d WHERE d.feed = n.feed AND d.listing_id = n.listing_id
-                   AND d.issue_type IN ('vin_invalid', 'price_placeholder', 'stale_listing', 'duplicate_vin', 'model_unmatched')) AS shoppable
+                   AND d.issue_type IN ('vin_invalid', 'price_placeholder', 'stale_listing', 'duplicate_vin', 'model_unmatched',
+                                       'price_out_of_range', 'year_invalid', 'mileage_implausible', 'date_unparseable')) AS shoppable
 FROM norm_listings n
 LEFT JOIN ref_trims r ON r.make = n.make AND r.model = n.model AND r.trim = n.trim
                      AND n.year BETWEEN CAST(r.year_from AS INT) AND CAST(r.year_to AS INT)

@@ -14,11 +14,19 @@ CREATE OR REPLACE TABLE raw_c AS SELECT * FROM read_csv('data/feeds/aggregator_c
 CREATE OR REPLACE TABLE stg_listings AS
 -- Feeds A and D: dealer DMS export. Price "$31,795", mileage "13,038 mi", drivetrain sometimes inside Trim.
 SELECT feed_letter AS feed, 1 AS source_priority,
-       StockNo AS listing_id, VIN AS vin, TRY_CAST(Year AS INT) AS year, Make AS make,
+       StockNo AS listing_id, VIN AS vin,
+       -- v0.2.1: two-digit years ("24") from the hold-out dealer
+       CASE WHEN length(trim(Year)) = 2 THEN 2000 + TRY_CAST(Year AS INT) ELSE TRY_CAST(Year AS INT) END AS year, Make AS make,
        Model AS model_raw, Trim AS trim_raw, BodyStyle AS body_raw, NULLIF(Drivetrain, '') AS drive_raw,
-       TRY_CAST(regexp_replace(Price, '[^0-9]', '', 'g') AS INT) AS price,
-       TRY_CAST(regexp_replace(Mileage, '[^0-9]', '', 'g') AS INT) AS odometer_value, 'mi' AS odometer_unit,
-       []::VARCHAR[] AS features_raw, TRY_CAST(LastUpdated AS DATE) AS last_seen, DealerName AS seller
+       -- v0.2.1: drop cents BEFORE stripping symbols, so "$34,895.00" stays 34895 (v0.2 made it 3,489,500)
+       TRY_CAST(regexp_replace(regexp_replace(Price, '\.[0-9]{1,2}\s*$', ''), '[^0-9]', '', 'g') AS INT) AS price,
+       -- v0.2.1: "13.0k mi" means 13,000 miles (v0.2 read it as 130)
+       CASE WHEN regexp_matches(Mileage, '(?i)[0-9.]+\s*k')
+            THEN CAST(round(TRY_CAST(regexp_extract(Mileage, '([0-9.]+)', 1) AS DOUBLE) * 1000) AS INT)
+            ELSE TRY_CAST(regexp_replace(Mileage, '[^0-9]', '', 'g') AS INT) END AS odometer_value, 'mi' AS odometer_unit,
+       -- v0.2.1: accept US dates (MM/DD/YYYY) as well as ISO
+       []::VARCHAR[] AS features_raw,
+       coalesce(TRY_CAST(LastUpdated AS DATE), CAST(TRY_STRPTIME(LastUpdated, '%m/%d/%Y') AS DATE)) AS last_seen, DealerName AS seller
 FROM raw_a
 UNION ALL
 -- Feed B: dealer website JSON. "ymm" packs year + make + model; odometer may be in km.
