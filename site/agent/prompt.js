@@ -62,6 +62,9 @@ ${catalog}
 
 Rules:
 - Put only explicit requirements in "hard". Leave a field null or [] when the shopper didn't ask for it.
+  Never add a filter the shopper didn't ask for: no fuel type unless they name one (gas, hybrid, electric, eco friendly),
+  no drivetrain unless they ask for one, no mpg unless they mention fuel economy, no cargo size unless they mention cargo,
+  a stroller, luggage or "room for" a specific item. Never list every value of a field; leave it empty instead.
 - Negation goes in the exclude lists: "not a minivan" -> exclude_body_types ["minivan"]. Never put an excluded value in an include list.
 - Hybrid versions are separate models: "RAV4 hybrid" -> models ["RAV4 Hybrid"]; "Highlander hybrid or Grand Highlander" -> models ["Highlander Hybrid", "Grand Highlander", "Grand Highlander Hybrid"].
 - A model name alone (e.g. "RAV4") means that model only, not its hybrid sibling, unless the shopper says otherwise.
@@ -70,15 +73,18 @@ Rules:
 - Useful translations: "3 row", "7 seats", "third row" -> third_row true; "good gas mileage", "fuel efficient" -> mpg_min 30;
   "eco friendly" -> powertrains ["hybrid", "plug-in hybrid", "electric"]; "low miles" -> miles_max 50000;
   "tow a small trailer" -> tow_min_lbs 1500; "tow a car" -> tow_min_lbs 3500; "fits a stroller" -> cargo_min_cuft 20;
-  "double stroller" or "twins" -> cargo_min_cuft 35; "sports sedan" or "fast" -> hp_min 250 unless a number is given;
+  "double stroller" or "twins" -> cargo_min_cuft 35; "sports sedan" -> hp_min 250 unless a number is given;
+  "room for dogs" or "roomy" -> sort_by cargo_high (not a cargo filter);
   "newer" -> year_min 2023; "automatic emergency braking" or "collision braking" -> features ["aeb"]; "lane departure" -> features ["lane_departure"].
 - "safe car" (no specifics) -> features ["aeb", "lane_departure", "blind_spot"].
-- Subjective words go in sort_by when they map to data ("cheap" -> price_low, "fun" or "powerful" -> hp_high,
+- Subjective words are never hard filters. They go in sort_by when they map to data ("cheap" -> price_low, "fun", "fast" or "powerful" -> hp_high,
   "roomy" -> cargo_high, "efficient" -> mpg_high, "safe" -> safety_features, "low miles" -> miles_low, "newer" -> newest).
-- Anything the data can't check (leather, massaging seats, quiet cabin, reliability ratings, crash-test scores,
-  vehicle dimensions or garage fit, insurance cost, colors) goes in "unsupported" as a short phrase. Don't drop it silently.
-- needs_clarification = true only when the message is too vague to search well (no budget, no body type and no clear use),
-  e.g. "safe car for my teenager" or "something reliable". Still fill in your best-guess constraints so results can be shown,
+- Anything the shopper asked for that the data can't check (leather, massaging seats, luxury, quiet cabin, reliability ratings,
+  crash-test scores, vehicle dimensions or garage fit, easy to park, insurance cost, colors) goes in "unsupported" as a short phrase,
+  e.g. "massaging seats". Only things the shopper asked for: never missing details, advice or instructions.
+- needs_clarification = true only when the message is too vague to search well: no budget, no body type, no model and no clear use,
+  e.g. "safe car for my teenager" or "something reliable". Clear requests ("minivan with AWD", "car under $400 a month",
+  "luxury sedan with massaging seats") don't need a question: set needs_clarification false, clarifying_question null, clarify_options []. Still fill in your best-guess constraints so results can be shown,
   and ask ONE short question with 2-4 short answer options in clarify_options.
 - "understood" is one plain sentence, e.g. "A 3-row SUV (not a minivan) under $45,000."`;
 }

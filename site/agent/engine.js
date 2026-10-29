@@ -53,7 +53,7 @@
   function cap(s) { return s === "suv" ? "SUV" : s.charAt(0).toUpperCase() + s.slice(1); }
 
   // When nothing matches, loosen the least important constraints one at a time and say so.
-  const RELAX = ["miles_max", "year_min", "mpg_min", "cargo_min_cuft", "price_max", "monthly_payment_max", "hp_min", "feature:blind_spot", "feature:adaptive_cruise"];
+  const RELAX = ["miles_max", "year_min", "mpg_min", "cargo_min_cuft", "price_max", "monthly_payment_max", "hp_min", "feature:blind_spot", "feature:adaptive_cruise", "powertrains"];
 
   const SORT_FNS = {
     price_low: (c) => c.price, miles_low: (c) => c.miles, newest: (c) => -c.year,
@@ -101,7 +101,9 @@
   }
 
   function search(cars, intent) {
-    const h = intent.hard || {};
+    const h = JSON.parse(JSON.stringify(intent.hard || {}));
+    // v0.3.1 guard: a drivetrain filter that lists every drivetrain only hides listings with unknown drivetrain.
+    if ((h.drivetrains || []).length >= 4) h.drivetrains = [];
     let cons = constraintList(h);
     let matches = cars.filter((c) => cons.every((k) => k.test(c)));
     const relaxed = [];
@@ -145,36 +147,40 @@
   // ---------- Gold set: the 20 v0.1 audit queries, each with a test written independently of the model ----------
   // A car "fits" when it meets every hard constraint the shopper stated. Same definition used to score CarMax in v0.1.
   const GOLD = [
-    { id: "Q01", style: "need", q: "3 row SUV under $45k not a minivan", fit: (c) => c.body_type === "suv" && c.third_row === 1 && c.price <= 45000 },
-    { id: "Q02", style: "spec", q: "fun AWD sedan for snowy commute under $25k", fit: (c) => c.body_type === "sedan" && c.drivetrain === "AWD" && c.price <= 25000 },
-    { id: "Q03", style: "need", q: "first car for teen with automatic emergency braking and lane departure warning under $20k", fit: (c) => c.aeb === 1 && c.lane_departure === 1 && c.price <= 20000 },
-    { id: "Q04", style: "need", q: "sports sedan 300 hp under $30k 2022 or newer", fit: (c) => c.body_type === "sedan" && c.hp >= 300 && c.price <= 30000 && c.year >= 2022 },
-    { id: "Q05", style: "need", q: "quiet luxury sedan with massaging seats", fit: null, note: "Massaging seats aren't in any feed: scored on whether RightFit says so." , expectUnsupported: /massag/i },
-    { id: "Q06", style: "need", q: "reliable AWD wagon that can tow a small trailer under $20k", fit: (c) => c.body_type === "wagon" && c.drivetrain === "AWD" && c.tow_lbs >= 1500 && c.price <= 20000 },
-    { id: "Q07", style: "need", q: "reliable car good gas mileage leather seats low miles under $20k", fit: (c) => c.mpg >= 30 && c.miles <= 50000 && c.price <= 20000, expectUnsupported: /leather/i },
-    { id: "Q08", style: "need", q: "SUV that can tow a car and fits in a garage under $20k", fit: (c) => c.body_type === "suv" && c.tow_lbs >= 3500 && c.price <= 20000 },
-    { id: "Q09", style: "need", q: "4x4 for camping that can tow a trailer under $40k", fit: (c) => ["4WD", "AWD"].includes(c.drivetrain) && c.tow_lbs >= 3500 && c.price <= 40000 },
-    { id: "Q10", style: "need", q: "reliable automatic hatchback under $20k room for 2 dogs", fit: (c) => c.body_type === "hatchback" && c.transmission === "automatic" && c.price <= 20000 },
-    { id: "Q11", style: "need", q: "quiet hybrid that fits a stroller and is easy to park under $50k", fit: (c) => ["hybrid", "plug-in hybrid"].includes(c.powertrain) && c.cargo_cuft >= 20 && !["pickup", "minivan"].includes(c.body_type) && c.price <= 50000 },
-    { id: "Q12", style: "need", q: "eco friendly family car for twins and a double stroller under $25k", fit: (c) => ["hybrid", "plug-in hybrid", "electric"].includes(c.powertrain) && (c.third_row === 1 || c.cargo_cuft >= 35) && c.price <= 25000 },
-    { id: "Q13", style: "spec", q: "RAV4 hybrid under $30k", fit: (c) => ["RAV4 Hybrid", "RAV4 Prime"].includes(c.model) && c.price <= 30000 },
-    { id: "Q14", style: "need", q: "Highlander hybrid or Grand Highlander", fit: (c) => ["Highlander Hybrid", "Grand Highlander", "Grand Highlander Hybrid"].includes(c.model) },
-    { id: "Q15", style: "need", q: "car under $400 a month", fit: (c) => estPayment(c.price) <= 400, note: "Scored on the stated finance assumptions (10% down, 60 months, 7.9% APR)." },
-    { id: "Q16", style: "need", q: "safe car for my teenager", fit: (c) => c.aeb === 1 && c.lane_departure === 1 && c.blind_spot === 1 },
-    { id: "Q17", style: "need", q: "truck that can tow 7000 lbs", fit: (c) => c.body_type === "pickup" && c.tow_lbs >= 7000 },
-    { id: "Q18", style: "need", q: "electric SUV with 300 miles of range", fit: (c) => c.powertrain === "electric" && c.body_type === "suv" && c.ev_range >= 300 },
-    { id: "Q19", style: "spec", q: "minivan with AWD", fit: (c) => c.body_type === "minivan" && c.drivetrain === "AWD" },
-    { id: "Q20", style: "spec", q: "Toyota with third row and good gas mileage", fit: (c) => c.make === "Toyota" && c.third_row === 1 && c.mpg >= 30 }
+    { id: "Q01", style: "need", allowed: ["price_max", "third_row", "body_types", "exclude_body_types", "seats_min"], q: "3 row SUV under $45k not a minivan", fit: (c) => c.body_type === "suv" && c.third_row === 1 && c.price <= 45000 },
+    { id: "Q02", style: "spec", allowed: ["body_types", "drivetrains", "price_max"], q: "fun AWD sedan for snowy commute under $25k", fit: (c) => c.body_type === "sedan" && c.drivetrain === "AWD" && c.price <= 25000 },
+    { id: "Q03", style: "need", allowed: ["feature:aeb", "feature:lane_departure", "price_max"], q: "first car for teen with automatic emergency braking and lane departure warning under $20k", fit: (c) => c.aeb === 1 && c.lane_departure === 1 && c.price <= 20000 },
+    { id: "Q04", style: "need", allowed: ["body_types", "hp_min", "price_max", "year_min"], q: "sports sedan 300 hp under $30k 2022 or newer", fit: (c) => c.body_type === "sedan" && c.hp >= 300 && c.price <= 30000 && c.year >= 2022 },
+    { id: "Q05", style: "need", allowed: ["body_types"], q: "quiet luxury sedan with massaging seats", fit: null, note: "Massaging seats aren't in any feed: scored on whether RightFit says so." , expectUnsupported: /massag/i },
+    { id: "Q06", style: "need", allowed: ["drivetrains", "body_types", "tow_min_lbs", "price_max"], q: "reliable AWD wagon that can tow a small trailer under $20k", fit: (c) => c.body_type === "wagon" && c.drivetrain === "AWD" && c.tow_lbs >= 1500 && c.price <= 20000 },
+    { id: "Q07", style: "need", allowed: ["mpg_min", "miles_max", "price_max"], q: "reliable car good gas mileage leather seats low miles under $20k", fit: (c) => c.mpg >= 30 && c.miles <= 50000 && c.price <= 20000, expectUnsupported: /leather/i },
+    { id: "Q08", style: "need", allowed: ["body_types", "tow_min_lbs", "price_max"], q: "SUV that can tow a car and fits in a garage under $20k", fit: (c) => c.body_type === "suv" && c.tow_lbs >= 3500 && c.price <= 20000 },
+    { id: "Q09", style: "need", allowed: ["drivetrains", "tow_min_lbs", "price_max", "body_types"], q: "4x4 for camping that can tow a trailer under $40k", fit: (c) => ["4WD", "AWD"].includes(c.drivetrain) && c.tow_lbs >= 3500 && c.price <= 40000 },
+    { id: "Q10", style: "need", allowed: ["transmission", "body_types", "price_max"], q: "reliable automatic hatchback under $20k room for 2 dogs", fit: (c) => c.body_type === "hatchback" && c.transmission === "automatic" && c.price <= 20000 },
+    { id: "Q11", style: "need", allowed: ["powertrains", "cargo_min_cuft", "price_max", "exclude_body_types", "body_types"], q: "quiet hybrid that fits a stroller and is easy to park under $50k", fit: (c) => ["hybrid", "plug-in hybrid"].includes(c.powertrain) && c.cargo_cuft >= 20 && !["pickup", "minivan"].includes(c.body_type) && c.price <= 50000 },
+    { id: "Q12", style: "need", allowed: ["powertrains", "cargo_min_cuft", "third_row", "price_max", "seats_min"], q: "eco friendly family car for twins and a double stroller under $25k", fit: (c) => ["hybrid", "plug-in hybrid", "electric"].includes(c.powertrain) && (c.third_row === 1 || c.cargo_cuft >= 35) && c.price <= 25000 },
+    { id: "Q13", style: "spec", allowed: ["models", "makes", "powertrains", "price_max"], q: "RAV4 hybrid under $30k", fit: (c) => ["RAV4 Hybrid", "RAV4 Prime"].includes(c.model) && c.price <= 30000 },
+    { id: "Q14", style: "need", allowed: ["models", "makes", "powertrains"], q: "Highlander hybrid or Grand Highlander", fit: (c) => ["Highlander Hybrid", "Grand Highlander", "Grand Highlander Hybrid"].includes(c.model) },
+    { id: "Q15", style: "need", allowed: ["monthly_payment_max"], q: "car under $400 a month", fit: (c) => estPayment(c.price) <= 400, note: "Scored on the stated finance assumptions (10% down, 60 months, 7.9% APR)." },
+    { id: "Q16", style: "need", expectClarify: true, allowed: ["feature:aeb", "feature:lane_departure", "feature:blind_spot", "feature:adaptive_cruise"], q: "safe car for my teenager", fit: (c) => c.aeb === 1 && c.lane_departure === 1 && c.blind_spot === 1 },
+    { id: "Q17", style: "need", allowed: ["body_types", "tow_min_lbs"], q: "truck that can tow 7000 lbs", fit: (c) => c.body_type === "pickup" && c.tow_lbs >= 7000 },
+    { id: "Q18", style: "need", allowed: ["powertrains", "body_types", "ev_range_min"], q: "electric SUV with 300 miles of range", fit: (c) => c.powertrain === "electric" && c.body_type === "suv" && c.ev_range >= 300 },
+    { id: "Q19", style: "spec", allowed: ["body_types", "drivetrains"], q: "minivan with AWD", fit: (c) => c.body_type === "minivan" && c.drivetrain === "AWD" },
+    { id: "Q20", style: "spec", allowed: ["makes", "third_row", "mpg_min", "powertrains"], q: "Toyota with third row and good gas mileage", fit: (c) => c.make === "Toyota" && c.third_row === 1 && c.mpg >= 30 }
   ];
 
   // Score one query: of the top 5 results, how many fit? If the inventory holds fewer than 5 fitting cars, the bar is that number.
   function scoreQuery(gold, cars, out, intent) {
     const row = { id: gold.id, style: gold.style, q: gold.q, results: out.count, relaxed: out.relaxed.length > 0 };
+    // v0.3.1: stricter checks the top-5 score can't see
+    row.extraFilters = out.constraints.filter((c) => !(gold.allowed || []).includes(c.key)).map((c) => c.label);
+    row.unneededQuestion = !!intent.needs_clarification && !gold.expectClarify;
     if (gold.expectUnsupported) row.flaggedUnsupported = (intent.unsupported || []).some((u) => gold.expectUnsupported.test(u));
     if (!gold.fit) { row.scored = false; return row; }
     const available = cars.filter(gold.fit).length;
     const top = out.results.slice(0, 5).map((r) => r.car);
     row.available = available;
+    if (!row.relaxed && available) row.recall = out.results.filter((r) => gold.fit(r.car)).length / available;
     row.slots = Math.min(5, available);
     row.fit = top.filter(gold.fit).length;
     row.scored = row.slots > 0;
