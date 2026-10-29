@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.3.1 · What a perfect score hid · 2026-10-29
+
+**First evaluation run (v0.3, live, GPT-4o-mini):** 100% top-5 fit on the 20 v0.1 shopper searches (58 of 58 need-style slots, 15 of 15 spec-style), versus CarMax's 37% and 95%. When nothing in stock fit, it said so 3 of 3 times. It flagged both unsupported requests (massaging seats, leather). Raw results: `site/data/eval-runs/v0.3-2026-10-29.json`.
+
+**Why that isn't the headline:** I wrote the agent, the tests and the inventory, so a top-5 score mostly measures parsing. Reading every row found:
+- Filters nobody asked for in 6 of 20 searches ("fun" became 250+ hp; "Gas" added twice). For the AWD sedan search, that left zero cars even after loosening.
+- Unneeded clarifying questions on 3 clear searches.
+- Missed matching cars twice (3 EVs hidden by a filter listing every drivetrain; RAV4 Primes).
+- Two "can't check" notes that weren't real requests.
+
+**Fixed**
+- Prompt rules: never add an unasked filter; subjective words only re-rank; "unsupported" lists only what the shopper asked for; ask questions only when the request is truly vague.
+- Code guards: ignore a drivetrain filter that lists every drivetrain; loosen an inferred fuel type last if nothing matches.
+- The evaluation now flags unasked filters, unneeded questions and missed matching cars on every row.
+
 ## v0.3 · The agent · 2026-10-28
 
 **Added**
