@@ -126,6 +126,7 @@ ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:70
 .ba-bars .v{text-align:right;color:var(--ink)}
 .ba-row.warn .after>span{background:var(--bad)}
 @media (max-width:560px){.ba-row{grid-template-columns:1fr}}
+.compare .ba-bars .line{grid-template-columns:64px minmax(0,1fr) 44px}
 .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
 .duo>div{display:grid;gap:6px;align-content:start}
 
@@ -220,6 +221,48 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       </ul></div>
     </details>
     <p class="small muted">Synthetic inventory with illustrative specs. *Payment estimates assume 10% down, 60 months and 7.9% APR, for illustration only; they are not a credit offer.</p>
+  </div>
+</section>
+
+
+<section class="sticker" aria-labelledby="h-score">
+  <div class="sticker-head"><h2 id="h-score">First evaluation run</h2><span class="eyebrow">v0.3 · Oct 29, 2026 · the 20 shopper searches from v0.1</span></div>
+  <div class="sticker-body">
+    <div class="compare" style="border:1px solid var(--rule)">
+      <div>
+        <span class="eyebrow">Phrased like a person</span>
+        <span class="big good num">100%</span>
+        <div class="ba-bars">
+          <div class="line"><span>RightFit</span><div class="bar after"><span style="width:100%"></span></div><span class="v num">100%</span></div>
+          <div class="line"><span>CarMax</span><div class="bar before"><span style="width:37%"></span></div><span class="v num">37%</span></div>
+        </div>
+        <p class="small">58 of 58 top-5 results met every stated constraint, across 13 scored searches.</p>
+      </div>
+      <div>
+        <span class="eyebrow">Phrased like filters</span>
+        <span class="big good num">100%</span>
+        <div class="ba-bars">
+          <div class="line"><span>RightFit</span><div class="bar after"><span style="width:100%"></span></div><span class="v num">100%</span></div>
+          <div class="line"><span>CarMax</span><div class="bar before"><span style="width:95%"></span></div><span class="v num">95%</span></div>
+        </div>
+        <p class="small">15 of 15. When nothing in stock fit (3 searches), it said so every time. It flagged both requests the data can't check: massaging seats and leather.</p>
+      </div>
+    </div>
+    <div class="duo">
+      <div>
+        <h3>Why I don't trust 100%</h3>
+        <p class="small">I wrote the agent, the tests and the inventory, and the inventory is already cleaned and enriched. Once the filters are parsed right, the code is exact by construction, so this score mostly measures parsing. A perfect score is a reason to look harder.</p>
+      </div>
+      <div>
+        <h3>What looking harder found</h3>
+        <ul class="plain small">
+          <li>It added filters nobody asked for in 6 of 20 searches. "Fun" became "250+ hp", and "Gas" appeared twice. For the AWD sedan search, that left zero cars even after loosening.</li>
+          <li>It asked unneeded questions on 3 clear searches, such as "minivan with AWD".</li>
+          <li>It missed matching cars twice, including 3 EVs hidden by a filter that listed every drivetrain.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small"><strong>v0.3.1:</strong> tighter prompt rules and two code guards fix these, and the <a href="eval.html">evaluation page</a> now flags all three problems. Next: re-run, then v0.4 tests on searches I didn't write. <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.3-2026-10-29.json" target="_blank" rel="noopener">Raw results</a>.</p>
   </div>
 </section>
 
@@ -378,6 +421,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       <div class="rel"><span class="ver">v0.2</span><span>Feed Doctor: clean, enriched inventory and a data quality scorecard</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.2.1</span><span>Sanity gates; parsing fixes from the hold-out dealer</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.3</span><span>Discovery agent with "why this car"</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.3.1</span><span>Fixes and stricter checks from the first evaluation run</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.4</span><span>Evals on every change, fresh hold-out dealer, public scoreboard</span><span class="status">Next</span></div>
       <div class="rel"><span class="ver">v0.5</span><span>Search by monthly payment, assumptions visible</span><span class="status">Planned</span></div>
       <div class="rel"><span class="ver">v0.6</span><span>Responsible-ranking guardrails</span><span class="status">Planned</span></div>
