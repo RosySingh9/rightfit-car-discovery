@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.7 · Ready for testers · 2026-10-31
+
+Found by my own test search: "i want a nice new car that is budget friendly and easy to drive thru city. About $400 a month". RightFit read "new" as "2023 or newer", found nothing, quietly dropped it, and called city driving something it couldn't check. Its $400 a month covered 57 cars, the newest from 2022, while the cheapest 2023 was only about $15 a month more. It never said so.
+
+**Changed**
+- "New", "newer" and "latest" now mean newest first, not a hard year filter (a year is only required when the shopper gives one). The inventory is pre-owned, 2019–2025.
+- "Easy to drive in the city", "city car" and "compact" now exclude pickups and minivans instead of being flagged as unsupported.
+- **How I read it:** the agent shows how it translated vague phrases ("new" → newest first; "easy to drive in the city" → no pickups or minivans), so shoppers can see and correct it.
+- **Trade-offs, not silent loosening:** when nothing fits both a requirement and the budget, the page says so, shows the closest cars within budget, names the cheapest car that keeps the requirement (with its payment), and offers a button to switch.
+- **One step up:** for newest-first searches within a budget, it names the cheapest newer car just over budget.
+- A note under the search box says what the demo inventory is.
+- **Feedback box** under every search (👍 / Partly / 👎 and an optional note), sent through a Google Form with the search filled in. Switch it on by adding the form link to `site/agent/config.js`.
+- 2 more automated tests (14 in total): the trade-off and the one-step-up hint.
+
 ## v0.6 · Trims, compare and a fair order · 2026-10-31
 
 **Added**
