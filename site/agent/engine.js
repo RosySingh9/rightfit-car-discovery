@@ -169,13 +169,39 @@
     { id: "Q20", style: "spec", allowed: ["makes", "third_row", "mpg_min", "powertrains"], q: "Toyota with third row and good gas mileage", fit: (c) => c.make === "Toyota" && c.third_row === 1 && c.mpg >= 30 }
   ];
 
+
+  // ---------- Held-out set (v0.4): 6 buyer interviews. Searches in the buyer's words; answer keys from what THEY said. ----------
+  // Never used to tune the prompt. Run once and publish whatever comes back.
+  const BUDGET_Q = /budget|month|afford|spend|price|payment/i;
+  const HOLDOUT = [
+    { id: "H1", style: "buyer", q: "need a car that takes me to work and do groceries, good bluetooth for calls, no fancy add-ons",
+      fit: (c) => ["sedan", "suv", "hatchback"].includes(c.body_type), named: ["RAV4", "RAV4 Hybrid", "Camry", "Pilot"],
+      expectAsk: BUDGET_Q, expectUnsupported: /bluetooth|carplay|phone|call/i },
+    { id: "H2", style: "buyer", q: "car for family plus my own use, smooth ride, safe for kids, big enough for family but small enough to drive to work",
+      fit: (c) => c.body_type !== "pickup" && c.aeb === 1, never: (c) => c.body_type === "pickup",
+      expectAsk: /family|people|kids|seat|how many/i, expectUnsupported: /ride|smooth|comfort/i },
+    { id: "H3", style: "buyer", q: "a small van to bring the whole family on trips, at least 8 seats",
+      fit: (c) => c.body_type === "minivan" && c.seats >= 8 },
+    { id: "H4", style: "buyer", q: "my first car, easy to drive and navigate new routes, safe and comfortable, affordable",
+      fit: (c) => c.aeb === 1 && c.lane_departure === 1 && c.body_type !== "pickup",
+      expectAsk: BUDGET_Q, expectUnsupported: /navigat/i },
+    { id: "H5", style: "buyer", q: "I want something under 20k, safe and low maintenance, Toyota Honda or Tesla, not a Kia",
+      fit: (c) => c.price <= 20000 && ["Toyota", "Honda", "Tesla"].includes(c.make) && c.aeb === 1, never: (c) => c.make === "Kia",
+      expectUnsupported: /maint|reliab/i },
+    { id: "H6", style: "buyer", q: "I want to buy an EV, extremely safe, not sure it fits my budget",
+      fit: (c) => c.powertrain === "electric" && c.aeb === 1, expectAsk: BUDGET_Q }
+  ];
+
   // Score one query: of the top 5 results, how many fit? If the inventory holds fewer than 5 fitting cars, the bar is that number.
   function scoreQuery(gold, cars, out, intent) {
     const row = { id: gold.id, style: gold.style, q: gold.q, results: out.count, relaxed: out.relaxed.length > 0 };
     // v0.3.1: stricter checks the top-5 score can't see
-    row.extraFilters = out.constraints.filter((c) => !(gold.allowed || []).includes(c.key)).map((c) => c.label);
-    row.unneededQuestion = !!intent.needs_clarification && !gold.expectClarify;
+    row.extraFilters = gold.allowed ? out.constraints.filter((c) => !gold.allowed.includes(c.key)).map((c) => c.label) : [];
+    row.unneededQuestion = !!intent.needs_clarification && !gold.expectClarify && !gold.expectAsk;
     if (gold.expectUnsupported) row.flaggedUnsupported = (intent.unsupported || []).some((u) => gold.expectUnsupported.test(u));
+    if (gold.expectAsk) row.askedRight = !!intent.needs_clarification && gold.expectAsk.test((intent.clarifying_question || "") + " " + (intent.clarify_options || []).join(" "));
+    if (gold.never) row.respectedNever = !out.results.slice(0, 5).some((r) => gold.never(r.car));
+    if (gold.named) row.showedNamed = out.results.slice(0, 5).some((r) => gold.named.includes(r.car.model));
     if (!gold.fit) { row.scored = false; return row; }
     const available = cars.filter(gold.fit).length;
     const top = out.results.slice(0, 5).map((r) => r.car);
@@ -187,5 +213,5 @@
     return row;
   }
 
-  return { FINANCE, estPayment, toCars, search, rank, facets, constraintList, withoutConstraint, GOLD, scoreQuery };
+  return { FINANCE, estPayment, toCars, search, rank, facets, constraintList, withoutConstraint, GOLD, HOLDOUT, scoreQuery };
 });
