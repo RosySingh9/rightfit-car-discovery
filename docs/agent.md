@@ -38,7 +38,7 @@ shopper sentence ──► /api/search ──► structured intent (JSON) ──
 - **Fair order:** ranking uses only the shopper's stated preferences and each car's own data. There's no paid placement, no shopper profile and nothing inferred. The sort order is printed above the results, and an automated test checks that adding a shopper profile or a dealer boost to the request changes nothing.
 
 ## Tests on every change
-`tests/engine.test.js` runs 12 deterministic checks with no model calls, through a GitHub Action on every push: "not a minivan" never returns a minivan, every result meets every applied filter, "why this car" only states listing facts, loosening says what it loosened, payment math is consistent, budget is never a "can't check" note, base trims rank first for "no add-ons", and nothing outside the stated intent changes the order. The model-facing evaluation (`site/eval.html`) still runs live, because it needs the API key.
+`tests/engine.test.js` runs 14 deterministic checks with no model calls, through a GitHub Action on every push: "not a minivan" never returns a minivan, every result meets every applied filter, "why this car" only states listing facts, loosening says what it loosened, payment math is consistent, budget is never a "can't check" note, base trims rank first for "no add-ons", and nothing outside the stated intent changes the order. The model-facing evaluation (`site/eval.html`) still runs live, because it needs the API key.
 
 ## Evaluation
 
