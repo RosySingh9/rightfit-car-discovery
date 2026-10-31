@@ -254,7 +254,18 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
         <p class="small"><strong>4 of 6 buyers couldn't work out a monthly payment or what they could afford online.</strong> One only got a payment at the dealer. That makes a finance-aware search the top priority: v0.5 adds search by monthly payment with editable assumptions, and a "what can I afford?" helper where the shopper enters their own numbers. The agent never guesses income or credit.</p>
       </div>
     </div>
-    <p class="small"><strong>v0.4.1:</strong> it asks about budget whenever none is given, while still showing results. "Safe" now requires collision braking and ranks the rest of the safety features instead of filtering on them. "No add-ons" never adds a filter. It also knows which needs it can't check yet, such as Bluetooth and EV charging. <strong>Honest note:</strong> these 6 searches have now been seen, so a re-run shows whether the fixes work, but the next real test needs new buyers. <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/research/interview-findings.md" target="_blank" rel="noopener">Interview findings</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.4-heldout-2026-10-31.json" target="_blank" rel="noopener">raw results</a>.</p>
+    <div class="ledger"><table class="compact">
+      <thead><tr><th>Held-out buyers</th><th>First run (unseen)</th><th>After v0.4.1 fixes</th></tr></thead>
+      <tbody>
+        <tr><td>Top-5 fit</td><td class="num">86%</td><td class="num">100%</td></tr>
+        <tr><td>Asked what the buyer wanted asked</td><td class="num">1 of 4</td><td class="num">3 of 4</td></tr>
+        <tr><td>Said what it can't check</td><td class="num">3 of 4</td><td class="num">4 of 4</td></tr>
+        <tr><td>Kept out "never consider"</td><td class="num">2 of 2</td><td class="num">2 of 2</td></tr>
+        <tr><td>Cars B5 would buy that were shown</td><td class="num">1 of 4</td><td class="num">4 of 4</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small"><strong>v0.4.1</strong> asks about budget whenever none is given, while still showing results. "Safe" now requires collision braking and ranks the other safety features instead of filtering on them. "No add-ons" never adds a filter, and it knows more needs it can't check yet, such as Bluetooth.</p>
+    <p class="small"><strong>Why I don't count the second run as proof:</strong> by then I'd seen these six searches, so the first run is the honest number. Three gaps remain. For B2 it asked budget, but she wanted to be asked family size. For B1, "no fancy add-ons" now ranks the cheapest cars first (five Mazda CX-3s), not the RAV4, Camry or Pilot she was weighing; base trims of the models people know would serve her better, and that's the v0.6 trim work. It still lists "budget details" as something it can't check, when budget should be a question. The next real test needs new buyers. <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/research/interview-findings.md" target="_blank" rel="noopener">Interview findings</a> · raw results: <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.4-heldout-2026-10-31.json" target="_blank" rel="noopener">first run</a>, <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.4.1-heldout-rerun-2026-10-31.json" target="_blank" rel="noopener">after fixes</a>.</p>
   </div>
 </section>
 
