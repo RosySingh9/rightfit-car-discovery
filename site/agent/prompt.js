@@ -14,7 +14,7 @@ const list = (items) => ({ type: "array", items });
 const INTENT_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["understood", "hard", "sort_by", "unsupported", "needs_clarification", "clarifying_question", "clarify_options"],
+  required: ["understood", "hard", "sort_by", "unsupported", "interpretations", "needs_clarification", "clarifying_question", "clarify_options"],
   properties: {
     understood: { type: "string", description: "One short sentence restating what the shopper wants, in plain words." },
     hard: {
@@ -42,6 +42,8 @@ const INTENT_SCHEMA = {
     },
     sort_by: list({ type: "string", enum: SORTS }),
     unsupported: list({ type: "string" }),
+    interpretations: list({ type: "object", additionalProperties: false, required: ["phrase", "meaning"],
+      properties: { phrase: { type: "string" }, meaning: { type: "string" } } }),
     needs_clarification: { type: "boolean" },
     clarifying_question: { type: ["string", "null"] },
     clarify_options: list({ type: "string" })
@@ -79,11 +81,15 @@ Rules:
   "fits a stroller" or "fits a car seat" is a minimum (cargo_min_cuft), never a ranking: don't add cargo_high for it;
   "room for dogs" or "roomy" -> sort_by cargo_high only, never a cargo filter;
   "easy to park", "for the city" or "compact" -> exclude_body_types ["minivan", "pickup"];
-  "newer" -> year_min 2023; "automatic emergency braking" or "collision braking" -> features ["aeb"]; "lane departure" -> features ["lane_departure"].
+  "automatic emergency braking" or "collision braking" -> features ["aeb"]; "lane departure" -> features ["lane_departure"].
 - "safe" or "safe car" (no specifics) -> features ["aeb"] and sort_by ["safety_features"]. Only require lane departure or
   blind-spot monitoring when the shopper names them. Safety must not shrink a tight budget down to one or two cars.
 - "no fancy add-ons", "nothing fancy", "basic", "no extras" -> NO feature filters at all; sort_by ["base_trim", "price_low"].
   Never turn a request for fewer features into a required feature.
+- "new", "newer", "recent", "latest" -> sort_by ["newest"], NOT a year filter. Only set year_min when the shopper gives a year
+  ("2022 or newer"). This inventory is pre-owned, model years 2019-2025; if they say "brand new", say so in interpretations.
+- "easy to drive in the city", "city car", "easy to park", "compact" -> exclude_body_types ["minivan", "pickup"]. That is supported: don't list it as unsupported.
+- "budget friendly" or "affordable" with a number -> keep the number as the budget and add sort_by ["price_low"].
 - "affordable", "cheap" or "on a budget" with no number -> sort_by ["price_low"] and ask about budget.
 - Subjective words are never hard filters. They go in sort_by when they map to data ("cheap" -> price_low, "fun", "fast" or "powerful" -> hp_high,
   "roomy" -> cargo_high, "efficient" -> mpg_high, "safe" -> safety_features, "low miles" -> miles_low, "newer" -> newest).
@@ -97,6 +103,9 @@ Rules:
   Results are still shown while the shopper answers, so this never blocks the search.
 - If a budget IS given and the request is clear, don't ask anything (needs_clarification false, clarifying_question null, clarify_options []).
 - If a budget is given but family size matters and is unknown ("car for my family", "fit the kids"), ask how many people it needs to seat.
+- interpretations: for each vague or subjective phrase you translated (up to 4), give the shopper's phrase and what you did with it
+  in plain words, e.g. {"phrase": "new", "meaning": "newest first (this inventory is pre-owned, 2019-2025)"},
+  {"phrase": "easy to drive in the city", "meaning": "no pickups or minivans"}. Don't repeat obvious filters like a stated price.
 - "understood" is one plain sentence, e.g. "A 3-row SUV (not a minivan) under $45,000."`;
 }
 

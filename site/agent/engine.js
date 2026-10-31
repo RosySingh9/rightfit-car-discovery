@@ -152,10 +152,32 @@
       unknownDrive = cars.filter((c) => c.drivetrain == null && others.every((k) => k.test(c))).length;
     }
     const ranked = rank(matches, intent.sort_by);
+    // v0.7: when loosening was needed and a budget is part of the request, show the trade-off instead of hiding it:
+    // the cheapest car that keeps everything the shopper asked for except the budget.
+    let tradeoff = null;
+    const BUDGET = ["price_max", "monthly_payment_max"];
+    const all = constraintList(h);
+    if (relaxed.length && all.some((k) => BUDGET.includes(k.key)) && !relaxed.every((l) => all.some((k) => k.label === l && BUDGET.includes(k.key)))) {
+      const keepAll = all.filter((k) => !BUDGET.includes(k.key));
+      const fits = cars.filter((c) => keepAll.every((k) => k.test(c))).sort((a, b) => a.price - b.price);
+      if (fits.length) tradeoff = { kept: relaxed.filter((l) => !all.some((k) => k.label === l && BUDGET.includes(k.key))),
+        car: fits[0], payment: estPayment(fits[0].price), count: fits.length };
+    }
     // Budget is a question, never a "can't check" item.
     const unsupported = (intent.unsupported || []).filter((u) => !/budget|price|payment|afford/i.test(u));
+    // v0.7 "one step up": when the shopper wants newest-first within a budget, name the cheapest newer car just over it.
+    let stretch = null;
+    if (!tradeoff && (intent.sort_by || []).includes("newest") && all.some((k) => BUDGET.includes(k.key)) && ranked.length) {
+      const top = Math.max(...ranked.map((c) => c.year));
+      const keepAll = all.filter((k) => !BUDGET.includes(k.key));
+      const up = cars.filter((c) => c.year > top && keepAll.every((k) => k.test(c))).sort((a, b) => a.price - b.price)[0];
+      if (up) stretch = { car: up, payment: estPayment(up.price), newestShown: top };
+    }
     return {
       unsupported,
+      tradeoff,
+      stretch,
+      interpretations: (intent.interpretations || []).slice(0, 4),
       order: explainOrder(intent.sort_by),
       constraints: constraintList(h).map(({ key, label }) => ({ key, label })),
       relaxed,
@@ -167,6 +189,13 @@
   }
 
   // Remove one constraint (when a shopper clicks the x on a chip) without calling the model again.
+  // Keep everything the shopper asked for except the budget (used by the trade-off button).
+  function withoutBudget(intent) {
+    const i = JSON.parse(JSON.stringify(intent));
+    i.hard.price_max = null; i.hard.monthly_payment_max = null;
+    i.sort_by = ["price_low", ...(i.sort_by || []).filter((k) => k !== "price_low")];
+    return i;
+  }
   function withoutConstraint(intent, key) {
     const i = JSON.parse(JSON.stringify(intent)), h = i.hard;
     if (key.startsWith("feature:")) h.features = h.features.filter((f) => "feature:" + f !== key);
@@ -247,5 +276,5 @@
     return row;
   }
 
-  return { FINANCE, DEFAULT_FINANCE, setFinance, financed, estPayment, maxPriceFor, explainOrder, toCars, search, rank, facets, constraintList, withoutConstraint, GOLD, HOLDOUT, scoreQuery };
+  return { FINANCE, DEFAULT_FINANCE, setFinance, financed, estPayment, maxPriceFor, explainOrder, toCars, search, rank, facets, constraintList, withoutConstraint, withoutBudget, GOLD, HOLDOUT, scoreQuery };
 });
