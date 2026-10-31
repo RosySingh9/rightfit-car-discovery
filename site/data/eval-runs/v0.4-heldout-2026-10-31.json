@@ -1,0 +1,195 @@
+{
+ "run_at": "2026-10-31T16:28:50.949Z",
+ "set": "holdout",
+ "need": {
+  "fit": 0,
+  "slots": 0,
+  "pct": 0,
+  "n": 0
+ },
+ "spec": {
+  "fit": 0,
+  "slots": 0,
+  "pct": 0,
+  "n": 0
+ },
+ "buyer": {
+  "fit": 25,
+  "slots": 29,
+  "pct": 0.8620689655172413,
+  "n": 6
+ },
+ "results": [
+  {
+   "id": "H1",
+   "style": "buyer",
+   "q": "need a car that takes me to work and do groceries, good bluetooth for calls, no fancy add-ons",
+   "results": 503,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": false,
+   "askedRight": false,
+   "showedNamed": false,
+   "available": 469,
+   "recall": 0.9168443496801706,
+   "slots": 5,
+   "fit": 4,
+   "scored": true,
+   "understood": "A car for commuting to work and grocery shopping with good Bluetooth for calls and no fancy add-ons.",
+   "filters": [
+    "Adaptive cruise"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "fancy add-ons"
+   ],
+   "clarified": false,
+   "question": null
+  },
+  {
+   "id": "H2",
+   "style": "buyer",
+   "q": "car for family plus my own use, smooth ride, safe for kids, big enough for family but small enough to drive to work",
+   "results": 374,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "askedRight": false,
+   "respectedNever": true,
+   "available": 519,
+   "recall": 0.720616570327553,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A safe car for family use that is also suitable for commuting.",
+   "filters": [
+    "SUV or Sedan",
+    "Not Minivan or Pickup",
+    "Collision braking",
+    "Lane departure",
+    "Blind-spot monitor"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "smooth ride"
+   ],
+   "clarified": false,
+   "question": null
+  },
+  {
+   "id": "H3",
+   "style": "buyer",
+   "q": "a small van to bring the whole family on trips, at least 8 seats",
+   "results": 23,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 23,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A small van with at least 8 seats for family trips.",
+   "filters": [
+    "8+ seats",
+    "Third row",
+    "Minivan"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false,
+   "question": null
+  },
+  {
+   "id": "H4",
+   "style": "buyer",
+   "q": "my first car, easy to drive and navigate new routes, safe and comfortable, affordable",
+   "results": 470,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "askedRight": false,
+   "available": 519,
+   "recall": 0.8131021194605009,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A safe and comfortable first car that is easy to drive and affordable.",
+   "filters": [
+    "Collision braking",
+    "Lane departure",
+    "Blind-spot monitor"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "easy to drive",
+    "navigate new routes",
+    "comfortable"
+   ],
+   "clarified": false,
+   "question": null
+  },
+  {
+   "id": "H5",
+   "style": "buyer",
+   "q": "I want something under 20k, safe and low maintenance, Toyota Honda or Tesla, not a Kia",
+   "results": 1,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "respectedNever": true,
+   "available": 4,
+   "recall": 0.25,
+   "slots": 4,
+   "fit": 1,
+   "scored": true,
+   "understood": "A safe car under $20,000 from Toyota, Honda, or Tesla, not a Kia.",
+   "filters": [
+    "Under $20,000",
+    "Toyota or Honda or Tesla",
+    "Not Kia",
+    "Collision braking",
+    "Lane departure",
+    "Blind-spot monitor"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "low maintenance"
+   ],
+   "clarified": false,
+   "question": null
+  },
+  {
+   "id": "H6",
+   "style": "buyer",
+   "q": "I want to buy an EV, extremely safe, not sure it fits my budget",
+   "results": 44,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "askedRight": true,
+   "available": 44,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "An electric vehicle that is extremely safe.",
+   "filters": [
+    "Electric",
+    "Collision braking",
+    "Lane departure",
+    "Blind-spot monitor"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "budget details"
+   ],
+   "clarified": true,
+   "question": "What is your budget range?"
+  }
+ ]
+}
