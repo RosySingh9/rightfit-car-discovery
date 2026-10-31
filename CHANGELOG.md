@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.6 · Trims, compare and a fair order · 2026-10-31
+
+**Added**
+- Trim level (base, mid or top) in the reference specs, the pipeline and the inventory. "No fancy add-ons" or "basic" now ranks base and mid trims first instead of the cheapest car.
+- A compare view: tick up to 3 cars to see price, estimated payment, mileage, seats, fuel economy or range, power, tow rating, cargo and standard safety features side by side, with the best value in each row marked. Two of six buyers asked for this.
+- Fair-order guardrails: results are ranked only by the shopper's stated preferences and each car's own data. No paid placement, no shopper profile, nothing inferred. The page shows the sort order above the results.
+- `tests/engine.test.js`: 12 automated tests (no model calls), including "not a minivan never returns a minivan", "why this car only states listing facts", payment math, and "nothing outside the stated intent changes the order". A GitHub Action runs them on every push.
+
+## v0.5 · Payments you control · 2026-10-31
+
+**Added**
+- Editable payment assumptions: down payment, trade-in, term and APR. Every car shows an estimated monthly payment that updates as they change.
+- "What can I afford?": enter a monthly payment you're comfortable with to see the price it covers, then show cars at that payment. A monthly budget replaces any sticker-price limit.
+- Clear limits on the page: estimates are for comparison and aren't a credit offer. RightFit never asks about or guesses income or credit. One buyer asked for an income-based tool; I chose a payment the shopper picks instead, because a lender's search shouldn't infer anyone's finances.
+- Budget is no longer listed as something the agent "can't check"; it's always a question.
+
+Why now: 4 of 6 buyers couldn't work out a monthly payment or what they could afford online.
+
 ## v0.4.1 · What real buyers caught · 2026-10-31
 
 **Fixed (prompt rules, from the buyer interviews)**

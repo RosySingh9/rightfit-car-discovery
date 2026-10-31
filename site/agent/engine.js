@@ -6,11 +6,27 @@
   else root.RightFit = factory();
 })(typeof self !== "undefined" ? self : this, function () {
 
-  // Illustrative financing assumptions, always shown next to any payment.
-  const FINANCE = { down_pct: 0.10, apr: 0.079, months: 60 };
-  function estPayment(price) {
-    const P = price * (1 - FINANCE.down_pct), r = FINANCE.apr / 12, n = FINANCE.months;
-    return Math.round(P * r / (1 - Math.pow(1 + r, -n)));
+  // v0.5: financing assumptions the shopper can edit. Defaults are illustrative and always shown next to any payment.
+  // The same assumptions apply to every car and every shopper; nothing about the shopper is inferred.
+  const DEFAULT_FINANCE = { down_pct: 0.10, trade_in: 0, apr: 0.079, months: 60 };
+  const FINANCE = Object.assign({}, DEFAULT_FINANCE);
+  function setFinance(f) {
+    for (const k of Object.keys(DEFAULT_FINANCE)) if (f && f[k] != null && isFinite(f[k])) FINANCE[k] = Math.max(0, Number(f[k]));
+    FINANCE.months = Math.min(96, Math.max(12, Math.round(FINANCE.months)));
+    FINANCE.down_pct = Math.min(0.9, FINANCE.down_pct);
+    return Object.assign({}, FINANCE);
+  }
+  function financed(price, f = FINANCE) { return Math.max(0, price * (1 - f.down_pct) - f.trade_in); }
+  function estPayment(price, f = FINANCE) {
+    const P = financed(price, f), n = f.months, r = f.apr / 12;
+    if (!P) return 0;
+    return Math.round(r ? P * r / (1 - Math.pow(1 + r, -n)) : P / n);
+  }
+  // "What can I afford?": the highest price whose estimated payment fits a monthly amount the shopper chose.
+  function maxPriceFor(payment, f = FINANCE) {
+    const n = f.months, r = f.apr / 12;
+    const P = r ? payment * (1 - Math.pow(1 + r, -n)) / r : payment * n;
+    return Math.round((P + f.trade_in) / (1 - f.down_pct));
   }
 
   function toCars(inv) {
@@ -59,11 +75,23 @@
     price_low: (c) => c.price, miles_low: (c) => c.miles, newest: (c) => -c.year,
     mpg_high: (c) => -(c.powertrain === "electric" ? 100 : (c.mpg || 0)), hp_high: (c) => -(c.hp || 0),
     cargo_high: (c) => -(c.cargo_cuft || 0), tow_high: (c) => -(c.tow_lbs || 0), range_high: (c) => -(c.ev_range || 0),
-    safety_features: (c) => -((c.aeb || 0) + (c.lane_departure || 0) + (c.blind_spot || 0) + (c.adaptive_cruise || 0))
+    safety_features: (c) => -((c.aeb || 0) + (c.lane_departure || 0) + (c.blind_spot || 0) + (c.adaptive_cruise || 0)),
+    base_trim: (c) => ({ base: 0, mid: 1, top: 2 })[c.trim_tier] ?? 1
   };
+  const SORT_LABELS = {
+    price_low: "lowest price", miles_low: "fewest miles", newest: "newest", mpg_high: "best fuel economy", hp_high: "most power",
+    cargo_high: "most cargo space", tow_high: "highest tow rating", range_high: "longest range", safety_features: "most safety features",
+    base_trim: "base and mid trims before top trims"
+  };
+  // v0.6 responsible ranking: the order depends only on the shopper's stated preferences and the car's own data.
+  // No dealer payments, no shopper profile, no inferred traits. This line is shown to the shopper.
+  function explainOrder(sortBy) {
+    const keys = [...new Set([...(sortBy || []).filter((k) => SORT_FNS[k]), "price_low", "miles_low"])];
+    return "Sorted by " + keys.map((k) => SORT_LABELS[k]).join(", then ") + ". Nothing else affects the order: no paid placement and nothing about you.";
+  }
 
   function rank(cars, sortBy) {
-    const keys = [...(sortBy || []).filter((k) => SORT_FNS[k]), "price_low", "miles_low"];
+    const keys = [...new Set([...(sortBy || []).filter((k) => SORT_FNS[k]), "price_low", "miles_low"])];
     return cars.slice().sort((a, b) => {
       for (const k of keys) { const d = SORT_FNS[k](a) - SORT_FNS[k](b); if (d) return d; }
       return 0;
@@ -83,7 +111,6 @@
     if ((h.features || []).includes("aeb") || (sortBy || []).includes("safety_features")) bits.push("collision braking standard");
     if ((h.features || []).includes("lane_departure")) bits.push("lane departure standard");
     if ((h.features || []).includes("blind_spot")) bits.push("blind-spot monitor standard");
-    if (h.monthly_payment_max != null) bits.push(`about $${fmt(estPayment(c.price))}/mo*`);
     if (h.miles_max != null || (sortBy || []).includes("miles_low")) bits.push(`${fmt(c.miles)} miles`);
     if (!bits.length) bits.push(`${fmt(c.miles)} miles`, c.powertrain);
     return bits.join(" · ");
@@ -125,7 +152,11 @@
       unknownDrive = cars.filter((c) => c.drivetrain == null && others.every((k) => k.test(c))).length;
     }
     const ranked = rank(matches, intent.sort_by);
+    // Budget is a question, never a "can't check" item.
+    const unsupported = (intent.unsupported || []).filter((u) => !/budget|price|payment|afford/i.test(u));
     return {
+      unsupported,
+      order: explainOrder(intent.sort_by),
       constraints: constraintList(h).map(({ key, label }) => ({ key, label })),
       relaxed,
       count: ranked.length,
@@ -216,5 +247,5 @@
     return row;
   }
 
-  return { FINANCE, estPayment, toCars, search, rank, facets, constraintList, withoutConstraint, GOLD, HOLDOUT, scoreQuery };
+  return { FINANCE, DEFAULT_FINANCE, setFinance, financed, estPayment, maxPriceFor, explainOrder, toCars, search, rank, facets, constraintList, withoutConstraint, GOLD, HOLDOUT, scoreQuery };
 });

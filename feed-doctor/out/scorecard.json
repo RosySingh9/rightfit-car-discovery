@@ -354,13 +354,13 @@
    "caught": 20
   },
   {
-   "issue_type": "model_typo",
+   "issue_type": "stale_listing",
    "planted": 11,
    "flagged": 11,
    "caught": 11
   },
   {
-   "issue_type": "stale_listing",
+   "issue_type": "model_typo",
    "planted": 11,
    "flagged": 11,
    "caught": 11

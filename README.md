@@ -40,8 +40,8 @@ Shoppers describe **needs**: "twins on the way", "tow my track car", "not a mini
 | **v0.2.1** | Parsing fixes and sanity gates from the hold-out dealer | ✅ Shipped |
 | **v0.3** | Discovery agent: one sentence → filters and facets → ranked results with "why this car"; live evaluation page | ✅ Shipped |
 | **v0.4** | 6 buyer interviews; held-out test in their own words; fixes in v0.4.1 | ✅ Shipped |
-| v0.5 | Search by monthly payment; "what can I afford?" helper | Next |
-| v0.6 | Trim preference, compare view, responsible ranking | Planned |
+| **v0.5** | Editable payment assumptions; "what can I afford?" helper | ✅ Shipped |
+| **v0.6** | Trim preference, compare view, fair-order guardrails, automated tests | ✅ Shipped |
 
 See [CHANGELOG.md](CHANGELOG.md) and [ROADMAP.md](ROADMAP.md).
 
@@ -52,7 +52,14 @@ research/     shopper letters (coded), intent map, buyer interview guide
 audit/        test queries, raw results, scoring, findability report
 docs/         PR/FAQ, agent design
 feed-doctor/  inventory pipeline (DuckDB SQL), synthetic feeds, evals, scorecard
+tests/        automated engine tests (run on every push)
 site/         the project page, the agent (api/, agent/), evaluation and SQL explorer pages
+```
+
+## Run the tests
+
+```bash
+node --test tests/*.test.js
 ```
 
 ## Principles

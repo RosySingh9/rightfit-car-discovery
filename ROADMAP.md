@@ -14,15 +14,16 @@ Each item becomes a GitHub issue labeled `now`, `next` or `later`. Priorities co
 - [x] Facets from aggregations; ranking; "why this car" from listing facts
 - [x] Live evaluation page on the 20 v0.1 queries
 
-## Now (v0.4: prove it)
-- [ ] Publish the first evaluation run on the page
-- [ ] Held-out query set written by someone else (buyer interviews)
-- [ ] Fresh hold-out dealer feed (feed E)
-- [ ] Evaluation on every change (GitHub Actions) and a scoreboard by version
-- [ ] Run 5 buyer interviews; update the intent map
-- [ ] VIN decode for drivetrain once real VINs are available (NHTSA vPIC)
+## Done (v0.4–v0.6)
+- [x] 6 buyer interviews and a held-out test in their own words
+- [x] Budget question, safer "safe", no invented add-ons (v0.4.1)
+- [x] Editable payment assumptions and a "what can I afford?" helper (v0.5)
+- [x] Trim preference, compare view, fair-order guardrails, automated tests on every push (v0.6)
 
-## Later (v0.5–v0.6: finance and trust)
-- [ ] Search by monthly payment with visible, editable assumptions
-- [ ] Responsible-ranking guardrails and an explainability panel
-- [ ] Re-run the audit across more sites and markets
+## If this went to production next
+- [ ] Real dealer feeds; VIN decoding (NHTSA vPIC) for drivetrain, body and trim
+- [ ] CarPlay and Bluetooth, navigation and EV-charging data
+- [ ] Availability at the nearest dealer
+- [ ] Rates from an actual lender, with a soft-pull pre-qualification the shopper opts into
+- [ ] A fresh set of buyers for the next held-out test
+- [ ] Fair-order and evaluation checks on every model or prompt change

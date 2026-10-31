@@ -179,6 +179,25 @@ ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:70
 .facet .ct{font-family:var(--mono);color:var(--muted)}
 .smsg{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
 .smsg.err{color:var(--bad)}
+
+/* v0.5 payment panel, v0.6 compare */
+.money{border:1px solid var(--rule);padding:10px 12px;background:var(--chip)}
+.money summary{cursor:pointer;font:600 .92rem var(--body);text-transform:none;letter-spacing:0;font-family:var(--body)}
+.money-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:10px;margin-top:10px}
+.money label{display:grid;gap:4px;font:500 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.money input,.money select{font:400 .95rem var(--body);padding:6px 8px;border:1px solid var(--rule);background:var(--label);color:var(--ink);width:100%;min-width:0}
+.afford{display:grid;gap:6px;margin-top:12px}
+.afford-row{display:flex;gap:6px}
+.afford-row input{flex:1}
+.afford-row button,#cmp-clear{font:600 .85rem var(--body);border:2px solid var(--ink);background:var(--ink);color:var(--label);padding:6px 12px;cursor:pointer}
+.car .pay{font-family:var(--mono);font-size:.78rem}
+.car .cmp{display:flex;gap:6px;align-items:center;font-size:.78rem;color:var(--muted);cursor:pointer}
+.compare-box{border:2px solid var(--ink);background:var(--label);display:grid;gap:8px;padding:12px}
+.compare-box table{border-collapse:collapse;width:100%;min-width:480px;font-size:.84rem}
+.compare-box th,.compare-box td{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+.compare-box th{font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.compare-box td.best{font-weight:600;color:var(--good)}
+.order{font-size:.8rem;color:var(--muted)}
 details{border-top:1px solid var(--rule);padding-top:12px}
 summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em}
 details .stack{margin-top:12px}
@@ -193,11 +212,11 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 <div class="wrap">
 
 <header class="hero">
-  <div class="meta"><span>RightFit</span><span>Release v0.4 · Real buyers</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
+  <div class="meta"><span>RightFit</span><span>Release v0.6 · Complete</span><span>Oct 25–31, 2026</span><span>Rosy Singh</span></div>
   <h1>Can a shopper describe their life in one sentence and find the right car?</h1>
   <p class="thesis">Vehicle search works when shoppers talk in filters. <em>It breaks when they talk like people.</em></p>
-  <p class="lede">RightFit is an AI discovery agent I'm building in public, release by release. v0.1 looked at how real shoppers describe what they want and whether a major retailer's search box understands them. v0.2 asks whether the inventory data can answer them at all.</p>
-  <p class="status-line">Building in public · 4 of 6 releases shipped · v0.4 tests the agent on real buyers</p>
+  <p class="lede">RightFit is an AI discovery agent I built in public over one week, in six releases: research on how shoppers talk, an inventory data pipeline, the agent, honest evaluations against a major retailer's search, a test on six real buyers, and the finance-aware search those buyers asked for.</p>
+  <p class="status-line">Built in public · 6 of 6 releases shipped · try it below, payments included</p>
   <div class="cta">
     <a class="primary" href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">View the code on GitHub</a>
     <a href="explorer.html">Explore the data with SQL</a>
@@ -206,7 +225,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 </header>
 
 <section class="searchbox" aria-labelledby="h-try">
-  <div class="sticker-head"><h2 id="h-try">Try RightFit</h2><span class="eyebrow">v0.3 · 567 synthetic listings</span></div>
+  <div class="sticker-head"><h2 id="h-try">Try RightFit</h2><span class="eyebrow">v0.6 · 567 synthetic listings</span></div>
   <div class="sticker-body">
     <form class="sform" id="sform" role="search">
       <label for="q" class="sr" style="position:absolute;left:-9999px">Describe the car you need</label>
@@ -214,6 +233,21 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       <button type="submit">Search</button>
     </form>
     <div class="examples" id="examples" aria-label="Example searches"></div>
+    <details class="money" id="money">
+      <summary>Payment assumptions and "what can I afford?"</summary>
+      <div class="money-grid">
+        <label>Down payment<select id="f-down"><option value="0">0%</option><option value="0.05">5%</option><option value="0.1" selected>10%</option><option value="0.2">20%</option></select></label>
+        <label>Trade-in value<input id="f-trade" type="number" min="0" step="500" value="0" inputmode="numeric"></label>
+        <label>Term<select id="f-term"><option value="36">36 months</option><option value="48">48 months</option><option value="60" selected>60 months</option><option value="72">72 months</option></select></label>
+        <label>APR %<input id="f-apr" type="number" min="0" max="30" step="0.1" value="7.9" inputmode="decimal"></label>
+      </div>
+      <div class="afford">
+        <label for="f-monthly">A monthly payment I'm comfortable with</label>
+        <div class="afford-row"><input id="f-monthly" type="number" min="50" step="25" placeholder="e.g. 400" inputmode="numeric"><button type="button" id="f-go">Show cars</button></div>
+        <p class="smsg" id="f-out">Enter an amount to see the price range it covers with the assumptions above.</p>
+      </div>
+      <p class="small muted">Estimates for comparison only, not a credit offer. Your real rate depends on your credit, which RightFit never asks about or guesses. Change any assumption and every payment updates.</p>
+    </details>
     <div id="sout" class="stack" aria-live="polite"></div>
     <details class="how-it-works">
       <summary>How it works</summary>
@@ -222,10 +256,13 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
         <li><strong>Find:</strong> plain code filters and ranks the cleaned inventory from v0.2. The model never picks cars or states specs.</li>
         <li><strong>Explain:</strong> each "why" line is built only from the listing's own data, so it can't invent a feature.</li>
         <li><strong>Be honest:</strong> if nothing matches, it says which requirement it loosened. If you ask for something the data can't check, like leather seats, it says so.</li>
-        <li><strong>Measured:</strong> the 20 shopper queries from v0.1 run through the agent and are scored the same way CarMax was. <a href="eval.html">Run the evaluation</a>.</li>
+        <li><strong>Payments you control:</strong> every car shows an estimated monthly payment. Change the down payment, trade-in, term or rate, or enter a payment you're comfortable with to see what it covers. RightFit never asks about or guesses income or credit.</li>
+        <li><strong>Compare:</strong> tick up to three cars to see them side by side, with the best value in each row marked.</li>
+        <li><strong>Fair order:</strong> results are ranked only by what you asked for and each car's own data, never by paid placement or anything about you. The sort order is shown above the results, and an automated test checks it on every change.</li>
+        <li><strong>Measured:</strong> the 20 shopper queries from v0.1 and 6 real-buyer searches run through the agent and are scored live. <a href="eval.html">Run the evaluation</a>.</li>
       </ul></div>
     </details>
-    <p class="small muted">Synthetic inventory with illustrative specs. *Payment estimates assume 10% down, 60 months and 7.9% APR, for illustration only; they are not a credit offer.</p>
+    <p class="small muted">Synthetic inventory with illustrative specs. Payment estimates use the assumptions you set (10% down, 60 months, 7.9% APR to start), for comparison only; they are not a credit offer.</p>
   </div>
 </section>
 
@@ -453,7 +490,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 
 <section class="two" aria-label="Plan">
   <div class="stack">
-    <span class="eyebrow">What I'm building</span>
+    <span class="eyebrow">What I built</span>
     <h2>The agent</h2>
     <ol class="steps">
       <li><div><strong>Understand.</strong> Turn one message into a structured intent: constraints, exclusions, preferences, context.</div></li>
@@ -475,9 +512,10 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       <div class="rel"><span class="ver">v0.3.2</span><span>Fixes the minivan ranking found in run 2</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.4</span><span>6 buyer interviews; held-out test in their words</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.4.1</span><span>Budget question, safer "safe", no invented add-ons</span><span class="status shipped">Shipped</span></div>
-      <div class="rel"><span class="ver">v0.5</span><span>Search by monthly payment; "what can I afford?" helper</span><span class="status">Next</span></div>
-      <div class="rel"><span class="ver">v0.6</span><span>Trim preference, compare view, responsible ranking</span><span class="status">Planned</span></div>
+      <div class="rel"><span class="ver">v0.5</span><span>Editable payment assumptions; "what can I afford?" helper</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.6</span><span>Trim preference, compare view, fair-order guardrails, automated tests</span><span class="status shipped">Shipped</span></div>
     </div>
+    <p class="small"><strong>If this were going to production next:</strong> real dealer feeds with VIN decoding for drivetrain and trim; CarPlay, Bluetooth and EV-charging data; availability at the nearest dealer; rates from an actual lender; a fresh set of buyers for the next held-out test; and the fair-order test run against every model change.</p>
   </div>
 </section>
 
@@ -531,8 +569,12 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
   const esc = (x) => String(x).replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const money = (n) => "$" + Math.round(n).toLocaleString("en-US");
   const EX = ["3 row SUV under $45k, not a minivan", "truck that can tow 7000 lbs", "safe car for my teenager",
-              "electric SUV with 300 miles of range", "Highlander hybrid or Grand Highlander", "car under $400 a month"];
+              "electric SUV with 300 miles of range", "small van for family trips, at least 8 seats", "car under $400 a month"];
+  const BLANK = { price_max: null, price_min: null, monthly_payment_max: null, year_min: null, miles_max: null, hp_min: null, tow_min_lbs: null,
+    ev_range_min: null, mpg_min: null, cargo_min_cuft: null, seats_min: null, third_row: null, transmission: null, body_types: [], exclude_body_types: [],
+    drivetrains: [], powertrains: [], exclude_powertrains: [], makes: [], exclude_makes: [], models: [], features: [] };
   let CARS = null, state = null, shown = 8;
+  const picked = new Map();
   const out = $("#sout");
 
   $("#examples").innerHTML = EX.map((e) => `<button type="button">${esc(e)}</button>`).join("");
@@ -547,6 +589,27 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     return CARS;
   }
 
+  // ---- v0.5 payment assumptions ----
+  function readFinance(){
+    return RightFit.setFinance({ down_pct: +$("#f-down").value, trade_in: +$("#f-trade").value || 0, months: +$("#f-term").value, apr: (+$("#f-apr").value || 0) / 100 });
+  }
+  function affordText(){
+    const m = +$("#f-monthly").value;
+    if (!m) { $("#f-out").textContent = "Enter an amount to see the price range it covers with the assumptions above."; return; }
+    $("#f-out").textContent = `About ${money(m)}/mo covers a car up to about ${money(RightFit.maxPriceFor(m))} with these assumptions.`;
+  }
+  ["#f-down", "#f-trade", "#f-term", "#f-apr"].forEach((id) => $(id).addEventListener("input", () => { readFinance(); affordText(); if (state) draw(); }));
+  $("#f-monthly").addEventListener("input", affordText);
+  $("#f-go").onclick = async () => {
+    const m = +$("#f-monthly").value; if (!m) { affordText(); return; }
+    readFinance();
+    try { await inventory(); } catch (e) { out.innerHTML = `<p class="smsg err">${esc(e.message)}</p>`; return; }
+    // A monthly budget replaces any sticker-price limit, so the two never fight each other.
+    if (state) { state.intent.hard.monthly_payment_max = m; state.intent.hard.price_max = null; }
+    else state = { q: "", intent: { understood: `Cars with an estimated payment of about ${money(m)} a month or less.`, hard: { ...BLANK, monthly_payment_max: m }, sort_by: [], unsupported: [] } };
+    shown = 8; draw();
+  };
+
   async function go(q){
     q = (q || "").trim();
     if (!q) { out.innerHTML = '<p class="smsg">Type what you need, or pick an example.</p>'; return; }
@@ -556,8 +619,8 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       let body = null; try { body = await r.json(); } catch (_) {}
       if (!r.ok || !body || !body.intent) throw new Error((body && body.error) || "Live search isn't available here. It runs on the published site.");
       state = { q, intent: body.intent };
-      shown = 8;
-      draw();
+      shown = 8; picked.clear();
+      readFinance(); draw();
     } catch (e) {
       out.innerHTML = `<p class="smsg err">${esc(e.message)}</p>`;
     }
@@ -574,20 +637,23 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     if (intent.needs_clarification && intent.clarifying_question) {
       h += `<div class="notice ask"><strong>${esc(intent.clarifying_question)}</strong><div class="opts">` +
         (intent.clarify_options || []).map((o) => `<button type="button" data-o="${esc(o)}">${esc(o)}</button>`).join("") +
-        "</div><span class=\"small muted\">Meanwhile, here are my best guesses.</span></div>";
+        '</div><span class="small muted">Meanwhile, here are my best guesses.</span></div>';
     }
     if (res.relaxed.length) h += `<div class="notice warn">No exact matches in stock. To show the closest cars, I loosened: <strong>${esc(res.relaxed.join(", "))}</strong>.</div>`;
-    if ((intent.unsupported || []).length) h += `<div class="notice">I can't check <strong>${esc(intent.unsupported.join(", "))}</strong> yet. That information isn't in the inventory data.</div>`;
+    if (res.unsupported.length) h += `<div class="notice">I can't check <strong>${esc(res.unsupported.join(", "))}</strong> yet. That information isn't in the inventory data.</div>`;
     if (res.unknownDrive) h += `<div class="notice">${res.unknownDrive} more listing${res.unknownDrive === 1 ? "" : "s"} might match, but the dealer didn't say which drivetrain. That gap is in the v0.2 scorecard.</div>`;
-    h += `<div class="sgrid"><div class="stack"><p class="smsg">${res.count} car${res.count === 1 ? "" : "s"}${res.count > shown ? `, showing ${shown}` : ""}</p><div class="cars">`;
+    const F = RightFit.FINANCE;
+    h += `<div class="sgrid"><div class="stack"><p class="smsg">${res.count} car${res.count === 1 ? "" : "s"}${res.count > shown ? `, showing ${shown}` : ""}</p><p class="order">${esc(res.order)}</p><div class="cars">`;
     for (const r of res.results.slice(0, shown)) {
-      const c = r.car;
+      const c = r.car, on = picked.has(c.id);
       h += `<article class="car"><span class="name">${c.year} ${esc(c.make)} ${esc(c.model)} ${esc(c.trim || "")}</span>
-        <span class="price">${money(c.price)}</span><span class="whyline">${esc(r.why)}</span>
-        <span class="meta">${Math.round(c.miles).toLocaleString("en-US")} mi · ${esc(c.body_type)} · ${esc(c.drivetrain || "drivetrain unknown")} · ${esc(c.seller)}</span></article>`;
+        <span class="price">${money(c.price)}</span><span class="pay">about ${money(RightFit.estPayment(c.price))}/mo*</span><span class="whyline">${esc(r.why)}</span>
+        <span class="meta">${Math.round(c.miles).toLocaleString("en-US")} mi · ${esc(c.body_type)} · ${esc(c.drivetrain || "drivetrain unknown")} · ${esc(c.seller)}</span>
+        <label class="cmp"><input type="checkbox" data-id="${esc(c.id)}"${on ? " checked" : ""}${!on && picked.size >= 3 ? " disabled" : ""}> Compare</label></article>`;
     }
     h += "</div>";
-    if (res.count > shown) h += '<button type="button" class="examples-more" id="more" style="justify-self:start;font:600 .85rem var(--body);border:2px solid var(--ink);background:var(--label);color:var(--ink);padding:6px 12px;cursor:pointer">Show more</button>';
+    if (res.count > shown) h += '<button type="button" id="more" style="justify-self:start;font:600 .85rem var(--body);border:2px solid var(--ink);background:var(--label);color:var(--ink);padding:6px 12px;cursor:pointer">Show more</button>';
+    h += `<p class="small muted">*${Math.round(F.down_pct * 100)}% down${F.trade_in ? `, ${money(F.trade_in)} trade-in` : ""}, ${F.months} months, ${(F.apr * 100).toFixed(1)}% APR. Change these under "Payment assumptions".</p>`;
     h += '</div><aside class="facets" aria-label="Refine">';
     const names = { body_type: "Body type", drivetrain: "Drivetrain", powertrain: "Powertrain", price: "Price" };
     for (const [k, rows] of Object.entries(res.facets)) {
@@ -596,9 +662,10 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
         `<button type="button" data-f="${k}" data-v="${esc(v)}"${k === "price" || v === "Unknown" ? " disabled" : ""}><span>${esc(v)}</span><span class="ct">${n}</span></button>`).join("") + "</div>";
     }
     h += "</aside></div>";
+    h += compareTable();
     out.innerHTML = h;
     out.querySelectorAll(".applied button").forEach((b) => b.onclick = () => { state.intent = RightFit.withoutConstraint(state.intent, b.dataset.k); draw(); });
-    out.querySelectorAll(".opts button").forEach((b) => b.onclick = () => { const q2 = state.q + ". " + b.dataset.o; $("#q").value = q2; go(q2); });
+    out.querySelectorAll(".opts button").forEach((b) => b.onclick = () => { const q2 = (state.q ? state.q + ". " : "") + b.dataset.o; $("#q").value = q2; go(q2); });
     out.querySelectorAll(".facet button:not([disabled])").forEach((b) => b.onclick = () => {
       const hard = state.intent.hard, v = b.dataset.v;
       if (b.dataset.f === "body_type") hard.body_types = [v.toLowerCase()];
@@ -606,7 +673,41 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       if (b.dataset.f === "powertrain") hard.powertrains = [v.toLowerCase()];
       draw();
     });
+    out.querySelectorAll(".cmp input").forEach((x) => x.onchange = () => {
+      const car = CARS.find((c) => c.id === x.dataset.id);
+      if (x.checked) picked.set(car.id, car); else picked.delete(car.id);
+      draw();
+    });
+    const clr = out.querySelector("#cmp-clear"); if (clr) clr.onclick = () => { picked.clear(); draw(); };
     const more = out.querySelector("#more"); if (more) more.onclick = () => { shown += 8; draw(); };
+  }
+
+  // ---- v0.6 compare view: up to 3 cars side by side, with the best value in each row marked ----
+  function compareTable(){
+    if (picked.size < 2) return picked.size === 1 ? '<p class="smsg">Pick one or two more cars to compare.</p>' : "";
+    const cars = [...picked.values()];
+    const rows = [
+      ["Price", (c) => c.price, (v) => money(v), "low"],
+      ["Est. payment*", (c) => RightFit.estPayment(c.price), (v) => money(v) + "/mo", "low"],
+      ["Year", (c) => c.year, (v) => v, "high"],
+      ["Miles", (c) => c.miles, (v) => Math.round(v).toLocaleString("en-US"), "low"],
+      ["Body", (c) => c.body_type, (v) => v], ["Drivetrain", (c) => c.drivetrain || "unknown", (v) => v],
+      ["Powertrain", (c) => c.powertrain, (v) => v], ["Trim level", (c) => c.trim_tier || "unknown", (v) => v],
+      ["Seats", (c) => c.seats, (v) => v, "high"],
+      ["Fuel economy / range", (c) => c.powertrain === "electric" ? c.ev_range : c.mpg, (v) => v, "high"],
+      ["Horsepower", (c) => c.hp, (v) => v, "high"], ["Tow rating (lb)", (c) => c.tow_lbs, (v) => (v || 0).toLocaleString("en-US"), "high"],
+      ["Cargo (cu ft)", (c) => c.cargo_cuft, (v) => v ?? "n/a", "high"],
+      ["Safety features standard", (c) => (c.aeb || 0) + (c.lane_departure || 0) + (c.blind_spot || 0) + (c.adaptive_cruise || 0), (v) => v + " of 4", "high"]
+    ];
+    let h = '<section class="compare-box" aria-label="Compare"><div class="row" style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><strong>Compare</strong><button type="button" id="cmp-clear">Clear</button></div><div style="overflow-x:auto"><table><thead><tr><th></th>' +
+      cars.map((c) => `<th>${c.year} ${esc(c.make)} ${esc(c.model)} ${esc(c.trim || "")}</th>`).join("") + "</tr></thead><tbody>";
+    for (const [label, get, fmt, better] of rows) {
+      const vals = cars.map(get);
+      const nums = vals.filter((v) => typeof v === "number");
+      const best = better && nums.length > 1 ? (better === "low" ? Math.min(...nums) : Math.max(...nums)) : null;
+      h += `<tr><th>${label}</th>` + vals.map((v) => `<td${best != null && v === best && new Set(nums).size > 1 ? ' class="best"' : ""}>${esc(fmt(v))}</td>`).join("") + "</tr>";
+    }
+    return h + '</tbody></table></div><p class="small muted">Values come from the listing and the reference specs (illustrative). Green marks the best value in a row.</p></section>';
   }
 })();
 </script>

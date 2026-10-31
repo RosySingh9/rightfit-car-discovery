@@ -1,0 +1,487 @@
+{
+ "run_at": "2026-10-30T00:00:35.199Z",
+ "need": {
+  "fit": 53,
+  "slots": 58,
+  "pct": 0.9137931034482759,
+  "n": 13
+ },
+ "spec": {
+  "fit": 15,
+  "slots": 15,
+  "pct": 1,
+  "n": 3
+ },
+ "results": [
+  {
+   "id": "Q01",
+   "style": "need",
+   "q": "3 row SUV under $45k not a minivan",
+   "results": 135,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 135,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A 3-row SUV under $45,000 (not a minivan).",
+   "filters": [
+    "Under $45,000",
+    "Third row",
+    "SUV",
+    "Not Minivan"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q02",
+   "style": "spec",
+   "q": "fun AWD sedan for snowy commute under $25k",
+   "results": 6,
+   "relaxed": true,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 0,
+   "slots": 0,
+   "fit": 0,
+   "scored": false,
+   "understood": "A fun AWD sedan for a snowy commute under $25,000.",
+   "filters": [
+    "Under $25,000",
+    "Sedan",
+    "AWD"
+   ],
+   "relaxedWhat": [
+    "Under $25,000"
+   ],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q03",
+   "style": "need",
+   "q": "first car for teen with automatic emergency braking and lane departure warning under $20k",
+   "results": 32,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 32,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A first car for a teen with automatic emergency braking and lane departure warning under $20,000.",
+   "filters": [
+    "Under $20,000",
+    "Collision braking",
+    "Lane departure"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q04",
+   "style": "need",
+   "q": "sports sedan 300 hp under $30k 2022 or newer",
+   "results": 1,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 1,
+   "recall": 1,
+   "slots": 1,
+   "fit": 1,
+   "scored": true,
+   "understood": "A sports sedan with at least 300 hp under $30,000 from 2022 or newer.",
+   "filters": [
+    "Under $30,000",
+    "2022 or newer",
+    "300+ hp",
+    "Sedan"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q05",
+   "style": "need",
+   "q": "quiet luxury sedan with massaging seats",
+   "results": 63,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "scored": false,
+   "understood": "A luxury sedan with massaging seats.",
+   "filters": [
+    "Sedan"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "massaging seats"
+   ],
+   "clarified": false
+  },
+  {
+   "id": "Q06",
+   "style": "need",
+   "q": "reliable AWD wagon that can tow a small trailer under $20k",
+   "results": 2,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 2,
+   "recall": 1,
+   "slots": 2,
+   "fit": 2,
+   "scored": true,
+   "understood": "A reliable AWD wagon that can tow a small trailer under $20,000.",
+   "filters": [
+    "Under $20,000",
+    "Tows 1,500+ lb",
+    "Wagon",
+    "AWD"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q07",
+   "style": "need",
+   "q": "reliable car good gas mileage leather seats low miles under $20k",
+   "results": 9,
+   "relaxed": true,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "available": 0,
+   "slots": 0,
+   "fit": 0,
+   "scored": false,
+   "understood": "A reliable car with good gas mileage, leather seats, low miles under $20,000.",
+   "filters": [
+    "Under $20,000",
+    "Under 50,000 miles",
+    "30+ mpg"
+   ],
+   "relaxedWhat": [
+    "Under 50,000 miles"
+   ],
+   "unsupported": [
+    "leather seats"
+   ],
+   "clarified": false
+  },
+  {
+   "id": "Q08",
+   "style": "need",
+   "q": "SUV that can tow a car and fits in a garage under $20k",
+   "results": 159,
+   "relaxed": true,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 0,
+   "slots": 0,
+   "fit": 0,
+   "scored": false,
+   "understood": "An SUV that can tow a car and fits in a garage under $20,000.",
+   "filters": [
+    "Under $20,000",
+    "Tows 3,500+ lb",
+    "SUV"
+   ],
+   "relaxedWhat": [
+    "Under $20,000"
+   ],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q09",
+   "style": "need",
+   "q": "4x4 for camping that can tow a trailer under $40k",
+   "results": 64,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 64,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A 4x4 vehicle for camping that can tow a trailer under $40,000.",
+   "filters": [
+    "Under $40,000",
+    "Tows 3,500+ lb",
+    "4WD or AWD"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q10",
+   "style": "need",
+   "q": "reliable automatic hatchback under $20k room for 2 dogs",
+   "results": 5,
+   "relaxed": true,
+   "extraFilters": [
+    "35+ cu ft cargo"
+   ],
+   "unneededQuestion": false,
+   "available": 5,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A reliable automatic hatchback under $20,000 with room for 2 dogs.",
+   "filters": [
+    "Under $20,000",
+    "35+ cu ft cargo",
+    "Automatic",
+    "Hatchback"
+   ],
+   "relaxedWhat": [
+    "35+ cu ft cargo"
+   ],
+   "unsupported": [
+    "reliability"
+   ],
+   "clarified": false
+  },
+  {
+   "id": "Q11",
+   "style": "need",
+   "q": "quiet hybrid that fits a stroller and is easy to park under $50k",
+   "results": 148,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 144,
+   "recall": 0.875,
+   "slots": 5,
+   "fit": 0,
+   "scored": true,
+   "understood": "A quiet hybrid that fits a stroller and is easy to park under $50,000.",
+   "filters": [
+    "Under $50,000",
+    "20+ cu ft cargo",
+    "Hybrid"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "quiet cabin",
+    "easy to park"
+   ],
+   "clarified": false
+  },
+  {
+   "id": "Q12",
+   "style": "need",
+   "q": "eco friendly family car for twins and a double stroller under $25k",
+   "results": 7,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 7,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "An eco-friendly family car that fits twins and a double stroller under $25,000.",
+   "filters": [
+    "Under $25,000",
+    "35+ cu ft cargo",
+    "Hybrid or Electric"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q13",
+   "style": "spec",
+   "q": "RAV4 hybrid under $30k",
+   "results": 20,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 23,
+   "recall": 0.8695652173913043,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A RAV4 Hybrid under $30,000.",
+   "filters": [
+    "Under $30,000",
+    "Toyota",
+    "RAV4 Hybrid"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q14",
+   "style": "need",
+   "q": "Highlander hybrid or Grand Highlander",
+   "results": 59,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 59,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A Highlander Hybrid or Grand Highlander.",
+   "filters": [
+    "Toyota",
+    "Highlander Hybrid or Grand Highlander or Grand Highlander Hybrid"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q15",
+   "style": "need",
+   "q": "car under $400 a month",
+   "results": 57,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 57,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A car under $400 a month.",
+   "filters": [
+    "About $400/mo or less"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q16",
+   "style": "need",
+   "q": "safe car for my teenager",
+   "results": 470,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 470,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A safe car for a teenager.",
+   "filters": [
+    "Collision braking",
+    "Lane departure",
+    "Blind-spot monitor"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": true
+  },
+  {
+   "id": "Q17",
+   "style": "need",
+   "q": "truck that can tow 7000 lbs",
+   "results": 36,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 36,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A truck that can tow 7000 lbs.",
+   "filters": [
+    "Tows 7,000+ lb",
+    "Pickup"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q18",
+   "style": "need",
+   "q": "electric SUV with 300 miles of range",
+   "results": 21,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 21,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "An electric SUV with 300 miles of range.",
+   "filters": [
+    "300+ mile range",
+    "SUV",
+    "Electric"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q19",
+   "style": "spec",
+   "q": "minivan with AWD",
+   "results": 6,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 6,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A minivan with AWD.",
+   "filters": [
+    "Minivan",
+    "AWD"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  },
+  {
+   "id": "Q20",
+   "style": "spec",
+   "q": "Toyota with third row and good gas mileage",
+   "results": 51,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 51,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A Toyota with a third row and good gas mileage.",
+   "filters": [
+    "30+ mpg",
+    "Third row",
+    "Toyota"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false
+  }
+ ]
+}

@@ -75,8 +75,8 @@ Caught 331 of 333; 1 false flags.
 | trim_missing | 23 | 23 | 23 |
 | odometer_km | 22 | 22 | 22 |
 | model_alias | 20 | 20 | 20 |
-| model_typo | 11 | 11 | 11 |
 | stale_listing | 11 | 11 | 11 |
+| model_typo | 11 | 11 | 11 |
 | vin_invalid | 10 | 8 | 8 |
 | price_placeholder | 6 | 6 | 6 |
 | mileage_implausible | 0 | 1 | 0 |

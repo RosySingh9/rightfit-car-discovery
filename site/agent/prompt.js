@@ -6,7 +6,7 @@ const BODY = ["suv", "sedan", "hatchback", "wagon", "minivan", "pickup"];
 const DRIVE = ["AWD", "4WD", "FWD", "RWD"];
 const POWER = ["gas", "hybrid", "plug-in hybrid", "electric"];
 const FEATURES = ["aeb", "lane_departure", "blind_spot", "adaptive_cruise"];
-const SORTS = ["price_low", "miles_low", "newest", "mpg_high", "hp_high", "cargo_high", "tow_high", "range_high", "safety_features"];
+const SORTS = ["price_low", "miles_low", "newest", "mpg_high", "hp_high", "cargo_high", "tow_high", "range_high", "safety_features", "base_trim"];
 
 const num = { type: ["number", "null"] };
 const list = (items) => ({ type: "array", items });
@@ -82,7 +82,7 @@ Rules:
   "newer" -> year_min 2023; "automatic emergency braking" or "collision braking" -> features ["aeb"]; "lane departure" -> features ["lane_departure"].
 - "safe" or "safe car" (no specifics) -> features ["aeb"] and sort_by ["safety_features"]. Only require lane departure or
   blind-spot monitoring when the shopper names them. Safety must not shrink a tight budget down to one or two cars.
-- "no fancy add-ons", "nothing fancy", "basic", "no extras" -> NO feature filters at all; sort_by ["price_low"].
+- "no fancy add-ons", "nothing fancy", "basic", "no extras" -> NO feature filters at all; sort_by ["base_trim", "price_low"].
   Never turn a request for fewer features into a required feature.
 - "affordable", "cheap" or "on a budget" with no number -> sort_by ["price_low"] and ask about budget.
 - Subjective words are never hard filters. They go in sort_by when they map to data ("cheap" -> price_low, "fun", "fast" or "powerful" -> hp_high,
