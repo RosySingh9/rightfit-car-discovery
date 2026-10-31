@@ -2,7 +2,7 @@
 
 **Question:** Before an AI agent can answer "truck that can tow 7,000 lbs", does the inventory even know each truck's tow rating?
 
-The v0.1 audit showed that many search failures were data failures: wrong body types, and no horsepower, tow rating or range to filter on. Feed Doctor takes messy dealer feeds and turns them into clean, enriched inventory the agent can reason over. It scores the result before and after, and it's evaluated like a model: once on problems it was designed for, and once on a hold-out dealer it has never seen.
+The v0.1 audit showed that many search failures were data failures: wrong body types, and no horsepower, tow rating or range to filter on. Feed Doctor takes messy dealer feeds and turns them into clean, enriched inventory the agent can reason over. It scores the result before and after, and it's evaluated like a model: once on problems it was designed for, and once on a unseen-dealer dealer it has never seen.
 
 All feeds are **synthetic**. Specs in `data/reference/trims.csv` are **illustrative**: close to published figures, but not verified, and not for purchase decisions.
 
@@ -18,20 +18,20 @@ All feeds are **synthetic**. Specs in `data/reference/trims.csv` are **illustrat
 
 **Detection on planted issues (feeds A–C): 331 of 333 caught, no false flags.** The 2 misses are VIN typos that happen to keep a valid check digit, a known blind spot of VIN check digits.
 
-**Hold-out dealer (feed D), with problem variants written after the rules: only 32 of 87 handled.** 23 of the 80 hold-out listings that reached the clean inventory had a wrong value. For example, "$34,895.00" became a $3,489,500 price, "13.0k mi" became 130 miles, and stale listings with US-style dates (MM/DD/YYYY) passed as fresh.
+**Unseen dealer (feed D, a held-out test), with problem variants written after the rules: only 32 of 87 handled.** 23 of the 80 unseen-dealer listings that reached the clean inventory had a wrong value. For example, "$34,895.00" became a $3,489,500 price, "13.0k mi" became 130 miles, and stale listings with US-style dates (MM/DD/YYYY) passed as fresh.
 
 ## v0.2.1 update (shipped with v0.3)
 
-I fixed what the hold-out exposed: prices with cents, "13.0k mi", two-digit years, US-format dates and more drivetrain patterns. I also added **sanity gates** that hold back any listing with an impossible price, year, mileage or date, whatever the parser did.
+I fixed what the unseen dealer exposed: prices with cents, "13.0k mi", two-digit years, US-format dates and more drivetrain patterns. I also added **sanity gates** that hold back any listing with an impossible price, year, mileage or date, whatever the parser did.
 
 | | v0.2 | v0.2.1 |
 |---|---|---|
-| Hold-out problems handled | 32 of 87 | **85 of 87** |
-| Bad hold-out listings published | 23 | **0** |
+| Unseen-dealer problems handled | 32 of 87 | **85 of 87** |
+| Bad unseen-dealer listings published | 23 | **0** |
 | Agent-ready listings | 454 of 575 | 467 of 567 |
 | Planted issues caught (feeds A–C) | 331 of 333 | 331 of 333 |
 
-Two honest notes. First, the hold-out dealer has now been seen, so it no longer tests anything new; v0.4 adds a fresh one. Second, the mileage gate also held back one genuine listing, a 2024 Telluride with 800 miles. Gates trade a little recall for a lot of safety, so in production gated listings should go to a human review queue, not disappear.
+Two honest notes. First, feed D has now been seen and fixed against, so it no longer tests anything new; v0.4 adds a fresh one. Second, the mileage gate also held back one genuine listing, a 2024 Telluride with 800 miles. Gates trade a little recall for a lot of safety, so in production gated listings should go to a human review queue, not disappear.
 
 The tables above show v0.2. `out/scorecard.md` always shows the latest run.
 
@@ -47,17 +47,17 @@ The tables above show v0.2. `out/scorecard.md` always shows the latest run.
 | Fix | Unblocks |
 |---|---|
 | VIN decode for drivetrain, body and engine | 4 audit queries; drivetrain from 82% toward 100% |
-| Sanity gates: price range, miles per year, date-parse failures held back | The 23 bad hold-out listings |
+| Sanity gates: price range, miles per year, date-parse failures held back | The 23 bad unseen-dealer listings |
 | Broader drivetrain-in-trim patterns ("AWD-i", "Symmetrical AWD", "All Wheel Drive") | Feed D trims |
-| Per-dealer onboarding check: run the hold-out style test on every new feed | Future dealers |
+| Per-dealer onboarding check: run the unseen-dealer style test on every new feed | Future dealers |
 
 ## How it works
 
 ```
 data/feeds/         4 synthetic feeds: dealer DMS CSV (A), dealer website JSON (B),
-                    marketplace aggregator CSV (C), hold-out dealer (D)
+                    marketplace aggregator CSV (C), unseen dealer (D)
 data/reference/     trim-level specs (illustrative)
-data/eval/          planted-issue ground truth, hold-out ground truth, audit-query → field map
+data/eval/          planted-issue ground truth, unseen-dealer ground truth, audit-query → field map
 sql/01–06           load → normalize → detect issues → enrich and publish → evaluate → scorecard
 out/scorecard.md    the results above, regenerated on every run
 ```
