@@ -122,7 +122,7 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
     <div><span class="eyebrow">Listings an agent can use</span><span class="big">0<span class="arrow">→</span>467</span><p>Of 720 dealer listings as sent, vs. after cleaning and adding specs.</p></div>
     <div><span class="eyebrow">Real buyers tested</span><span class="big">6</span><p>Their own words as searches, their own answers as the key.</p></div>
     <div><span class="eyebrow">Couldn't find a payment online</span><span class="big">4 of 6</span><p>The finding that set the last two releases.</p></div>
-    <div><span class="eyebrow">Automated tests</span><span class="big">12</span><p>Run on every change, with no AI calls needed.</p></div>
+    <div><span class="eyebrow">Automated tests</span><span class="big">14</span><p>Run on every change, with no AI calls needed.</p></div>
   </div>
 </section>
 
@@ -176,7 +176,7 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
           <rect x="230" y="420" width="250" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 3"/>
           <text x="355" y="445" font-size="12">Live evaluation: 20 + 6 buyer searches</text>
           <rect x="540" y="420" width="250" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 3"/>
-          <text x="665" y="445" font-size="12">12 automated tests on every push</text>
+          <text x="665" y="445" font-size="12">14 automated tests on every push</text>
         </g>
 
         <!-- arrows: shopper row -->
@@ -221,14 +221,14 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
       </div></div></article>
     <article class="step"><div class="when"><span class="ver">v0.2</span><span class="date">Oct 25 · Data</span></div>
       <div><h3>Feed Doctor: make the inventory answerable</h3><div class="trio">
-        <div class="did"><span class="k">What I did</span>Built a DuckDB SQL pipeline over four messy dealer feeds: normalize, flag issues, de-duplicate, add specs from a trim reference. Tested it on planted problems and on a hold-out dealer.</div>
-        <div class="found"><span class="k">What I found</span>0 of 720 listings were agent-ready as sent; 454 after. It caught 331 of 333 planted issues, but only 32 of 87 on the hold-out dealer, where a $34,895 car became $3,489,500.</div>
+        <div class="did"><span class="k">What I did</span>Built a DuckDB SQL pipeline over four messy dealer feeds: normalize, flag issues, de-duplicate, add specs from a trim reference. Tested it on planted problems and on an unseen dealer (a held-out test).</div>
+        <div class="found"><span class="k">What I found</span>0 of 720 listings were agent-ready as sent; 454 after. It caught 331 of 333 planted issues, but only 32 of 87 on the unseen dealer, where a $34,895 car became $3,489,500.</div>
         <div class="decided"><span class="k">What I decided</span>Every new feed needs its own quality gate. Drivetrain needs VIN decoding, not more text rules.</div>
       </div></div></article>
     <article class="step"><div class="when"><span class="ver">v0.2.1</span><span class="date">Oct 28 · Data</span></div>
       <div><h3>Sanity gates</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>Fixed parsing (cents, "13.0k mi", dates) and added gates that hold back impossible prices, years and mileages.</div>
-        <div class="found"><span class="k">What I found</span>Hold-out handled 85 of 87, no bad listings published. One genuine 2024 car with 800 miles was held back too.</div>
+        <div class="found"><span class="k">What I found</span>The unseen dealer: 85 of 87 handled, no bad listings published. One genuine 2024 car with 800 miles was held back too.</div>
         <div class="decided"><span class="k">What I decided</span>Gates trade a little recall for safety, so in production gated listings go to a review queue, not the bin.</div>
       </div></div></article>
     <article class="step"><div class="when"><span class="ver">v0.3</span><span class="date">Oct 28 · Agent</span></div>
@@ -251,7 +251,7 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
       </div></div></article>
     <article class="step"><div class="when"><span class="ver">v0.5–0.6</span><span class="date">Oct 31 · Ship</span></div>
       <div><h3>What buyers asked for, built responsibly</h3><div class="trio">
-        <div class="did"><span class="k">What I did</span>Payments shoppers control (down, trade-in, term, rate), "what can I afford?", base-trim preference, a compare view, and 12 automated tests on every change.</div>
+        <div class="did"><span class="k">What I did</span>Payments shoppers control (down, trade-in, term, rate), "what can I afford?", base-trim preference, a compare view, and 14 automated tests on every change.</div>
         <div class="found"><span class="k">What I found</span>One buyer wanted an income-based check. A lender's search shouldn't infer anyone's finances.</div>
         <div class="decided"><span class="k">What I decided</span>The shopper picks a payment; RightFit never asks about income or credit. Ranking uses only what they asked for, and a test proves it.</div>
       </div></div></article>
@@ -278,9 +278,9 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
     <tbody>
       <tr><td>Customer discovery</td><td>14 coded shopper letters, 6 buyer interviews, an intent map that shaped the agent</td></tr>
       <tr><td>Finding where discovery breaks</td><td>A 20-search audit of a live retail search, scored and published</td></tr>
-      <tr><td>Data quality and enrichment</td><td>A SQL pipeline with issue detection, sanity gates, a hold-out test and a scorecard</td></tr>
+      <tr><td>Data quality and enrichment</td><td>A SQL pipeline with issue detection, sanity gates, an unseen-dealer test and a scorecard</td></tr>
       <tr><td>AI product design</td><td>Strict-schema intent, plain-code ranking, honest "can't check" and loosening notices</td></tr>
-      <tr><td>Evaluating AI</td><td>Live evaluations against a baseline, a held-out buyer set, 12 automated tests</td></tr>
+      <tr><td>Evaluating AI</td><td>Live evaluations against a baseline, a held-out buyer set, 14 automated tests</td></tr>
       <tr><td>Writing and working backwards</td><td>A PR/FAQ, a changelog per release, this case study</td></tr>
       <tr><td>Responsible AI in finance</td><td>Payments with visible assumptions, no income or credit inference, fair-order tests</td></tr>
       <tr><td>Shipping incrementally</td><td>Six releases in a week, each driven by what the last one found</td></tr>

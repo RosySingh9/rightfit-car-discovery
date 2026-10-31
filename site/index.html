@@ -490,10 +490,10 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       </div>
       <div>
         <h3>99% on what I planned for. 37% on what I didn't.</h3>
-        <p class="small">The pipeline caught 331 of 333 planted issues with no false flags. On a hold-out dealer whose problems I wrote afterward, it handled 32 of 87, and 23 bad listings got through, including a price of $3,489,500. Every new dealer feed needs its own quality gate.</p>
+        <p class="small">The pipeline caught 331 of 333 planted issues with no false flags. On an unseen dealer (a held-out test) whose problems I wrote afterward, it handled 32 of 87, and 23 bad listings got through, including a price of $3,489,500. Every new dealer feed needs its own quality gate.</p>
       </div>
     </div>
-    <p class="small"><strong>v0.2.1 update:</strong> I fixed the parsing and added sanity gates (price range, miles per year, unreadable dates). The hold-out dealer is now 85 of 87 handled, with no bad listings published. That dealer is no longer unseen, though, so v0.4 tests against a fresh one.</p>
+    <p class="small"><strong>v0.2.1 update:</strong> I fixed the parsing and added sanity gates (price range, miles per year, unreadable dates). The unseen dealer is now 85 of 87 handled, with no bad listings published. That dealer is no longer unseen, though, so v0.4 tests against a fresh one.</p>
     <p class="small muted">Synthetic feeds. Specs come from an illustrative trim-level reference table, close to published figures but not verified. Pipeline in DuckDB SQL, rerunnable with one command.</p>
     <p class="more"><a href="explorer.html">Run the queries yourself in the Feed Doctor Explorer</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/feed-doctor/README.md" target="_blank" rel="noopener">pipeline write-up and SQL</a></p>
   </div>
@@ -517,7 +517,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     <div class="releases">
       <div class="rel"><span class="ver">v0.1</span><span>Intent map, findability audit, PR/FAQ</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.2</span><span>Feed Doctor: clean, enriched inventory and a data quality scorecard</span><span class="status shipped">Shipped</span></div>
-      <div class="rel"><span class="ver">v0.2.1</span><span>Sanity gates; parsing fixes from the hold-out dealer</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.2.1</span><span>Sanity gates; parsing fixes from the unseen dealer</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.3</span><span>Discovery agent with "why this car"</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.3.1</span><span>Fixes and stricter checks from the first evaluation run</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.3.2</span><span>Fixes the minivan ranking found in run 2</span><span class="status shipped">Shipped</span></div>
