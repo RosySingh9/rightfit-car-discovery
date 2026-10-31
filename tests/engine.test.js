@@ -85,3 +85,19 @@ test("responsible ranking: nothing outside the stated intent changes the order",
 test("every held-out buyer search has at least one car in stock that fits", () => {
   for (const g of E.HOLDOUT) assert.ok(cars.some(g.fit), g.id);
 });
+
+test("budget trade-off: when loosening is needed, name the cheapest car that keeps everything but the budget", () => {
+  E.setFinance(E.DEFAULT_FINANCE);
+  const out = run({ year_min: 2023, monthly_payment_max: 400 });
+  assert.ok(out.tradeoff, "expected a trade-off");
+  assert.ok(out.tradeoff.car.year >= 2023);
+  assert.ok(out.tradeoff.payment > 400);
+  assert.ok(out.results.every((r) => E.estPayment(r.car.price) <= 400), "results stay within budget");
+});
+
+test("'new' read as newest-first within budget names one step up", () => {
+  E.setFinance(E.DEFAULT_FINANCE);
+  const out = E.search(cars, { hard: { ...blank(), monthly_payment_max: 400 }, sort_by: ["newest"], unsupported: [] });
+  assert.ok(out.stretch);
+  assert.ok(out.stretch.car.year > out.stretch.newestShown);
+});
