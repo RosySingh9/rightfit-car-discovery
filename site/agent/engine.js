@@ -197,7 +197,10 @@
     const row = { id: gold.id, style: gold.style, q: gold.q, results: out.count, relaxed: out.relaxed.length > 0 };
     // v0.3.1: stricter checks the top-5 score can't see
     row.extraFilters = gold.allowed ? out.constraints.filter((c) => !gold.allowed.includes(c.key)).map((c) => c.label) : [];
-    row.unneededQuestion = !!intent.needs_clarification && !gold.expectClarify && !gold.expectAsk;
+    // v0.4.1: buyers said budget is the question they want asked, so a question is "unneeded" only when the shopper already gave a budget.
+    const hb = intent.hard || {};
+    const gaveBudget = hb.price_max != null || hb.monthly_payment_max != null;
+    row.unneededQuestion = !!intent.needs_clarification && !gold.expectClarify && !gold.expectAsk && gaveBudget;
     if (gold.expectUnsupported) row.flaggedUnsupported = (intent.unsupported || []).some((u) => gold.expectUnsupported.test(u));
     if (gold.expectAsk) row.askedRight = !!intent.needs_clarification && gold.expectAsk.test((intent.clarifying_question || "") + " " + (intent.clarify_options || []).join(" "));
     if (gold.never) row.respectedNever = !out.results.slice(0, 5).some((r) => gold.never(r.car));

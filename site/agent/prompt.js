@@ -66,7 +66,9 @@ Rules:
   no drivetrain unless they ask for one, no mpg unless they mention fuel economy, no cargo size unless they mention cargo,
   a stroller, luggage or "room for" a specific item. Never list every value of a field; leave it empty instead.
 - Negation goes in the exclude lists: "not a minivan" -> exclude_body_types ["minivan"]. Never put an excluded value in an include list.
-- Hybrid versions are separate models: "RAV4 hybrid" -> models ["RAV4 Hybrid"]; "Highlander hybrid or Grand Highlander" -> models ["Highlander Hybrid", "Grand Highlander", "Grand Highlander Hybrid"].
+- Hybrid versions are separate models: "Highlander hybrid or Grand Highlander" -> models ["Highlander Hybrid", "Grand Highlander", "Grand Highlander Hybrid"].
+  "Hybrid" includes plug-in hybrids unless the shopper says otherwise: "RAV4 hybrid" -> models ["RAV4 Hybrid", "RAV4 Prime"];
+  "hybrid" -> powertrains ["hybrid", "plug-in hybrid"].
 - A model name alone (e.g. "RAV4") means that model only, not its hybrid sibling, unless the shopper says otherwise.
 - "AWD", "all-wheel drive", "good in snow" -> drivetrains ["AWD", "4WD"]. "4x4", "four-wheel drive", "off-road" -> drivetrains ["4WD", "AWD"].
 - Money: "$45k" = 45000. "under $400 a month" -> monthly_payment_max 400 (not price_max).
@@ -74,18 +76,27 @@ Rules:
   "eco friendly" -> powertrains ["hybrid", "plug-in hybrid", "electric"]; "low miles" -> miles_max 50000;
   "tow a small trailer" -> tow_min_lbs 1500; "tow a car" -> tow_min_lbs 3500; "fits a stroller" -> cargo_min_cuft 20;
   "double stroller" or "twins" -> cargo_min_cuft 35; "sports sedan" -> hp_min 250 unless a number is given;
-  "room for dogs" or "roomy" -> sort_by cargo_high (not a cargo filter);
+  "fits a stroller" or "fits a car seat" is a minimum (cargo_min_cuft), never a ranking: don't add cargo_high for it;
+  "room for dogs" or "roomy" -> sort_by cargo_high only, never a cargo filter;
+  "easy to park", "for the city" or "compact" -> exclude_body_types ["minivan", "pickup"];
   "newer" -> year_min 2023; "automatic emergency braking" or "collision braking" -> features ["aeb"]; "lane departure" -> features ["lane_departure"].
-- "safe car" (no specifics) -> features ["aeb", "lane_departure", "blind_spot"].
+- "safe" or "safe car" (no specifics) -> features ["aeb"] and sort_by ["safety_features"]. Only require lane departure or
+  blind-spot monitoring when the shopper names them. Safety must not shrink a tight budget down to one or two cars.
+- "no fancy add-ons", "nothing fancy", "basic", "no extras" -> NO feature filters at all; sort_by ["price_low"].
+  Never turn a request for fewer features into a required feature.
+- "affordable", "cheap" or "on a budget" with no number -> sort_by ["price_low"] and ask about budget.
 - Subjective words are never hard filters. They go in sort_by when they map to data ("cheap" -> price_low, "fun", "fast" or "powerful" -> hp_high,
   "roomy" -> cargo_high, "efficient" -> mpg_high, "safe" -> safety_features, "low miles" -> miles_low, "newer" -> newest).
-- Anything the shopper asked for that the data can't check (leather, massaging seats, luxury, quiet cabin, reliability ratings,
-  crash-test scores, vehicle dimensions or garage fit, easy to park, insurance cost, colors) goes in "unsupported" as a short phrase,
-  e.g. "massaging seats". Only things the shopper asked for: never missing details, advice or instructions.
-- needs_clarification = true only when the message is too vague to search well: no budget, no body type, no model and no clear use,
-  e.g. "safe car for my teenager" or "something reliable". Clear requests ("minivan with AWD", "car under $400 a month",
-  "luxury sedan with massaging seats") don't need a question: set needs_clarification false, clarifying_question null, clarify_options []. Still fill in your best-guess constraints so results can be shown,
-  and ask ONE short question with 2-4 short answer options in clarify_options.
+- Anything the shopper asked for that the data can't check (Bluetooth, Apple CarPlay or Android Auto, phone calls, navigation,
+  leather, massaging seats, luxury, quiet cabin, smooth ride, comfort, reliability ratings, maintenance cost, EV charging,
+  crash-test scores, vehicle dimensions or garage fit, insurance cost, colors, availability near me) goes in "unsupported" as a short phrase,
+  e.g. "Bluetooth for calls". Only things the shopper asked for: never missing details such as budget, advice or instructions.
+- Budget is the question real buyers most want asked. If the shopper gave no price, payment or "under $X":
+  set needs_clarification true and ask about budget, e.g. "What's your budget: a total price or a monthly payment?",
+  with clarify_options like ["Under $20k", "$20k-$30k", "$30k-$45k", "About $400 a month"].
+  Results are still shown while the shopper answers, so this never blocks the search.
+- If a budget IS given and the request is clear, don't ask anything (needs_clarification false, clarifying_question null, clarify_options []).
+- If a budget is given but family size matters and is unknown ("car for my family", "fit the kids"), ask how many people it needs to seat.
 - "understood" is one plain sentence, e.g. "A 3-row SUV (not a minivan) under $45,000."`;
 }
 
