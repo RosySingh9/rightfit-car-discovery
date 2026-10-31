@@ -63,6 +63,7 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
       <li><strong>Fit</strong> = a car in the top 5 meets every hard constraint the shopper stated. Each query's test is written in code, independently of the model.</li>
       <li>Inventories differ: CarMax had tens of thousands of cars, RightFit has 567 synthetic ones. When fewer than 5 cars in stock fit, the bar is however many do. When none do, the query is scored on whether RightFit says so.</li>
       <li>Since v0.3.1 it also flags what a top-5 score hides: filters nobody asked for, questions nobody needed, and matching cars the agent missed.</li>
+      <li>Since v0.4.1, a question counts as unneeded only when the shopper already gave a budget. Buyers said budget is the question they most want asked.</li>
       <li>The 20 v0.1 searches have now been used to tune the agent, so they're a practice set. The <strong>held-out buyers</strong> set is 6 searches in real buyers' own words, with answer keys from what each buyer said they'd consider. It was never used for tuning.</li>
     </ul>
     <div class="row" role="radiogroup" aria-label="Test set">

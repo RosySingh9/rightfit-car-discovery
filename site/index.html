@@ -65,7 +65,7 @@ header.hero{display:grid;gap:18px;border-bottom:3px solid var(--ink);padding-bot
 
 /* big comparison */
 .compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0}
-.compare>div{padding:18px;display:grid;gap:6px;align-content:start}
+.compare>div{padding:18px;min-width:0;display:grid;gap:6px;align-content:start}
 .compare>div+div{border-left:1px solid var(--rule)}
 @media (max-width:560px){.compare>div+div{border-left:0;border-top:1px solid var(--rule)}}
 .big{font-family:var(--display);font-weight:700;font-size:3.6rem;line-height:1}
@@ -127,6 +127,11 @@ ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:70
 .ba-row.warn .after>span{background:var(--bad)}
 @media (max-width:560px){.ba-row{grid-template-columns:1fr}}
 .compare .ba-bars .line{grid-template-columns:64px minmax(0,1fr) 44px}
+.ledger table.compact{min-width:0}
+.ledger table.compact td:first-child{width:auto}
+.ledger table.compact td.num{white-space:nowrap;font-family:var(--mono)}
+.compare.four{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+.compare.four .big{font-size:2.6rem}
 .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px}
 .duo>div{display:grid;gap:6px;align-content:start}
 
@@ -188,11 +193,11 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 <div class="wrap">
 
 <header class="hero">
-  <div class="meta"><span>RightFit</span><span>Release v0.3 · The agent</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
+  <div class="meta"><span>RightFit</span><span>Release v0.4 · Real buyers</span><span>Oct 25, 2026</span><span>Rosy Singh</span></div>
   <h1>Can a shopper describe their life in one sentence and find the right car?</h1>
   <p class="thesis">Vehicle search works when shoppers talk in filters. <em>It breaks when they talk like people.</em></p>
   <p class="lede">RightFit is an AI discovery agent I'm building in public, release by release. v0.1 looked at how real shoppers describe what they want and whether a major retailer's search box understands them. v0.2 asks whether the inventory data can answer them at all.</p>
-  <p class="status-line">Building in public · 3 of 6 releases shipped · v0.3 adds the agent: try it below</p>
+  <p class="status-line">Building in public · 4 of 6 releases shipped · v0.4 tests the agent on real buyers</p>
   <div class="cta">
     <a class="primary" href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">View the code on GitHub</a>
     <a href="explorer.html">Explore the data with SQL</a>
@@ -225,44 +230,78 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 </section>
 
 
+<section class="sticker" aria-labelledby="h-buyers">
+  <div class="sticker-head"><h2 id="h-buyers">Tested on real buyers</h2><span class="eyebrow">v0.4 · 6 buyer interviews · held-out · Oct 31, 2026</span></div>
+  <div class="sticker-body">
+    <p class="lede">Six people shopping for a car told me what they needed. Their words became the searches, and what each one said they'd consider became the answer key. None of this was used to tune the agent before the run.</p>
+    <div class="compare four" style="border:1px solid var(--rule)">
+      <div><span class="eyebrow">Top-5 fit</span><span class="big good num">86%</span><p class="small">25 of 29 top-5 results met what the buyer said they needed.</p></div>
+      <div><span class="eyebrow">Asked what the buyer wanted asked</span><span class="big bad num">1 of 4</span><p class="small">Buyers wanted a budget or family-size question. It asked only once.</p></div>
+      <div><span class="eyebrow">Said what it can't check</span><span class="big num">3 of 4</span><p class="small">It caught ride comfort, navigation and maintenance, but missed Bluetooth.</p></div>
+      <div><span class="eyebrow">Kept out "never consider"</span><span class="big good num">2 of 2</span><p class="small">No trucks for the family buyer, no Kia for the buyer who said never.</p></div>
+    </div>
+    <div class="duo">
+      <div>
+        <h3>What the buyers caught</h3>
+        <ul class="plain small">
+          <li><strong>My own fix had overshot.</strong> The practice set taught the agent to ask fewer questions. Real buyers wanted the budget question, and it asked 1 time in 4.</li>
+          <li><strong>"No fancy add-ons" became a requirement for adaptive cruise control,</strong> which is an add-on. The top 5 were all Subarus, with none of the RAV4, Camry or Pilot that buyer was considering.</li>
+          <li><strong>"Safe" on a $20k budget required three safety features.</strong> That hid the Camry, Corolla and Civic the buyer would have taken, leaving one car.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>The biggest finding isn't a bug</h3>
+        <p class="small"><strong>4 of 6 buyers couldn't work out a monthly payment or what they could afford online.</strong> One only got a payment at the dealer. That makes a finance-aware search the top priority: v0.5 adds search by monthly payment with editable assumptions, and a "what can I afford?" helper where the shopper enters their own numbers. The agent never guesses income or credit.</p>
+      </div>
+    </div>
+    <p class="small"><strong>v0.4.1:</strong> it asks about budget whenever none is given, while still showing results. "Safe" now requires collision braking and ranks the rest of the safety features instead of filtering on them. "No add-ons" never adds a filter. It also knows which needs it can't check yet, such as Bluetooth and EV charging. <strong>Honest note:</strong> these 6 searches have now been seen, so a re-run shows whether the fixes work, but the next real test needs new buyers. <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/research/interview-findings.md" target="_blank" rel="noopener">Interview findings</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.4-heldout-2026-10-31.json" target="_blank" rel="noopener">raw results</a>.</p>
+  </div>
+</section>
+
 <section class="sticker" aria-labelledby="h-score">
-  <div class="sticker-head"><h2 id="h-score">First evaluation run</h2><span class="eyebrow">v0.3 · Oct 29, 2026 · the 20 shopper searches from v0.1</span></div>
+  <div class="sticker-head"><h2 id="h-score">Evaluation: two runs</h2><span class="eyebrow">Oct 29, 2026 · the 20 shopper searches from v0.1 · run live</span></div>
   <div class="sticker-body">
     <div class="compare" style="border:1px solid var(--rule)">
       <div>
-        <span class="eyebrow">Phrased like a person</span>
-        <span class="big good num">100%</span>
+        <span class="eyebrow">Phrased like a person · top-5 fit</span>
+        <span class="big good num">91%</span>
         <div class="ba-bars">
-          <div class="line"><span>RightFit</span><div class="bar after"><span style="width:100%"></span></div><span class="v num">100%</span></div>
+          <div class="line"><span>RightFit</span><div class="bar after"><span style="width:91%"></span></div><span class="v num">91%</span></div>
           <div class="line"><span>CarMax</span><div class="bar before"><span style="width:37%"></span></div><span class="v num">37%</span></div>
         </div>
-        <p class="small">58 of 58 top-5 results met every stated constraint, across 13 scored searches.</p>
+        <p class="small">Run 2: 53 of 58 top-5 results met every stated constraint. Run 1 scored 100%, and the next part explains why the lower number is the better result.</p>
       </div>
       <div>
-        <span class="eyebrow">Phrased like filters</span>
+        <span class="eyebrow">Phrased like filters · top-5 fit</span>
         <span class="big good num">100%</span>
         <div class="ba-bars">
           <div class="line"><span>RightFit</span><div class="bar after"><span style="width:100%"></span></div><span class="v num">100%</span></div>
           <div class="line"><span>CarMax</span><div class="bar before"><span style="width:95%"></span></div><span class="v num">95%</span></div>
         </div>
-        <p class="small">15 of 15. When nothing in stock fit (3 searches), it said so every time. It flagged both requests the data can't check: massaging seats and leather.</p>
+        <p class="small">15 of 15 in both runs. When nothing in stock fit, it said so 3 of 3 times, and it flagged massaging seats and leather as things the data can't check.</p>
       </div>
     </div>
+    <div class="ledger"><table class="compact">
+      <thead><tr><th>What the top-5 score can't see</th><th>Run 1 · v0.3</th><th>Run 2 · v0.3.1</th></tr></thead>
+      <tbody>
+        <tr><td>Searches with a filter nobody asked for</td><td class="num">6 of 20</td><td class="num">1 of 20</td></tr>
+        <tr><td>Clarifying questions on clear searches</td><td class="num">3</td><td class="num">0</td></tr>
+        <tr><td>"Can't check" notes that weren't real requests</td><td class="num">2</td><td class="num">0</td></tr>
+        <tr><td>Searches that missed matching cars</td><td class="num">2</td><td class="num">2</td></tr>
+        <tr><td>Top-5 fit, phrased like a person</td><td class="num">100%</td><td class="num">91%</td></tr>
+      </tbody>
+    </table></div>
     <div class="duo">
       <div>
-        <h3>Why I don't trust 100%</h3>
-        <p class="small">I wrote the agent, the tests and the inventory, and the inventory is already cleaned and enriched. Once the filters are parsed right, the code is exact by construction, so this score mostly measures parsing. A perfect score is a reason to look harder.</p>
+        <h3>Why run 1's 100% was wrong</h3>
+        <p class="small">I wrote the agent, the tests and the inventory, so top-5 fit mostly measured parsing. Reading every row showed filters nobody asked for ("fun" became 250+ hp, which left an AWD sedan search with zero cars), unneeded questions, and 3 EVs hidden by a filter that listed every drivetrain. Run 2 fixed nearly all of it.</p>
       </div>
       <div>
-        <h3>What looking harder found</h3>
-        <ul class="plain small">
-          <li>It added filters nobody asked for in 6 of 20 searches. "Fun" became "250+ hp", and "Gas" appeared twice. For the AWD sedan search, that left zero cars even after loosening.</li>
-          <li>It asked unneeded questions on 3 clear searches, such as "minivan with AWD".</li>
-          <li>It missed matching cars twice, including 3 EVs hidden by a filter that listed every drivetrain.</li>
-        </ul>
+        <h3>Why run 2 dropped to 91%</h3>
+        <p class="small">One of my fixes backfired. A new rule, "roomy means rank by cargo space", sent five Sienna minivans to the top for a shopper who wanted "a quiet hybrid that fits a stroller and is easy to park". The score caught it. v0.3.2 treats "fits a stroller" as a minimum, not a ranking, and reads "easy to park" as no minivans or pickups.</p>
       </div>
     </div>
-    <p class="small"><strong>v0.3.1:</strong> tighter prompt rules and two code guards fix these, and the <a href="eval.html">evaluation page</a> now flags all three problems. Next: re-run, then v0.4 tests on searches I didn't write. <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.3-2026-10-29.json" target="_blank" rel="noopener">Raw results</a>.</p>
+    <p class="small"><strong>What I'm not doing:</strong> tuning until these 20 searches score 100% again. After two rounds of fixes they've become a practice set. v0.4 tests on searches I didn't write, taken from buyer interviews. Raw results: <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.3-2026-10-29.json" target="_blank" rel="noopener">run 1</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/site/data/eval-runs/v0.3.1-2026-10-29.json" target="_blank" rel="noopener">run 2</a>. <a href="eval.html">Run it yourself</a>.</p>
   </div>
 </section>
 
@@ -422,9 +461,11 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       <div class="rel"><span class="ver">v0.2.1</span><span>Sanity gates; parsing fixes from the hold-out dealer</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.3</span><span>Discovery agent with "why this car"</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.3.1</span><span>Fixes and stricter checks from the first evaluation run</span><span class="status shipped">Shipped</span></div>
-      <div class="rel"><span class="ver">v0.4</span><span>Evals on every change, fresh hold-out dealer, public scoreboard</span><span class="status">Next</span></div>
-      <div class="rel"><span class="ver">v0.5</span><span>Search by monthly payment, assumptions visible</span><span class="status">Planned</span></div>
-      <div class="rel"><span class="ver">v0.6</span><span>Responsible-ranking guardrails</span><span class="status">Planned</span></div>
+      <div class="rel"><span class="ver">v0.3.2</span><span>Fixes the minivan ranking found in run 2</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.4</span><span>6 buyer interviews; held-out test in their words</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.4.1</span><span>Budget question, safer "safe", no invented add-ons</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.5</span><span>Search by monthly payment; "what can I afford?" helper</span><span class="status">Next</span></div>
+      <div class="rel"><span class="ver">v0.6</span><span>Trim preference, compare view, responsible ranking</span><span class="status">Planned</span></div>
     </div>
   </div>
 </section>
