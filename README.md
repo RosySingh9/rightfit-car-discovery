@@ -36,8 +36,8 @@ Shoppers describe **needs**: "twins on the way", "tow my track car", "not a mini
 | Version | What ships | Status |
 |---|---|---|
 | **v0.1** | Shopper intent map, findability audit (20 queries), PR/FAQ | ✅ Shipped |
-| **v0.2** | Feed Doctor: messy dealer feeds → clean, enriched inventory; data quality scorecard in SQL; hold-out evaluation | ✅ Shipped |
-| **v0.2.1** | Parsing fixes and sanity gates from the hold-out dealer | ✅ Shipped |
+| **v0.2** | Feed Doctor: messy dealer feeds → clean, enriched inventory; data quality scorecard in SQL; unseen-dealer (held-out) test | ✅ Shipped |
+| **v0.2.1** | Parsing fixes and sanity gates from the unseen dealer | ✅ Shipped |
 | **v0.3** | Discovery agent: one sentence → filters and facets → ranked results with "why this car"; live evaluation page | ✅ Shipped |
 | **v0.4** | 6 buyer interviews; held-out test in their own words; fixes in v0.4.1 | ✅ Shipped |
 | **v0.5** | Editable payment assumptions; "what can I afford?" helper | ✅ Shipped |
