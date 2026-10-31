@@ -26,6 +26,7 @@ header{display:grid;gap:10px;border-bottom:3px solid var(--ink);padding-bottom:1
 .btn{font:600 .9rem var(--body);border:2px solid var(--ink);background:var(--ink);color:var(--label);padding:8px 16px;cursor:pointer}
 .btn.ghost{background:var(--label);color:var(--ink)}
 .btn:disabled{opacity:.5;cursor:default}
+.setbtn[aria-pressed="true"]{background:var(--route);border-color:var(--route);color:#fff}
 button:focus-visible,a:focus-visible{outline:2px solid var(--route);outline-offset:2px}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .smsg{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
@@ -55,16 +56,20 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
 <body>
 <div class="wrap">
   <header>
-    <span class="eyebrow"><a href="index.html">← RightFit</a> · v0.3 · Evaluation</span>
+    <span class="eyebrow"><a href="index.html">← RightFit</a> · v0.4 · Evaluation</span>
     <h1>Does RightFit understand shoppers better than search did?</h1>
     <p>In v0.1, CarMax's search returned fitting cars in its top 5 results 95% of the time when the query read like filters, and 37% of the time when it read like a person. This page runs the same 20 queries through RightFit, live, and scores them the same way.</p>
     <ul class="note">
       <li><strong>Fit</strong> = a car in the top 5 meets every hard constraint the shopper stated. Each query's test is written in code, independently of the model.</li>
       <li>Inventories differ: CarMax had tens of thousands of cars, RightFit has 567 synthetic ones. When fewer than 5 cars in stock fit, the bar is however many do. When none do, the query is scored on whether RightFit says so.</li>
       <li>Since v0.3.1 it also flags what a top-5 score hides: filters nobody asked for, questions nobody needed, and matching cars the agent missed.</li>
-      <li>I wrote both the agent and the tests, so treat this as a first read, not proof. v0.4 adds a held-out query set and runs this on every change.</li>
+      <li>The 20 v0.1 searches have now been used to tune the agent, so they're a practice set. The <strong>held-out buyers</strong> set is 6 searches in real buyers' own words, with answer keys from what each buyer said they'd consider. It was never used for tuning.</li>
     </ul>
-    <div class="row"><button class="btn" id="run">Run the 20 queries</button><button class="btn ghost" id="copy" disabled>Copy results</button><span class="smsg" id="msg">About 20 model calls, well under one cent.</span></div>
+    <div class="row" role="radiogroup" aria-label="Test set">
+      <button class="btn ghost setbtn" data-set="practice" aria-pressed="false">Practice set · 20 v0.1 searches</button>
+      <button class="btn ghost setbtn" data-set="holdout" aria-pressed="true">Held-out buyers · 6 interviews</button>
+    </div>
+    <div class="row"><button class="btn" id="run">Run the 6 searches</button><button class="btn ghost" id="copy" disabled>Copy results</button><span class="smsg" id="msg">A few model calls, well under one cent.</span></div>
   </header>
   <div class="cards" id="cards" hidden></div>
   <div class="tablewrap"><table><thead><tr><th>#</th><th>Shopper typed</th><th>RightFit understood</th><th>Top-5 fit</th><th>Notes</th></tr></thead><tbody id="rows"></tbody></table></div>
@@ -76,15 +81,23 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
   const $ = (s) => document.querySelector(s);
   const esc = (x) => String(x).replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const CARMAX = { spec: 0.95, need: 0.37 };
-  let results = [];
-  $("#rows").innerHTML = RightFit.GOLD.map((g) => `<tr id="r-${g.id}"><td class="num">${g.id}</td><td class="q">${esc(g.q)}</td><td class="note">Not run yet</td><td></td><td></td></tr>`).join("");
+  let results = [], SET = "holdout";
+  const list = () => SET === "holdout" ? RightFit.HOLDOUT : RightFit.GOLD;
+  function setup(){
+    document.querySelectorAll(".setbtn").forEach((b) => b.setAttribute("aria-pressed", b.dataset.set === SET ? "true" : "false"));
+    $("#run").textContent = SET === "holdout" ? "Run the 6 searches" : "Run the 20 queries";
+    $("#rows").innerHTML = list().map((g) => `<tr id="r-${g.id}"><td class="num">${g.id}</td><td class="q">${esc(g.q)}</td><td class="note">Not run yet</td><td></td><td></td></tr>`).join("");
+    $("#cards").hidden = true; results = []; $("#copy").disabled = true;
+  }
+  document.querySelectorAll(".setbtn").forEach((b) => b.onclick = () => { if ($("#run").disabled) return; SET = b.dataset.set; setup(); });
+  setup();
 
   $("#run").onclick = async () => {
     $("#run").disabled = true; $("#copy").disabled = true; results = [];
     const inv = await (await fetch("data/inventory.json")).json();
     const cars = RightFit.toCars(inv);
-    for (const [i, g] of RightFit.GOLD.entries()) {
-      $("#msg").textContent = `Running ${i + 1} of ${RightFit.GOLD.length}…`;
+    for (const [i, g] of list().entries()) {
+      $("#msg").textContent = `Running ${i + 1} of ${list().length}…`;
       let row;
       try {
         const r = await fetch("api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ q: g.q }) });
@@ -97,6 +110,7 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
         row.relaxedWhat = out.relaxed;
         row.unsupported = body.intent.unsupported;
         row.clarified = body.intent.needs_clarification;
+        row.question = body.intent.clarifying_question;
       } catch (e) { row = { id: g.id, style: g.style, q: g.q, error: e.message, scored: false }; }
       results.push(row); paint(row, g);
       await new Promise((r) => setTimeout(r, 250));
@@ -116,7 +130,10 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     if (r.unneededQuestion) notes.push('<span class="pill bad">asked an unneeded question</span>');
     if (r.recall != null && r.recall < 1) notes.push(`<span class="pill bad">missed matching cars</span> found ${Math.round(r.recall * r.available)} of ${r.available}`);
     if ("flaggedUnsupported" in r) notes.push(r.flaggedUnsupported ? "Said it can't check this." : "<span class=\"pill bad\">didn't flag the unsupported request</span>");
-    if (r.clarified && !r.unneededQuestion) notes.push("Asked a clarifying question.");
+    if ("askedRight" in r) notes.push(r.askedRight ? `Asked the question the buyer wanted: "${esc(r.question)}"` : `<span class="pill bad">didn't ask what the buyer wanted</span>${r.question ? ` asked: "${esc(r.question)}"` : ""}`);
+    else if (r.clarified && !r.unneededQuestion) notes.push("Asked a clarifying question.");
+    if ("respectedNever" in r) notes.push(r.respectedNever ? "Kept out what the buyer would never consider." : '<span class="pill bad">showed a car the buyer would never consider</span>');
+    if ("showedNamed" in r) notes.push(r.showedNamed ? "Top 5 included a model the buyer was considering." : "Top 5 had none of the models the buyer named.");
     if (g.note) notes.push(esc(g.note));
     $(`#r-${r.id}`).innerHTML = `<td class="num">${r.id}<br><span class="note">${r.style}</span></td><td class="q">${esc(r.q)}</td>
       <td>${esc(r.understood || "")}${r.filters ? `<br><span class="note">${esc(r.filters.join(" · "))}</span>` : ""}</td><td>${fit}</td><td class="note">${notes.join("<br>")}</td>`;
@@ -128,6 +145,7 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     return { fit, slots, pct: slots ? fit / slots : 0, n: rs.length };
   }
   function summary(){
+    if (SET === "holdout") return summaryHoldout();
     const need = rate("need"), spec = rate("spec");
     const none = results.filter((r) => r.available === 0);
     const honest = none.filter((r) => r.relaxed).length;
@@ -146,8 +164,21 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     $("#cards").hidden = false;
   }
 
+  function summaryHoldout(){
+    const b = rate("buyer");
+    const of = (k) => { const rs = results.filter((r) => k in r); return [rs.filter((r) => r[k]).length, rs.length]; };
+    const [asked, askN] = of("askedRight"), [flag, flagN] = of("flaggedUnsupported"), [kept, keptN] = of("respectedNever");
+    const unneeded = results.filter((r) => r.unneededQuestion).length;
+    $("#cards").innerHTML =
+      `<div><span class="eyebrow">Top-5 fit · buyers' own words</span><span class="big">${Math.round(b.pct * 100)}%</span><span class="note">${b.fit} of ${b.slots} top-5 results met what the buyer said they need, across ${b.n} searches.</span></div>` +
+      `<div><span class="eyebrow">Asked what the buyer wanted asked</span><span class="big">${asked} of ${askN}</span><span class="note">Budget or family size, the questions buyers said a tool should ask. Unneeded questions: ${unneeded}.</span></div>` +
+      `<div><span class="eyebrow">Said what it can't check</span><span class="big">${flag} of ${flagN}</span><span class="note">Bluetooth, ride comfort, navigation, maintenance.</span></div>` +
+      `<div><span class="eyebrow">Kept out "never consider"</span><span class="big">${kept} of ${keptN}</span><span class="note">No big trucks for B2, no Kia for B5.</span></div>`;
+    $("#cards").hidden = false;
+  }
+
   $("#copy").onclick = async () => {
-    const text = JSON.stringify({ run_at: new Date().toISOString(), need: rate("need"), spec: rate("spec"), results }, null, 1);
+    const text = JSON.stringify({ run_at: new Date().toISOString(), set: SET, need: rate("need"), spec: rate("spec"), buyer: rate("buyer"), results }, null, 1);
     try { await navigator.clipboard.writeText(text); $("#msg").textContent = "Copied. Paste it into the chat with Claude."; }
     catch (e) { const ta = document.createElement("textarea"); ta.value = text; ta.style.width = "100%"; ta.rows = 8; document.querySelector(".wrap").appendChild(ta); ta.select(); $("#msg").textContent = "Select the text below and copy it."; }
   };
