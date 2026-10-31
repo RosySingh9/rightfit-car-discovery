@@ -1,0 +1,183 @@
+{
+ "run_at": "2026-10-31T16:36:53.742Z",
+ "set": "holdout",
+ "need": {
+  "fit": 0,
+  "slots": 0,
+  "pct": 0,
+  "n": 0
+ },
+ "spec": {
+  "fit": 0,
+  "slots": 0,
+  "pct": 0,
+  "n": 0
+ },
+ "buyer": {
+  "fit": 29,
+  "slots": 29,
+  "pct": 1,
+  "n": 6
+ },
+ "results": [
+  {
+   "id": "H1",
+   "style": "buyer",
+   "q": "need a car that takes me to work and do groceries, good bluetooth for calls, no fancy add-ons",
+   "results": 567,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "askedRight": true,
+   "showedNamed": false,
+   "available": 469,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A basic car for commuting and grocery shopping with good Bluetooth for calls.",
+   "filters": [],
+   "relaxedWhat": [],
+   "unsupported": [
+    "good Bluetooth for calls"
+   ],
+   "clarified": true,
+   "question": "What's your budget: a total price or a monthly payment?"
+  },
+  {
+   "id": "H2",
+   "style": "buyer",
+   "q": "car for family plus my own use, smooth ride, safe for kids, big enough for family but small enough to drive to work",
+   "results": 483,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "askedRight": false,
+   "respectedNever": true,
+   "available": 519,
+   "recall": 0.930635838150289,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A family-friendly car that is safe for kids and easy to drive to work.",
+   "filters": [
+    "Not Minivan or Pickup",
+    "Collision braking"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "smooth ride"
+   ],
+   "clarified": true,
+   "question": "What's your budget: a total price or a monthly payment?"
+  },
+  {
+   "id": "H3",
+   "style": "buyer",
+   "q": "a small van to bring the whole family on trips, at least 8 seats",
+   "results": 23,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "available": 23,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A small van with at least 8 seats for family trips.",
+   "filters": [
+    "8+ seats",
+    "Third row",
+    "Minivan"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [],
+   "clarified": false,
+   "question": null
+  },
+  {
+   "id": "H4",
+   "style": "buyer",
+   "q": "my first car, easy to drive and navigate new routes, safe and comfortable, affordable",
+   "results": 567,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "askedRight": true,
+   "available": 519,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "A safe and comfortable first car that is easy to drive and affordable.",
+   "filters": [
+    "Collision braking"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "navigation",
+    "comfort"
+   ],
+   "clarified": true,
+   "question": "What's your budget: a total price or a monthly payment?"
+  },
+  {
+   "id": "H5",
+   "style": "buyer",
+   "q": "I want something under 20k, safe and low maintenance, Toyota Honda or Tesla, not a Kia",
+   "results": 4,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "flaggedUnsupported": true,
+   "respectedNever": true,
+   "available": 4,
+   "recall": 1,
+   "slots": 4,
+   "fit": 4,
+   "scored": true,
+   "understood": "A safe, low-maintenance car from Toyota, Honda, or Tesla under $20,000, not a Kia.",
+   "filters": [
+    "Under $20,000",
+    "Toyota or Honda or Tesla",
+    "Not Kia",
+    "Collision braking"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "low maintenance"
+   ],
+   "clarified": false,
+   "question": null
+  },
+  {
+   "id": "H6",
+   "style": "buyer",
+   "q": "I want to buy an EV, extremely safe, not sure it fits my budget",
+   "results": 44,
+   "relaxed": false,
+   "extraFilters": [],
+   "unneededQuestion": false,
+   "askedRight": true,
+   "available": 44,
+   "recall": 1,
+   "slots": 5,
+   "fit": 5,
+   "scored": true,
+   "understood": "An electric vehicle that is extremely safe.",
+   "filters": [
+    "Electric",
+    "Collision braking"
+   ],
+   "relaxedWhat": [],
+   "unsupported": [
+    "Budget details"
+   ],
+   "clarified": true,
+   "question": "What's your budget: a total price or a monthly payment?"
+  }
+ ]
+}
