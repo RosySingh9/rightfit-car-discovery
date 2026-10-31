@@ -9,6 +9,8 @@
 - The agent knows more needs it can't check yet (Bluetooth and CarPlay, navigation, ride comfort, maintenance, EV charging, availability near me) and never lists a missing budget as one.
 - Evaluation: a question counts as unneeded only when the shopper already gave a budget.
 
+**Re-run after fixes (no longer unseen):** top-5 fit 100% (29 of 29); asked what the buyer wanted 3 of 4; said what it can't check 4 of 4 (Bluetooth now caught); kept out "never consider" 2 of 2; B5 now sees all 4 cars she'd buy. Remaining gaps: it asked B2 about budget rather than family size; for B1, "no fancy add-ons" ranks the cheapest cars first instead of base trims of the models she named (v0.6 trim work); "budget details" still appears as a can't-check note. Raw results: `site/data/eval-runs/v0.4.1-heldout-rerun-2026-10-31.json`.
+
 **Note:** the 6 held-out searches have now been seen. A re-run shows whether the fixes work, but the next independent test needs new buyers.
 
 ## v0.4 · Real buyers · 2026-10-31
