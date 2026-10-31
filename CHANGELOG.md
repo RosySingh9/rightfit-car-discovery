@@ -1,5 +1,44 @@
 # Changelog
 
+## v0.4.1 · What real buyers caught · 2026-10-31
+
+**Fixed (prompt rules, from the buyer interviews)**
+- Ask about budget whenever none is given, while still showing results. Buyers said this is the question they want asked.
+- "Safe" requires standard collision braking and ranks other safety features instead of requiring them, so a tight budget isn't cut to one car.
+- "No fancy add-ons" or "basic" never adds a feature filter; it sorts by price instead.
+- The agent knows more needs it can't check yet (Bluetooth and CarPlay, navigation, ride comfort, maintenance, EV charging, availability near me) and never lists a missing budget as one.
+- Evaluation: a question counts as unneeded only when the shopper already gave a budget.
+
+**Note:** the 6 held-out searches have now been seen. A re-run shows whether the fixes work, but the next independent test needs new buyers.
+
+## v0.4 · Real buyers · 2026-10-31
+
+**Added**
+- `research/interview-findings.md`: 6 buyer interviews (B1–B6), anonymized.
+- A held-out test on the evaluation page: 6 searches in the buyers' own words, with answer keys from what each buyer said they'd consider. It checks top-5 fit, whether the agent asked the question the buyer wanted, whether it admitted what it can't check, and whether it kept out what the buyer would never consider.
+
+**First held-out run (v0.3.2, live):** top-5 fit 86% (25 of 29). Asked what the buyer wanted asked: 1 of 4. Said what it can't check: 3 of 4. Kept out "never consider": 2 of 2. Raw results: `site/data/eval-runs/v0.4-heldout-2026-10-31.json`.
+
+**What it caught**
+- Fixes made on the practice set (fewer questions) overshot: real buyers wanted the budget question.
+- "No fancy add-ons" became a requirement for adaptive cruise control; the top 5 had none of the models the buyer was considering.
+- "Safe" on a $20,000 budget required three safety features and hid 3 of the 4 cars the buyer would accept.
+
+**Research findings:** 4 of 6 buyers couldn't work out a monthly payment or what they could afford online; safety was the top must-have (4 of 6); 4 of 6 had a model or brand in mind. Payment and affordability move to the top of the roadmap (v0.5).
+
+## v0.3.2 · When a fix backfires · 2026-10-29
+
+**Second evaluation run (v0.3.1, live):** need-style top-5 fit 91% (53 of 58), spec-style 100% (15 of 15). Unasked filters went from 6 of 20 searches to 1; unneeded questions from 3 to 0; junk "can't check" notes from 2 to 0. Raw results: `site/data/eval-runs/v0.3.1-2026-10-29.json`.
+
+**What dropped and why:** "quiet hybrid that fits a stroller and is easy to park" scored 0 of 5. My new v0.3.1 rule ("roomy" → rank by cargo) made the agent sort by cargo space, so five Sienna minivans came first.
+
+**Fixed (prompt rules)**
+- "Fits a stroller" or "fits a car seat" is a minimum, never a ranking.
+- "Easy to park", "for the city" or "compact" excludes minivans and pickups.
+- "Hybrid" includes plug-in hybrids unless the shopper says otherwise ("RAV4 hybrid" now includes the RAV4 Prime). That's a product decision, written down so it's visible.
+
+**Decision:** stop tuning on these 20 searches. After two rounds of fixes they're a practice set, not a test. v0.4 evaluates on held-out searches from buyer interviews.
+
 ## v0.3.1 · What a perfect score hid · 2026-10-29
 
 **First evaluation run (v0.3, live, GPT-4o-mini):** 100% top-5 fit on the 20 v0.1 shopper searches (58 of 58 need-style slots, 15 of 15 spec-style), versus CarMax's 37% and 95%. When nothing in stock fit, it said so 3 of 3 times. It flagged both unsupported requests (massaging seats, leather). Raw results: `site/data/eval-runs/v0.3-2026-10-29.json`.
