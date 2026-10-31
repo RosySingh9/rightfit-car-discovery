@@ -198,6 +198,15 @@ ol.steps li::before{content:counter(s);font-family:var(--display);font-weight:70
 .compare-box th{font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .compare-box td.best{font-weight:600;color:var(--good)}
 .order{font-size:.8rem;color:var(--muted)}
+.readas{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem}
+.readas span.r{background:var(--label);border:1px solid var(--rule);padding:2px 8px}
+.readas b{font-weight:600}
+.notice button.inline{font:600 .82rem var(--body);border:1px solid var(--ink);background:var(--label);color:var(--ink);padding:3px 10px;cursor:pointer;margin-top:6px}
+.fb{display:grid;gap:8px;border-top:1px solid var(--rule);padding-top:12px}
+.fb .row2{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fb button{font:600 .85rem var(--body);border:1px solid var(--rule);background:var(--chip);color:var(--ink);padding:5px 12px;cursor:pointer}
+.fb button[aria-pressed="true"]{border-color:var(--route);background:var(--route);color:#fff}
+.fb textarea{width:100%;min-height:70px;font:400 .9rem var(--body);padding:8px;border:1px solid var(--rule);background:var(--label);color:var(--ink)}
 details{border-top:1px solid var(--rule);padding-top:12px}
 summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em}
 details .stack{margin-top:12px}
@@ -226,13 +235,14 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 </header>
 
 <section class="searchbox" aria-labelledby="h-try">
-  <div class="sticker-head"><h2 id="h-try">Try RightFit</h2><span class="eyebrow">v0.6 · 567 synthetic listings</span></div>
+  <div class="sticker-head"><h2 id="h-try">Try RightFit</h2><span class="eyebrow">v0.7 · ready for testers</span></div>
   <div class="sticker-body">
     <form class="sform" id="sform" role="search">
       <label for="q" class="sr" style="position:absolute;left:-9999px">Describe the car you need</label>
       <input id="q" name="q" type="text" size="1" autocomplete="off" maxlength="300" placeholder="Describe the car you need, the way you'd tell a friend">
       <button type="submit">Search</button>
     </form>
+    <p class="smsg">Demo inventory: 567 pre-owned cars, model years 2019–2025, 9 brands, Dallas-area dealers. All listings are synthetic.</p>
     <div class="examples" id="examples" aria-label="Example searches"></div>
     <details class="money" id="money">
       <summary>Payment assumptions and "what can I afford?"</summary>
@@ -515,6 +525,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       <div class="rel"><span class="ver">v0.4.1</span><span>Budget question, safer "safe", no invented add-ons</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.5</span><span>Editable payment assumptions; "what can I afford?" helper</span><span class="status shipped">Shipped</span></div>
       <div class="rel"><span class="ver">v0.6</span><span>Trim preference, compare view, fair-order guardrails, automated tests</span><span class="status shipped">Shipped</span></div>
+      <div class="rel"><span class="ver">v0.7</span><span>Ready for testers: trade-offs shown, "how I read it", feedback box</span><span class="status shipped">Shipped</span></div>
     </div>
     <p class="small"><strong>If this were going to production next:</strong> real dealer feeds with VIN decoding for drivetrain and trim; CarPlay, Bluetooth and EV-charging data; availability at the nearest dealer; rates from an actual lender; a fresh set of buyers for the next held-out test; and the fair-order test run against every model change.</p>
   </div>
@@ -563,6 +574,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 
 </div>
 
+<script src="agent/config.js"></script>
 <script src="agent/engine.js"></script>
 <script>
 (function(){
@@ -635,12 +647,19 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       h += '<div class="applied"><span class="eyebrow">Filters applied</span>' + res.constraints.map((c) =>
         `<span class="chip">${esc(c.label)}<button type="button" data-k="${esc(c.key)}" aria-label="Remove ${esc(c.label)}">×</button></span>`).join("") + "</div>";
     }
+    if (res.interpretations.length) h += '<div class="readas"><span class="eyebrow">How I read it</span>' + res.interpretations.map((x) => `<span class="r"><b>"${esc(x.phrase)}"</b> → ${esc(x.meaning)}</span>`).join("") + "</div>";
     if (intent.needs_clarification && intent.clarifying_question) {
       h += `<div class="notice ask"><strong>${esc(intent.clarifying_question)}</strong><div class="opts">` +
         (intent.clarify_options || []).map((o) => `<button type="button" data-o="${esc(o)}">${esc(o)}</button>`).join("") +
         '</div><span class="small muted">Meanwhile, here are my best guesses.</span></div>';
     }
-    if (res.relaxed.length) h += `<div class="notice warn">No exact matches in stock. To show the closest cars, I loosened: <strong>${esc(res.relaxed.join(", "))}</strong>.</div>`;
+    if (res.tradeoff) {
+      const t = res.tradeoff, c = t.car;
+      h += `<div class="notice warn">Nothing in stock fits <strong>${esc(t.kept.join(", "))}</strong> and your budget together. Below are the closest cars within budget.<br>
+        If <strong>${esc(t.kept.join(", "))}</strong> matters more: the cheapest is a ${c.year} ${esc(c.make)} ${esc(c.model)} at ${money(c.price)}, about ${money(t.payment)}/mo*.
+        <br><button type="button" class="inline" id="keep">Show ${esc(t.kept.join(", "))} cars instead (${t.count})</button></div>`;
+    } else if (res.relaxed.length) h += `<div class="notice warn">No exact matches in stock. To show the closest cars, I loosened: <strong>${esc(res.relaxed.join(", "))}</strong>.</div>`;
+    if (res.stretch) { const c = res.stretch.car; h += `<div class="notice">Newest within your budget: ${res.stretch.newestShown} models. One step up: a ${c.year} ${esc(c.make)} ${esc(c.model)} at about ${money(res.stretch.payment)}/mo*.</div>`; }
     if (res.unsupported.length) h += `<div class="notice">I can't check <strong>${esc(res.unsupported.join(", "))}</strong> yet. That information isn't in the inventory data.</div>`;
     if (res.unknownDrive) h += `<div class="notice">${res.unknownDrive} more listing${res.unknownDrive === 1 ? "" : "s"} might match, but the dealer didn't say which drivetrain. That gap is in the v0.2 scorecard.</div>`;
     const F = RightFit.FINANCE;
@@ -664,7 +683,10 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     }
     h += "</aside></div>";
     h += compareTable();
+    h += feedbackBlock(res);
     out.innerHTML = h;
+    const keep = out.querySelector("#keep"); if (keep) keep.onclick = () => { state.intent = RightFit.withoutBudget(state.intent); draw(); };
+    wireFeedback();
     out.querySelectorAll(".applied button").forEach((b) => b.onclick = () => { state.intent = RightFit.withoutConstraint(state.intent, b.dataset.k); draw(); });
     out.querySelectorAll(".opts button").forEach((b) => b.onclick = () => { const q2 = (state.q ? state.q + ". " : "") + b.dataset.o; $("#q").value = q2; go(q2); });
     out.querySelectorAll(".facet button:not([disabled])").forEach((b) => b.onclick = () => {
@@ -681,6 +703,35 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     });
     const clr = out.querySelector("#cmp-clear"); if (clr) clr.onclick = () => { picked.clear(); draw(); };
     const more = out.querySelector("#more"); if (more) more.onclick = () => { shown += 8; draw(); };
+  }
+
+  // ---- v0.7 feedback: thumbs + an optional note, sent through a Google Form (no personal data asked) ----
+  const FB = window.RIGHTFIT_FEEDBACK || {};
+  let fbVote = null, fbFor = null;
+  function feedbackBlock(res){
+    if (!FB.formUrl) return "";
+    if (fbFor !== state.q) { fbVote = null; fbFor = state.q; }
+    return `<div class="fb" aria-label="Feedback"><strong>Did RightFit get this right?</strong>
+      <div class="row2"><button type="button" data-v="Yes" aria-pressed="${fbVote === "Yes"}">👍 Yes</button><button type="button" data-v="Partly" aria-pressed="${fbVote === "Partly"}">Partly</button><button type="button" data-v="No" aria-pressed="${fbVote === "No"}">👎 No</button></div>
+      <label class="small" for="fb-note">What would you have wanted to see? (optional, please don't include personal details)</label>
+      <textarea id="fb-note" maxlength="600"></textarea>
+      <div class="row2"><a id="fb-send" class="examples-more" href="#" target="_blank" rel="noopener" style="font:600 .85rem var(--body);border:2px solid var(--ink);background:var(--ink);color:var(--label);padding:6px 12px;text-decoration:none">Send feedback</a><span class="smsg">Opens a short form with your search filled in. Thank you!</span></div></div>`;
+  }
+  function wireFeedback(){
+    if (!FB.formUrl) return;
+    const link = () => {
+      const a = out.querySelector("#fb-send"); if (!a) return;
+      if (!FB.fields) { a.href = FB.formUrl; return; }
+      const u = new URL(FB.formUrl);
+      u.searchParams.set("usp", "pp_url");
+      const vals = { query: state.q, vote: fbVote || "", note: (out.querySelector("#fb-note") || {}).value || "",
+        understood: state.intent.understood || "", filters: RightFit.search(CARS, state.intent).constraints.map((c) => c.label).join(" · ") };
+      for (const [k, id] of Object.entries(FB.fields)) if (id && vals[k] != null) u.searchParams.set(id, vals[k]);
+      a.href = u.toString();
+    };
+    out.querySelectorAll(".fb button").forEach((b) => b.onclick = () => { fbVote = b.dataset.v; out.querySelectorAll(".fb button").forEach((x) => x.setAttribute("aria-pressed", x === b)); link(); });
+    const note = out.querySelector("#fb-note"); if (note) note.addEventListener("input", link);
+    link();
   }
 
   // ---- v0.6 compare view: up to 3 cars side by side, with the best value in each row marked ----
