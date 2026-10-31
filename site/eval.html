@@ -29,7 +29,7 @@ header{display:grid;gap:10px;border-bottom:3px solid var(--ink);padding-bottom:1
 button:focus-visible,a:focus-visible{outline:2px solid var(--route);outline-offset:2px}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .smsg{font-family:var(--mono);font-size:.82rem;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:0;border:2px solid var(--ink);background:var(--label)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0;border:2px solid var(--ink);background:var(--label)}
 .cards>div{padding:16px;display:grid;gap:6px;align-content:start}
 .cards>div+div{border-left:1px solid var(--rule)}
 @media (max-width:620px){.cards>div+div{border-left:0;border-top:1px solid var(--rule)}}
@@ -61,6 +61,7 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     <ul class="note">
       <li><strong>Fit</strong> = a car in the top 5 meets every hard constraint the shopper stated. Each query's test is written in code, independently of the model.</li>
       <li>Inventories differ: CarMax had tens of thousands of cars, RightFit has 567 synthetic ones. When fewer than 5 cars in stock fit, the bar is however many do. When none do, the query is scored on whether RightFit says so.</li>
+      <li>Since v0.3.1 it also flags what a top-5 score hides: filters nobody asked for, questions nobody needed, and matching cars the agent missed.</li>
       <li>I wrote both the agent and the tests, so treat this as a first read, not proof. v0.4 adds a held-out query set and runs this on every change.</li>
     </ul>
     <div class="row"><button class="btn" id="run">Run the 20 queries</button><button class="btn ghost" id="copy" disabled>Copy results</button><span class="smsg" id="msg">About 20 model calls, well under one cent.</span></div>
@@ -111,8 +112,11 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     else if (r.scored) fit = `<span class="pill ${r.fit === r.slots ? "good" : "bad"}">${r.fit} of ${r.slots}</span>`;
     else if (r.available === 0) { fit = '<span class="pill na">none in stock</span>'; notes.push(r.relaxed ? "Said so and showed the closest cars." : (r.results === 0 ? "Returned nothing." : "Showed cars without saying none fit.")); }
     if (r.relaxedWhat && r.relaxedWhat.length) notes.push("Loosened: " + esc(r.relaxedWhat.join(", ")));
+    if (r.extraFilters && r.extraFilters.length) notes.push(`<span class="pill bad">added unasked filter</span> ${esc(r.extraFilters.join(", "))}`);
+    if (r.unneededQuestion) notes.push('<span class="pill bad">asked an unneeded question</span>');
+    if (r.recall != null && r.recall < 1) notes.push(`<span class="pill bad">missed matching cars</span> found ${Math.round(r.recall * r.available)} of ${r.available}`);
     if ("flaggedUnsupported" in r) notes.push(r.flaggedUnsupported ? "Said it can't check this." : "<span class=\"pill bad\">didn't flag the unsupported request</span>");
-    if (r.clarified) notes.push("Asked a clarifying question.");
+    if (r.clarified && !r.unneededQuestion) notes.push("Asked a clarifying question.");
     if (g.note) notes.push(esc(g.note));
     $(`#r-${r.id}`).innerHTML = `<td class="num">${r.id}<br><span class="note">${r.style}</span></td><td class="q">${esc(r.q)}</td>
       <td>${esc(r.understood || "")}${r.filters ? `<br><span class="note">${esc(r.filters.join(" · "))}</span>` : ""}</td><td>${fit}</td><td class="note">${notes.join("<br>")}</td>`;
@@ -127,6 +131,9 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     const need = rate("need"), spec = rate("spec");
     const none = results.filter((r) => r.available === 0);
     const honest = none.filter((r) => r.relaxed).length;
+    const extra = results.filter((r) => (r.extraFilters || []).length).length;
+    const unneeded = results.filter((r) => r.unneededQuestion).length;
+    const missed = results.filter((r) => r.recall != null && r.recall < 1).length;
     const card = (title, us, them, detail) => `<div><span class="eyebrow">${title}</span><span class="big">${Math.round(us.pct * 100)}%</span>
       <div class="vs"><span>RightFit</span><div class="bar us"><span style="width:${us.pct * 100}%"></span></div><span>${Math.round(us.pct * 100)}%</span>
       <span>CarMax v0.1</span><div class="bar them"><span style="width:${them * 100}%"></span></div><span>${Math.round(them * 100)}%</span></div>
@@ -134,7 +141,8 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     $("#cards").innerHTML =
       card("Phrased like a person", need, CARMAX.need, `${need.fit} of ${need.slots} top-5 slots fit, across ${need.n} scored queries.`) +
       card("Phrased like filters", spec, CARMAX.spec, `${spec.fit} of ${spec.slots} top-5 slots fit, across ${spec.n} scored queries.`) +
-      `<div><span class="eyebrow">When nothing in stock fits</span><span class="big">${honest} of ${none.length}</span><span class="note">queries where RightFit said no exact match and showed the closest cars, instead of silently showing the wrong ones.</span></div>`;
+      `<div><span class="eyebrow">When nothing in stock fits</span><span class="big">${honest} of ${none.length}</span><span class="note">queries where RightFit said no exact match and showed the closest cars, instead of silently showing the wrong ones.</span></div>` +
+      `<div><span class="eyebrow">What a top-5 score can't see</span><span class="big">${extra}</span><span class="note">queries with a filter nobody asked for · ${unneeded} unneeded questions · ${missed} queries that missed matching cars</span></div>`;
     $("#cards").hidden = false;
   }
 
