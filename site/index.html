@@ -230,7 +230,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     <a class="primary" href="story.html">Read the case study</a>
     <a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">View the code on GitHub</a>
     <a href="explorer.html">Explore the data with SQL</a>
-    <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/docs/prfaq.md" target="_blank" rel="noopener">Read the PR/FAQ</a>
+    <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/docs/prfaq-v0.7.md" target="_blank" rel="noopener">Read the PR/FAQ</a>
   </div>
 </header>
 
@@ -532,9 +532,18 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
 </section>
 
 <section class="sticker" aria-labelledby="h-prfaq">
-  <div class="sticker-head"><h2 id="h-prfaq">PR/FAQ: RightFit</h2><span class="eyebrow">Working-backwards draft · figures are hypotheses</span></div>
+  <div class="sticker-head"><h2 id="h-prfaq">PR/FAQ: RightFit</h2><span class="eyebrow">v0.7 · revised after testing · original v0.1 kept</span></div>
   <div class="sticker-body">
-    <p class="lede">Shoppers describe their life, not a spec sheet, and see the cars that fit, each with a monthly payment whose assumptions are in plain view.</p>
+    <p class="lede">Shoppers describe their life and their monthly budget, and see the cars that fit, each with a payment whose assumptions they control.</p>
+    <details open>
+      <summary>What the evidence changed since v0.1</summary>
+      <div class="stack"><ul class="plain">
+        <li><strong>Payment moved to the lead.</strong> 4 of 6 buyers couldn't work out a monthly payment online. v0.1 treated it as a bonus.</li>
+        <li><strong>Ask about budget.</strong> Tuning to my own test taught the agent to ask fewer questions; real buyers wanted the budget question.</li>
+        <li><strong>Every new data feed gets its own quality check.</strong> 331 of 333 planted problems caught, but only 32 of 87 on an unseen dealer.</li>
+        <li><strong>Never loosen a filter silently.</strong> When nothing fits, show the trade-off and let the shopper choose.</li>
+      </ul></div>
+    </details>
     <details>
       <summary>Why the lender should build it</summary>
       <div class="stack"><p>Payment is how most people actually budget. The lender is the one party that can show an honest, explained payment estimate next to every result, and it has a reason to care about trust and compliance from the start.</p></div>
@@ -544,7 +553,7 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
       <div class="stack"><ul class="plain">
         <li><strong>North star:</strong> findability rate, the share of sessions that reach a vehicle page matching every hard constraint the shopper stated.</li>
         <li><strong>Leading:</strong> zero-result rate, rephrase rate, time to first relevant result.</li>
-        <li><strong>Quality:</strong> constraints honored, negation accuracy, top-5 precision on a gold set, and invented specs in explanations (target: zero).</li>
+        <li><strong>Quality:</strong> top-5 fit on a held-out set of real buyers' searches, asked the question the buyer wanted, filters nobody asked for and invented specs (target: zero for both).</li>
         <li><strong>Business:</strong> vehicle page to lead, and to credit application, against a control group.</li>
         <li><strong>Data:</strong> attribute completeness and accuracy per feed, listing freshness.</li>
       </ul></div>
@@ -552,12 +561,13 @@ footer{border-top:3px solid var(--ink);padding-top:18px;display:grid;gap:8px;fon
     <details>
       <summary>Guardrails</summary>
       <div class="stack"><ul class="plain">
-        <li>Ranking and payment estimates never use protected characteristics or proxies for them, and the agent never infers creditworthiness.</li>
+        <li>Ranking and payment estimates never use protected characteristics or proxies for them. The agent never asks about or infers income or credit, and a test checks that a shopper profile or dealer boost changes nothing.</li>
         <li>Every applied filter shows as a chip the shopper can remove.</li>
-        <li>Explanations use listing facts only; evals check this before each release.</li>
+        <li>Explanations use listing facts only; automated tests check this on every change.</li>
         <li>Quality bars are agreed with the business owner, and launch waits until they're met.</li>
       </ul></div>
     </details>
+    <p class="small">Full document: <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/docs/prfaq-v0.7.md" target="_blank" rel="noopener">PR/FAQ v0.7, revised after testing</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery/blob/main/docs/prfaq.md" target="_blank" rel="noopener">original v0.1, written before building</a>.</p>
   </div>
 </section>
 
