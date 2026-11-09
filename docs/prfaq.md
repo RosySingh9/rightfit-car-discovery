@@ -1,5 +1,7 @@
 # PR/FAQ: RightFit, a discovery agent that finds the right car from one sentence
 
+> **This is the original v0.1 draft, written before building anything, and kept unchanged on purpose.** The current version, revised after building and testing with real buyers, is [`prfaq-v0.7.md`](prfaq-v0.7.md). Its first box says what the evidence changed.
+
 *Working-backwards draft, v0.1. An independent concept written as if for an automaker's in-house finance company (a "captive lender") that also runs a vehicle shopping experience. Every figure below is a hypothesis to test; none of them are results.*
 
 ---
