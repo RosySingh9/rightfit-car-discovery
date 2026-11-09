@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.7.1 · PR/FAQ revised after testing · 2026-11-08
+
+- New `docs/prfaq-v0.7.md`: the PR/FAQ revised with what building and testing showed. It opens with "What the evidence changed": payment moved to the lead, the agent asks about budget, every new data feed gets its own quality check, and filters are never loosened silently. Claims the demo can't back (insurance cost, crash ratings, distance) are gone; a real, anonymized buyer quote replaces a hypothetical one; the internal FAQ uses measured numbers.
+- `docs/prfaq.md` is kept unchanged as the original v0.1 draft, written before building, with a note pointing to the revision.
+- The site's PR/FAQ section and the README link to both.
+
 ## v0.7 · Ready for testers · 2026-10-31
 
 Found by my own test search: "i want a nice new car that is budget friendly and easy to drive thru city. About $400 a month". RightFit read "new" as "2023 or newer", found nothing, quietly dropped it, and called city driving something it couldn't check. Its $400 a month covered 57 cars, the newest from 2022, while the cheapest 2023 was only about $15 a month more. It never said so.

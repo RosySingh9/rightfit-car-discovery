@@ -21,7 +21,7 @@ Shoppers describe **needs**: "twins on the way", "tow my track car", "not a mini
 | Listings that arrive from dealer feeds ready for an AI agent (v0.2) | **0 of 720**; after cleaning and enrichment, **454 of 575** |
 | Cleaning rules on problems they were designed for, vs a dealer they had never seen (v0.2) | **99%** vs **37%** |
 
-→ **[Try the agent](https://rightfit-car-discovery-site.vercel.app/)** · [How the agent works](docs/agent.md) · [Shopper intent map](research/intent-map.md) · [Findability audit](audit/findability-audit.md) · [PR/FAQ](docs/prfaq.md) · [Feed Doctor](feed-doctor/README.md) · [Buyer interviews](research/interview-findings.md)
+→ **[Try the agent](https://rightfit-car-discovery-site.vercel.app/)** · [How the agent works](docs/agent.md) · [Shopper intent map](research/intent-map.md) · [Findability audit](audit/findability-audit.md) · [PR/FAQ, revised after testing](docs/prfaq-v0.7.md) ([original v0.1](docs/prfaq.md)) · [Feed Doctor](feed-doctor/README.md) · [Buyer interviews](research/interview-findings.md)
 
 ## What I'm building
 
