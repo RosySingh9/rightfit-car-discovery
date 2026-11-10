@@ -62,4 +62,4 @@ This is one observation of one public page. It doesn't describe any internal or 
 - Cars.com showed a bot check and wasn't tested. Carvana's search keeps state between searches, so only one result was recorded with confidence; a fuller Carvana run is planned.
 - No sign-ins, no forms, no scraping beyond typing a query into each public search box.
 
-*Independent concept by Rosy Singh. Not affiliated with or endorsed by Toyota, Toyota Financial Services, CarMax or Carvana.*
+*By Rosy Singh. Independent personal project using public and synthetic data only. Not affiliated with or endorsed by any company named here, and no employer data or work was used.*
