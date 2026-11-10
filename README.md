@@ -2,7 +2,7 @@
 
 **An AI agent that finds the right car from one sentence.**
 
-A product I'm building in public, release by release: an AI discovery agent that understands how shoppers describe what they need, reasons over messy inventory data, and proves it's getting better.
+An AI car-discovery agent, built release by release, that understands how shoppers describe what they need, reasons over messy inventory data, and proves it's getting better.
 
 *By Rosy Singh, Senior AI Product Manager. An independent concept using public and synthetic data only. Not affiliated with any automaker, lender or retailer.*
 

@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RightFit Case Study</title>
+<meta name="description" content="How I built RightFit, an AI car-discovery agent: the steps, the system, the numbers and what I learned.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a one-column case study in the RightFit window-sticker style: thesis, numbers, the system, the week as a ledger, lessons. */
+:root{
+  --paper:#f6f7f9;--label:#ffffff;--ink:#151a22;--muted:#5a6372;--rule:#d5dae2;--route:#3a78d8;--good:#1d7a4a;--bad:#b4471b;--chip:#eef1f6;--route-bg:#e8eefa;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f131a;--label:#161b24;--ink:#e7ebf1;--muted:#9aa4b3;--rule:#2a3240;--route:#6ea2f2;--good:#5cc18c;--bad:#f08a5d;--chip:#1f2632;--route-bg:#16233a;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f131a;--label:#161b24;--ink:#e7ebf1;--muted:#9aa4b3;--rule:#2a3240;--route:#6ea2f2;--good:#5cc18c;--bad:#f08a5d;--chip:#1f2632;--route-bg:#16233a;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+.wrap{max-width:900px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:44px}
+a{color:var(--route);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--route);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;margin:0;text-wrap:balance;text-transform:uppercase}
+h1{font-size:clamp(2.4rem,6.5vw,4rem)}
+h2{font-size:clamp(1.5rem,3.6vw,2rem)}
+h3{font-size:1.2rem;letter-spacing:.02em}
+p{margin:0;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)} .small{font-size:.9rem}
+.stack{display:grid;gap:14px}
+header{display:grid;gap:16px;border-bottom:3px solid var(--ink);padding-bottom:26px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.lede{font-size:1.15rem}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.cta a{font:600 .9rem var(--body);text-decoration:none;padding:9px 16px;border:2px solid var(--ink);color:var(--ink);background:var(--label)}
+.cta a.primary{background:var(--ink);color:var(--label)}
+
+/* 60 seconds */
+.pitch{background:var(--label);border:2px solid var(--ink);padding:20px;display:grid;gap:10px}
+.pitch p{font-size:1.05rem}
+.pitch .say{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--route)}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));border:2px solid var(--ink);background:var(--label)}
+.nums>div{padding:16px;display:grid;gap:4px;align-content:start;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.big{font-family:var(--display);font-weight:700;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.big .arrow{color:var(--muted);font-size:.6em;padding:0 .15em}
+.nums p{font-size:.86rem}
+
+/* diagram */
+figure{margin:0;display:grid;gap:10px}
+.diagram{overflow-x:auto;background:var(--label);border:2px solid var(--ink);padding:12px}
+.diagram svg{display:block;width:100%;min-width:760px;height:auto;color:var(--ink)}
+figcaption{font-size:.88rem;color:var(--muted);max-width:72ch}
+
+/* timeline ledger */
+.week{display:grid;gap:0;border-top:3px solid var(--ink)}
+.step{display:grid;grid-template-columns:110px minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid var(--rule)}
+@media (max-width:620px){.step{grid-template-columns:1fr;gap:6px}}
+.when{display:grid;gap:2px;align-content:start}
+.ver{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1;color:var(--route)}
+.date{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.step h3{margin-bottom:8px}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.trio{grid-template-columns:1fr}}
+.trio div{display:grid;gap:4px;align-content:start;font-size:.9rem}
+.trio .k{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.trio .found{border-left:3px solid var(--bad);padding-left:10px}
+.trio .decided{border-left:3px solid var(--route);padding-left:10px}
+.trio .did{border-left:3px solid var(--rule);padding-left:10px}
+
+/* lessons */
+.lessons{list-style:none;margin:0;padding:0;counter-reset:l;display:grid;gap:16px}
+.lessons li{counter-increment:l;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px}
+.lessons li::before{content:counter(l);font-family:var(--display);font-weight:700;font-size:1.8rem;line-height:1;color:var(--route)}
+.lessons strong{display:block;font-size:1.02rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px}
+.box{background:var(--label);border:1px solid var(--rule);padding:16px;display:grid;gap:8px;align-content:start}
+ul.plain{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:.92rem}
+.skills{overflow-x:auto}
+.skills table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9rem;background:var(--label)}
+.skills th{font:500 .7rem var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--ink)}
+.skills td{padding:9px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+.skills td:first-child{font-weight:600;width:32%}
+footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;font-size:.86rem;color:var(--muted)}
+</style>
+
+<style>body{margin:0}</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="meta"><a href="index.html">← RightFit</a><span>Case study</span><span>Rosy Singh</span></div>
+  <h1>From a search audit to an AI car-discovery agent</h1>
+  <p class="lede">Car search works when shoppers type filters and breaks when they talk like people. I set out to find out why, fixing the data underneath, building an agent on top, and testing it on real buyers, the way I'd run it as the product manager.</p>
+  <div class="cta">
+    <a class="primary" href="index.html">Try the live agent</a>
+    <a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">See the code</a>
+    <a href="eval.html">Run the evaluation</a>
+  </div>
+</header>
+
+<section class="pitch" aria-labelledby="h-pitch">
+  <span class="say">In 60 seconds</span>
+  <h2 id="h-pitch" style="position:absolute;left:-9999px">The story in 60 seconds</h2>
+  <p>I typed 20 real shopper requests into a major used-car site. Phrased like filters, 95% of the top results fit. Phrased like a person, only 37% did, and "not a minivan" returned minivans.</p>
+  <p>Many failures were data, not language: no dealer feed sent tow ratings or horsepower. So I built a SQL pipeline that turned 720 messy listings, none usable by an agent, into 467 that were. Then I built the agent: the language model only reads the request, and plain code finds, ranks and explains the cars, so it can't invent a spec.</p>
+  <p>It scored 100% on my own test, and I didn't trust that. Digging in, I found hidden problems, and after the fixes it scored 91%, against the site's 37%. Then six real buyers caught what my test couldn't. Four of them couldn't find a monthly payment online, so I built payment search, without ever asking about income or credit.</p>
+</section>
+
+<section class="stack" aria-labelledby="h-nums">
+  <span class="eyebrow">The numbers</span>
+  <h2 id="h-nums">What changed</h2>
+  <div class="nums">
+    <div><span class="eyebrow">Need-style searches, top-5 fit</span><span class="big">37%<span class="arrow">→</span>91%</span><p>The retailer's search vs. RightFit on the same 20 searches.</p></div>
+    <div><span class="eyebrow">Listings an agent can use</span><span class="big">0<span class="arrow">→</span>467</span><p>Of 720 dealer listings as sent, vs. after cleaning and adding specs.</p></div>
+    <div><span class="eyebrow">Real buyers tested</span><span class="big">6</span><p>Their own words as searches, their own answers as the key.</p></div>
+    <div><span class="eyebrow">Couldn't find a payment online</span><span class="big">4 of 6</span><p>The finding that set the last two releases.</p></div>
+    <div><span class="eyebrow">Automated tests</span><span class="big">14</span><p>Run on every change, with no AI calls needed.</p></div>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="h-system">
+  <span class="eyebrow">How it fits together</span>
+  <h2 id="h-system">The system</h2>
+  <figure>
+    <div class="diagram">
+      <svg viewBox="0 0 960 470" role="img" aria-label="Dealer feeds flow through the Feed Doctor SQL pipeline into a clean inventory. A shopper's sentence goes to the language model, which returns only a structured intent. Plain code filters, ranks and explains cars from the clean inventory. Evaluations and automated tests check the engine.">
+        <defs>
+          <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+          <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3a78d8"/></marker>
+        </defs>
+        <g font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11" fill="currentColor">
+          <text x="20" y="24" font-size="12" letter-spacing="1.5">SHOPPER SIDE</text>
+          <text x="20" y="262" font-size="12" letter-spacing="1.5">DATA SIDE</text>
+          <text x="20" y="420" font-size="12" letter-spacing="1.5">PROOF</text>
+        </g>
+        <line x1="20" y1="240" x2="940" y2="240" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>
+        <line x1="20" y1="400" x2="940" y2="400" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="4 4"/>
+
+        <g font-family="IBM Plex Sans, system-ui, sans-serif" fill="currentColor" font-size="13" text-anchor="middle">
+          <!-- shopper row -->
+          <rect x="20" y="50" width="150" height="72" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="95" y="80" font-weight="600">Shopper</text><text x="95" y="100" font-size="11.5">"3 rows, not a</text><text x="95" y="114" font-size="11.5">minivan, under $45k"</text>
+
+          <rect x="230" y="40" width="190" height="92" fill="#3a78d8" fill-opacity=".12" stroke="#3a78d8" stroke-width="2"/>
+          <text x="325" y="68" font-weight="600">Language model</text><text x="325" y="88" font-size="11.5">GPT-4o-mini, strict schema</text>
+          <text x="325" y="114" font-size="11" fill="#3a78d8" font-weight="600">the only AI step</text>
+
+          <rect x="480" y="40" width="190" height="92" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="575" y="66" font-weight="600">Engine (plain code)</text>
+          <text x="575" y="86" font-size="11.5">filter → loosen if empty</text><text x="575" y="102" font-size="11.5">→ rank (fair order)</text><text x="575" y="118" font-size="11.5">→ explain from facts</text>
+
+          <rect x="730" y="40" width="210" height="92" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="835" y="66" font-weight="600">Results page</text>
+          <text x="835" y="86" font-size="11.5">filter chips · "why this car"</text><text x="835" y="102" font-size="11.5">payment you control</text><text x="835" y="118" font-size="11.5">compare · honest notices</text>
+
+          <!-- data row -->
+          <rect x="20" y="290" width="150" height="80" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="95" y="320" font-weight="600">4 dealer feeds</text><text x="95" y="340" font-size="11.5">CSV · JSON · marketplace</text><text x="95" y="356" font-size="11.5">720 listings, messy</text>
+
+          <rect x="230" y="280" width="250" height="100" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="355" y="306" font-weight="600">Feed Doctor (DuckDB SQL)</text>
+          <text x="355" y="326" font-size="11.5">normalize names, trims, units</text><text x="355" y="342" font-size="11.5">flag 11 issue types · sanity gates</text><text x="355" y="358" font-size="11.5">add specs from trim reference</text>
+
+          <rect x="540" y="290" width="160" height="80" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="620" y="320" font-weight="600">Clean inventory</text><text x="620" y="340" font-size="11.5">567 cars · tow, hp,</text><text x="620" y="356" font-size="11.5">range, safety, trim</text>
+
+          <!-- proof row -->
+          <rect x="230" y="420" width="250" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 3"/>
+          <text x="355" y="445" font-size="12">Live evaluation: 20 + 6 buyer searches</text>
+          <rect x="540" y="420" width="250" height="40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 3"/>
+          <text x="665" y="445" font-size="12">14 automated tests on every push</text>
+        </g>
+
+        <!-- arrows: shopper row -->
+        <g stroke="currentColor" stroke-width="1.5" fill="none">
+          <line x1="170" y1="86" x2="226" y2="86" marker-end="url(#a)"/>
+          <line x1="420" y1="86" x2="476" y2="86" stroke="#3a78d8" marker-end="url(#ab)"/>
+          <line x1="670" y1="86" x2="726" y2="86" marker-end="url(#a)"/>
+          <!-- data row -->
+          <line x1="170" y1="330" x2="226" y2="330" marker-end="url(#a)"/>
+          <line x1="480" y1="330" x2="536" y2="330" marker-end="url(#a)"/>
+          <!-- inventory up to engine -->
+          <polyline points="620,290 620,210 600,210 600,136" marker-end="url(#a)"/>
+          <!-- proof checks engine -->
+          <polyline points="480,440 515,440 515,190 545,190 545,136" stroke-dasharray="5 3" marker-end="url(#a)"/>
+          <polyline points="790,440 840,440 840,190 650,190 650,136" stroke-dasharray="5 3" marker-end="url(#a)"/>
+        </g>
+        <g font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10.5" fill="currentColor" text-anchor="middle">
+          <text x="198" y="78">sentence</text>
+          <text x="448" y="78" fill="#3a78d8">intent</text>
+          <text x="698" y="78">cars</text>
+          <text x="198" y="322">raw</text>
+          <text x="508" y="322">clean</text>
+          <text x="628" y="226" text-anchor="start">clean listings</text>
+          <text x="508" y="182" text-anchor="end">scores top 5</text>
+          <text x="700" y="182" text-anchor="start">checks rules</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>The language model only turns the shopper's sentence into a structured intent (blue). Everything that decides which cars appear, in what order and why runs in plain code over cleaned data, so every result is checkable and the model can't invent a car or a spec. The evaluations and tests (dashed) check that code.</figcaption>
+  </figure>
+</section>
+
+<section class="stack" aria-labelledby="h-week">
+  <span class="eyebrow">Step by step</span>
+  <h2 id="h-week">What I did, found and decided</h2>
+  <div class="week">
+    <article class="step"><div class="when"><span class="ver">v0.1</span><span class="date">Research</span></div>
+      <div><h3>Listen to shoppers, then test the search</h3><div class="trio">
+        <div class="did"><span class="k">What I did</span>Coded 14 real shopper letters. Typed 20 shopper-style searches into a major used-car site and scored the top 5. Wrote a PR/FAQ.</div>
+        <div class="found"><span class="k">What I found</span>13 of 14 started from a need, not a model. Filter-style searches: 95% fit; people-style: 37%. "Not a minivan" added a minivan filter, and "$400 a month" silently became a sticker price.</div>
+        <div class="decided"><span class="k">What I decided</span>Many failures were missing data, not misread words. Fix the data before building any AI.</div>
+      </div></div></article>
+    <article class="step"><div class="when"><span class="ver">v0.2</span><span class="date">Data</span></div>
+      <div><h3>Feed Doctor: make the inventory answerable</h3><div class="trio">
+        <div class="did"><span class="k">What I did</span>Built a DuckDB SQL pipeline over four messy dealer feeds: normalize, flag issues, de-duplicate, add specs from a trim reference. Tested it on planted problems and on an unseen dealer (a held-out test).</div>
+        <div class="found"><span class="k">What I found</span>0 of 720 listings were agent-ready as sent; 454 after. It caught 331 of 333 planted issues, but only 32 of 87 on the unseen dealer, where a $34,895 car became $3,489,500.</div>
+        <div class="decided"><span class="k">What I decided</span>Every new feed needs its own quality gate. Drivetrain needs VIN decoding, not more text rules.</div>
+      </div></div></article>
+    <article class="step"><div class="when"><span class="ver">v0.2.1</span><span class="date">Data</span></div>
+      <div><h3>Sanity gates</h3><div class="trio">
+        <div class="did"><span class="k">What I did</span>Fixed parsing (cents, "13.0k mi", dates) and added gates that hold back impossible prices, years and mileages.</div>
+        <div class="found"><span class="k">What I found</span>The unseen dealer: 85 of 87 handled, no bad listings published. One genuine 2024 car with 800 miles was held back too.</div>
+        <div class="decided"><span class="k">What I decided</span>Gates trade a little recall for safety, so in production gated listings go to a review queue, not the bin.</div>
+      </div></div></article>
+    <article class="step"><div class="when"><span class="ver">v0.3</span><span class="date">Agent</span></div>
+      <div><h3>The agent: the model reads, the code decides</h3><div class="trio">
+        <div class="did"><span class="k">What I did</span>A language model fills a strict intent schema; plain code filters, loosens when nothing matches, ranks and writes "why this car" from listing facts. Filters show as removable chips.</div>
+        <div class="found"><span class="k">What I found</span>Keeping the model out of the decisions made every result explainable and every bug findable.</div>
+        <div class="decided"><span class="k">What I decided</span>Same trust pattern as my Toyota agent: put AI where it's strong, keep a checkable step where the risk is.</div>
+      </div></div></article>
+    <article class="step"><div class="when"><span class="ver">v0.3.1–2</span><span class="date">Evaluate</span></div>
+      <div><h3>A perfect score I didn't trust</h3><div class="trio">
+        <div class="did"><span class="k">What I did</span>Ran the 20 v0.1 searches through the agent live and read every row, not just the score.</div>
+        <div class="found"><span class="k">What I found</span>100% hid real problems: "fun" became "250+ hp", invented filters, hidden cars. After fixes it fell to 91%, because my own new rule sent minivans to a shopper who wanted easy parking.</div>
+        <div class="decided"><span class="k">What I decided</span>Stop tuning on a test I wrote; it had become a practice set. Get searches from real buyers instead.</div>
+      </div></div></article>
+    <article class="step"><div class="when"><span class="ver">v0.4</span><span class="date">Real buyers</span></div>
+      <div><h3>Six buyers, their words, their answer keys</h3><div class="trio">
+        <div class="did"><span class="k">What I did</span>Interviewed 6 people shopping for a car. Turned their words into a held-out test, scored on what they said they'd consider, and ran it once, unseen.</div>
+        <div class="found"><span class="k">What I found</span>86% fit, but it asked the question buyers wanted only 1 time in 4: my "fewer questions" fix had overshot. And 4 of 6 couldn't find a monthly payment online.</div>
+        <div class="decided"><span class="k">What I decided</span>Always ask about budget when none is given. Make payment the next release.</div>
+      </div></div></article>
+    <article class="step"><div class="when"><span class="ver">v0.5–0.6</span><span class="date">Ship</span></div>
+      <div><h3>What buyers asked for, built responsibly</h3><div class="trio">
+        <div class="did"><span class="k">What I did</span>Payments shoppers control (down, trade-in, term, rate), "what can I afford?", base-trim preference, a compare view, and 14 automated tests on every change.</div>
+        <div class="found"><span class="k">What I found</span>One buyer wanted an income-based check. A lender's search shouldn't infer anyone's finances.</div>
+        <div class="decided"><span class="k">What I decided</span>The shopper picks a payment; RightFit never asks about income or credit. Ranking uses only what they asked for, and a test proves it.</div>
+      </div></div></article>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="h-learn">
+  <span class="eyebrow">What I'd bring to the next team</span>
+  <h2 id="h-learn">What I learned</h2>
+  <ol class="lessons">
+    <li><div><strong>Start from how people talk, not how the database is shaped.</strong> 13 of 14 letter-writers and most buyers described a need, not a model. A search built for filters serves the minority.</div></li>
+    <li><div><strong>Many AI failures are data failures.</strong> No language model can find "a truck that tows 7,000 lb" if no listing has a tow rating. The agent and the inventory have to be built together.</div></li>
+    <li><div><strong>A perfect score is a warning sign.</strong> 100% hid invented filters and hidden cars. I read rows, not just totals, and made the evaluation check what the score couldn't see.</div></li>
+    <li><div><strong>Your own test becomes a practice set; real users catch what you can't.</strong> Six buyers found the gap my 20 searches never would: they wanted to be asked about budget.</div></li>
+    <li><div><strong>Put the model where it's strong and keep decisions checkable.</strong> The model reads; code decides, explains and ranks fairly, with no paid placement, no inferred income and a test that proves it.</div></li>
+  </ol>
+</section>
+
+<section class="stack" aria-labelledby="h-skills">
+  <span class="eyebrow">For hiring managers</span>
+  <h2 id="h-skills">What this shows</h2>
+  <div class="skills"><table>
+    <thead><tr><th>Product skill</th><th>Where it shows</th></tr></thead>
+    <tbody>
+      <tr><td>Customer discovery</td><td>14 coded shopper letters, 6 buyer interviews, an intent map that shaped the agent</td></tr>
+      <tr><td>Finding where discovery breaks</td><td>A 20-search audit of a live retail search, scored and published</td></tr>
+      <tr><td>Data quality and enrichment</td><td>A SQL pipeline with issue detection, sanity gates, an unseen-dealer test and a scorecard</td></tr>
+      <tr><td>AI product design</td><td>Strict-schema intent, plain-code ranking, honest "can't check" and loosening notices</td></tr>
+      <tr><td>Evaluating AI</td><td>Live evaluations against a baseline, a held-out buyer set, 14 automated tests</td></tr>
+      <tr><td>Writing and working backwards</td><td>A PR/FAQ, a changelog per release, this case study</td></tr>
+      <tr><td>Responsible AI in finance</td><td>Payments with visible assumptions, no income or credit inference, fair-order tests</td></tr>
+      <tr><td>Shipping incrementally</td><td>Six releases, each driven by what the last one found</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="two" aria-label="Limits and next steps">
+  <div class="box">
+    <h3>Honest limits</h3>
+    <ul class="plain">
+      <li>The inventory is synthetic and the specs are illustrative.</li>
+      <li>Samples are small: 14 letters, 20 audit searches, 6 buyers.</li>
+      <li>I wrote most of the tests; the 6 buyer searches have now been seen too.</li>
+      <li>The retailer audit is one site on one day.</li>
+    </ul>
+  </div>
+  <div class="box">
+    <h3>If it went to production next</h3>
+    <ul class="plain">
+      <li>Real dealer feeds with VIN decoding for drivetrain and trim</li>
+      <li>CarPlay, navigation and EV-charging data</li>
+      <li>Availability at the nearest dealer</li>
+      <li>Real lender rates, with a soft-pull pre-qualification the shopper opts into</li>
+      <li>New buyers for the next held-out test</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <span><strong style="color:var(--ink)">Rosy Singh</strong> · Senior AI Product Manager · building AI products people trust and adopt</span>
+  <span><a href="index.html">Live agent</a> · <a href="eval.html">Evaluation</a> · <a href="explorer.html">SQL explorer</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">GitHub</a></span>
+  <span>Independent concept using public and synthetic data. Not affiliated with or endorsed by Toyota, Toyota Financial Services, CarMax, Carvana or Jalopnik.</span>
+</footer>
+
+</div>
+
+</body>
+</html>
