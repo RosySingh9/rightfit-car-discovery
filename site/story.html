@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>RightFit Case Study</title>
-<meta name="description" content="How I built RightFit, an AI car-discovery agent, in one week: the steps, the system, the numbers and what I learned.">
+<meta name="description" content="How I built RightFit, an AI car-discovery agent: the steps, the system, the numbers and what I learned.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -97,8 +97,8 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
 
 <header>
   <div class="meta"><a href="index.html">← RightFit</a><span>Case study</span><span>Rosy Singh</span></div>
-  <h1>One week, six releases: an AI car-discovery agent</h1>
-  <p class="lede">Car search works when shoppers type filters and breaks when they talk like people. I spent a week finding out why, fixing the data underneath, building an agent on top, and testing it on real buyers, the way I'd run it as the product manager.</p>
+  <h1>From a search audit to an AI car-discovery agent</h1>
+  <p class="lede">Car search works when shoppers type filters and breaks when they talk like people. I set out to find out why, fixing the data underneath, building an agent on top, and testing it on real buyers, the way I'd run it as the product manager.</p>
   <div class="cta">
     <a class="primary" href="index.html">Try the live agent</a>
     <a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">See the code</a>
@@ -211,45 +211,45 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
 
 <section class="stack" aria-labelledby="h-week">
   <span class="eyebrow">Step by step</span>
-  <h2 id="h-week">The week</h2>
+  <h2 id="h-week">What I did, found and decided</h2>
   <div class="week">
-    <article class="step"><div class="when"><span class="ver">v0.1</span><span class="date">Oct 25 · Research</span></div>
+    <article class="step"><div class="when"><span class="ver">v0.1</span><span class="date">Research</span></div>
       <div><h3>Listen to shoppers, then test the search</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>Coded 14 real shopper letters. Typed 20 shopper-style searches into a major used-car site and scored the top 5. Wrote a PR/FAQ.</div>
         <div class="found"><span class="k">What I found</span>13 of 14 started from a need, not a model. Filter-style searches: 95% fit; people-style: 37%. "Not a minivan" added a minivan filter, and "$400 a month" silently became a sticker price.</div>
         <div class="decided"><span class="k">What I decided</span>Many failures were missing data, not misread words. Fix the data before building any AI.</div>
       </div></div></article>
-    <article class="step"><div class="when"><span class="ver">v0.2</span><span class="date">Oct 25 · Data</span></div>
+    <article class="step"><div class="when"><span class="ver">v0.2</span><span class="date">Data</span></div>
       <div><h3>Feed Doctor: make the inventory answerable</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>Built a DuckDB SQL pipeline over four messy dealer feeds: normalize, flag issues, de-duplicate, add specs from a trim reference. Tested it on planted problems and on an unseen dealer (a held-out test).</div>
         <div class="found"><span class="k">What I found</span>0 of 720 listings were agent-ready as sent; 454 after. It caught 331 of 333 planted issues, but only 32 of 87 on the unseen dealer, where a $34,895 car became $3,489,500.</div>
         <div class="decided"><span class="k">What I decided</span>Every new feed needs its own quality gate. Drivetrain needs VIN decoding, not more text rules.</div>
       </div></div></article>
-    <article class="step"><div class="when"><span class="ver">v0.2.1</span><span class="date">Oct 28 · Data</span></div>
+    <article class="step"><div class="when"><span class="ver">v0.2.1</span><span class="date">Data</span></div>
       <div><h3>Sanity gates</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>Fixed parsing (cents, "13.0k mi", dates) and added gates that hold back impossible prices, years and mileages.</div>
         <div class="found"><span class="k">What I found</span>The unseen dealer: 85 of 87 handled, no bad listings published. One genuine 2024 car with 800 miles was held back too.</div>
         <div class="decided"><span class="k">What I decided</span>Gates trade a little recall for safety, so in production gated listings go to a review queue, not the bin.</div>
       </div></div></article>
-    <article class="step"><div class="when"><span class="ver">v0.3</span><span class="date">Oct 28 · Agent</span></div>
+    <article class="step"><div class="when"><span class="ver">v0.3</span><span class="date">Agent</span></div>
       <div><h3>The agent: the model reads, the code decides</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>A language model fills a strict intent schema; plain code filters, loosens when nothing matches, ranks and writes "why this car" from listing facts. Filters show as removable chips.</div>
         <div class="found"><span class="k">What I found</span>Keeping the model out of the decisions made every result explainable and every bug findable.</div>
         <div class="decided"><span class="k">What I decided</span>Same trust pattern as my Toyota agent: put AI where it's strong, keep a checkable step where the risk is.</div>
       </div></div></article>
-    <article class="step"><div class="when"><span class="ver">v0.3.1–2</span><span class="date">Oct 29 · Evaluate</span></div>
+    <article class="step"><div class="when"><span class="ver">v0.3.1–2</span><span class="date">Evaluate</span></div>
       <div><h3>A perfect score I didn't trust</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>Ran the 20 v0.1 searches through the agent live and read every row, not just the score.</div>
         <div class="found"><span class="k">What I found</span>100% hid real problems: "fun" became "250+ hp", invented filters, hidden cars. After fixes it fell to 91%, because my own new rule sent minivans to a shopper who wanted easy parking.</div>
         <div class="decided"><span class="k">What I decided</span>Stop tuning on a test I wrote; it had become a practice set. Get searches from real buyers instead.</div>
       </div></div></article>
-    <article class="step"><div class="when"><span class="ver">v0.4</span><span class="date">Oct 31 · Real buyers</span></div>
+    <article class="step"><div class="when"><span class="ver">v0.4</span><span class="date">Real buyers</span></div>
       <div><h3>Six buyers, their words, their answer keys</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>Interviewed 6 people shopping for a car. Turned their words into a held-out test, scored on what they said they'd consider, and ran it once, unseen.</div>
         <div class="found"><span class="k">What I found</span>86% fit, but it asked the question buyers wanted only 1 time in 4: my "fewer questions" fix had overshot. And 4 of 6 couldn't find a monthly payment online.</div>
         <div class="decided"><span class="k">What I decided</span>Always ask about budget when none is given. Make payment the next release.</div>
       </div></div></article>
-    <article class="step"><div class="when"><span class="ver">v0.5–0.6</span><span class="date">Oct 31 · Ship</span></div>
+    <article class="step"><div class="when"><span class="ver">v0.5–0.6</span><span class="date">Ship</span></div>
       <div><h3>What buyers asked for, built responsibly</h3><div class="trio">
         <div class="did"><span class="k">What I did</span>Payments shoppers control (down, trade-in, term, rate), "what can I afford?", base-trim preference, a compare view, and 14 automated tests on every change.</div>
         <div class="found"><span class="k">What I found</span>One buyer wanted an income-based check. A lender's search shouldn't infer anyone's finances.</div>
@@ -283,7 +283,7 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
       <tr><td>Evaluating AI</td><td>Live evaluations against a baseline, a held-out buyer set, 14 automated tests</td></tr>
       <tr><td>Writing and working backwards</td><td>A PR/FAQ, a changelog per release, this case study</td></tr>
       <tr><td>Responsible AI in finance</td><td>Payments with visible assumptions, no income or credit inference, fair-order tests</td></tr>
-      <tr><td>Shipping incrementally</td><td>Six releases in a week, each driven by what the last one found</td></tr>
+      <tr><td>Shipping incrementally</td><td>Six releases, each driven by what the last one found</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -313,7 +313,7 @@ footer{border-top:3px solid var(--ink);padding-top:16px;display:grid;gap:6px;fon
 <footer>
   <span><strong style="color:var(--ink)">Rosy Singh</strong> · Senior AI Product Manager · building AI products people trust and adopt</span>
   <span><a href="index.html">Live agent</a> · <a href="eval.html">Evaluation</a> · <a href="explorer.html">SQL explorer</a> · <a href="https://github.com/RosySingh9/rightfit-car-discovery" target="_blank" rel="noopener">GitHub</a></span>
-  <span>Independent concept using public and synthetic data. Not affiliated with or endorsed by Toyota, Toyota Financial Services, CarMax, Carvana or Jalopnik.</span>
+  <span>Independent personal project using public and synthetic data only. Not affiliated with or endorsed by any company named here, and no employer data or work was used.</span>
 </footer>
 
 </div>
