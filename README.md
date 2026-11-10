@@ -4,7 +4,7 @@
 
 An AI car-discovery agent, built release by release, that understands how shoppers describe what they need, reasons over messy inventory data, and proves it's getting better.
 
-*By Rosy Singh, Senior AI Product Manager. An independent concept using public and synthetic data only. Not affiliated with any automaker, lender or retailer.*
+*By Rosy Singh, Senior AI Product Manager. Independent personal project using public and synthetic data only. Not affiliated with or endorsed by any company named here, and no employer data or work was used.*
 
 ---
 
