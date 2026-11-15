@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a scoreboard. Two headline comparisons against v0.1's CarMax baseline, then the per-query ledger. */
+/* Layout: a scoreboard. Two headline comparisons against v0.1's retailer baseline, then the per-query ledger. */
 :root{
   --paper:#f6f7f9;--label:#ffffff;--ink:#151a22;--muted:#5a6372;--rule:#d5dae2;--route:#1f5fbf;--good:#1d7a4a;--bad:#b4471b;--chip:#eef1f6;
   --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
@@ -58,10 +58,10 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
   <header>
     <span class="eyebrow"><a href="index.html">← RightFit</a> · v0.4 · Evaluation</span>
     <h1>Does RightFit understand shoppers better than search did?</h1>
-    <p>In v0.1, CarMax's search returned fitting cars in its top 5 results 95% of the time when the query read like filters, and 37% of the time when it read like a person. This page runs the same 20 queries through RightFit, live, and scores them the same way.</p>
+    <p>In v0.1, a major used-car retailer's search returned fitting cars in its top 5 results 95% of the time when the query read like filters, and 37% of the time when it read like a person. This page runs the same 20 queries through RightFit, live, and scores them the same way.</p>
     <ul class="note">
       <li><strong>Fit</strong> = a car in the top 5 meets every hard constraint the shopper stated. Each query's test is written in code, independently of the model.</li>
-      <li>Inventories differ: CarMax had tens of thousands of cars, RightFit has 567 synthetic ones. When fewer than 5 cars in stock fit, the bar is however many do. When none do, the query is scored on whether RightFit says so.</li>
+      <li>Inventories differ: the retailer had tens of thousands of cars, RightFit has 567 synthetic ones. When fewer than 5 cars in stock fit, the bar is however many do. When none do, the query is scored on whether RightFit says so.</li>
       <li>Since v0.3.1 it also flags what a top-5 score hides: filters nobody asked for, questions nobody needed, and matching cars the agent missed.</li>
       <li>Since v0.4.1, a question counts as unneeded only when the shopper already gave a budget. Buyers said budget is the question they most want asked.</li>
       <li>The 20 v0.1 searches have now been used to tune the agent, so they're a practice set. The <strong>held-out buyers</strong> set is 6 searches in real buyers' own words, with answer keys from what each buyer said they'd consider. It was never used for tuning.</li>
@@ -81,7 +81,7 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
 (function(){
   const $ = (s) => document.querySelector(s);
   const esc = (x) => String(x).replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const CARMAX = { spec: 0.95, need: 0.37 };
+  const RETAILER = { spec: 0.95, need: 0.37 };
   let results = [], SET = "holdout";
   const list = () => SET === "holdout" ? RightFit.HOLDOUT : RightFit.GOLD;
   function setup(){
@@ -155,11 +155,11 @@ ul{margin:0;padding-left:1.1em;display:grid;gap:4px;max-width:70ch}
     const missed = results.filter((r) => r.recall != null && r.recall < 1).length;
     const card = (title, us, them, detail) => `<div><span class="eyebrow">${title}</span><span class="big">${Math.round(us.pct * 100)}%</span>
       <div class="vs"><span>RightFit</span><div class="bar us"><span style="width:${us.pct * 100}%"></span></div><span>${Math.round(us.pct * 100)}%</span>
-      <span>CarMax v0.1</span><div class="bar them"><span style="width:${them * 100}%"></span></div><span>${Math.round(them * 100)}%</span></div>
+      <span>Retailer (v0.1)</span><div class="bar them"><span style="width:${them * 100}%"></span></div><span>${Math.round(them * 100)}%</span></div>
       <span class="note">${detail}</span></div>`;
     $("#cards").innerHTML =
-      card("Phrased like a person", need, CARMAX.need, `${need.fit} of ${need.slots} top-5 slots fit, across ${need.n} scored queries.`) +
-      card("Phrased like filters", spec, CARMAX.spec, `${spec.fit} of ${spec.slots} top-5 slots fit, across ${spec.n} scored queries.`) +
+      card("Phrased like a person", need, RETAILER.need, `${need.fit} of ${need.slots} top-5 slots fit, across ${need.n} scored queries.`) +
+      card("Phrased like filters", spec, RETAILER.spec, `${spec.fit} of ${spec.slots} top-5 slots fit, across ${spec.n} scored queries.`) +
       `<div><span class="eyebrow">When nothing in stock fits</span><span class="big">${honest} of ${none.length}</span><span class="note">queries where RightFit said no exact match and showed the closest cars, instead of silently showing the wrong ones.</span></div>` +
       `<div><span class="eyebrow">What a top-5 score can't see</span><span class="big">${extra}</span><span class="note">queries with a filter nobody asked for · ${unneeded} unneeded questions · ${missed} queries that missed matching cars</span></div>`;
     $("#cards").hidden = false;

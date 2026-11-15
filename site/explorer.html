@@ -222,7 +222,7 @@ LIMIT 25;`,
 row_number() OVER (PARTITION BY vin ORDER BY source_priority, last_seen DESC) AS rk
 -- rk > 1  →  duplicate_vin` },
 { t:"Wrong body types", tag:"JOIN on several columns",
-  why:`<p>In v0.1, CarMax listed crossovers as sedans. Here we catch the same problem by joining each listing to the reference specs and comparing what the feed says with what the trim actually is.</p>`,
+  why:`<p>In v0.1, the retailer's search listed crossovers as sedans. Here we catch the same problem by joining each listing to the reference specs and comparing what the feed says with what the trim actually is.</p>`,
   sql:`SELECT n.feed, n.listing_id, n.make, n.model, n.trim,
        n.body_raw    AS feed_says,
        r.body_type   AS reference_says
