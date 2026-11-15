@@ -20,7 +20,7 @@ shopper sentence ──► /api/search ──► structured intent (JSON) ──
 
 ## Product decisions
 
-- **The model parses; it doesn't answer.** A fixed JSON schema (OpenAI structured outputs, temperature 0) limits it to filling fields. It's the same trust pattern as the human review step in my Toyota IAM agent: put the model where it's strong, and keep the decisions checkable.
+- **The model parses; it doesn't answer.** A fixed JSON schema (OpenAI structured outputs, temperature 0) limits it to filling fields. It's the same trust pattern as the human review step in an enterprise agent I built: put the model where it's strong, and keep the decisions checkable.
 - **Every filter is visible and removable.** v0.1 showed search silently adding the wrong filter ("not a minivan" became *minivans*). Here each applied filter is a chip with an ×, and removing it re-runs the search without another model call.
 - **No exact match? Say so.** The engine loosens the least important constraint first (miles, year, mpg, cargo, then price) and names what it loosened.
 - **Ask, don't guess, when the request is vague.** "Safe car for my teenager" gets a short question and best-guess results at the same time, never zero results.
@@ -42,9 +42,9 @@ shopper sentence ──► /api/search ──► structured intent (JSON) ──
 
 ## Evaluation
 
-`site/eval.html` runs the 20 v0.1 shopper queries live and scores them like the CarMax audit: *of the top 5 results, how many meet every constraint the shopper stated?* Each query's test (`GOLD` in `engine.js`) is code written independently of the model.
+`site/eval.html` runs the 20 v0.1 shopper queries live and scores them like the v0.1 retailer audit: *of the top 5 results, how many meet every constraint the shopper stated?* Each query's test (`GOLD` in `engine.js`) is code written independently of the model.
 
-Known limits: the inventory (567 synthetic cars) is much smaller than CarMax's, so some queries have no fitting car in stock. Those are scored on whether the agent says so. I wrote both the agent and these 20 tests, so v0.4 added a held-out set of 6 searches from real buyer interviews, with answer keys from what each buyer said they'd consider.
+Known limits: the inventory (567 synthetic cars) is much smaller than the retailer's, so some queries have no fitting car in stock. Those are scored on whether the agent says so. I wrote both the agent and these 20 tests, so v0.4 added a held-out set of 6 searches from real buyer interviews, with answer keys from what each buyer said they'd consider.
 
 ## Cost and safety
 - About 600 tokens per search on GPT-4o-mini: a fraction of a cent.
