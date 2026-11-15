@@ -10,7 +10,7 @@ const blank = () => ({ price_max: null, price_min: null, monthly_payment_max: nu
   body_types: [], exclude_body_types: [], drivetrains: [], powertrains: [], exclude_powertrains: [], makes: [], exclude_makes: [], models: [], features: [] });
 const run = (hard, extra = {}) => E.search(cars, { hard: { ...blank(), ...hard }, sort_by: [], unsupported: [], ...extra });
 
-test("'not a minivan' never returns a minivan (the v0.1 CarMax failure)", () => {
+test("'not a minivan' never returns a minivan (the v0.1 retailer failure)", () => {
   const out = run({ third_row: true, exclude_body_types: ["minivan"], price_max: 45000 });
   assert.ok(out.count > 0);
   assert.ok(out.results.every((r) => r.car.body_type !== "minivan"));
