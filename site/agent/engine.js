@@ -205,7 +205,7 @@
   }
 
   // ---------- Gold set: the 20 v0.1 audit queries, each with a test written independently of the model ----------
-  // A car "fits" when it meets every hard constraint the shopper stated. Same definition used to score CarMax in v0.1.
+  // A car "fits" when it meets every hard constraint the shopper stated. Same definition used to score the retailer's search in v0.1.
   const GOLD = [
     { id: "Q01", style: "need", allowed: ["price_max", "third_row", "body_types", "exclude_body_types", "seats_min"], q: "3 row SUV under $45k not a minivan", fit: (c) => c.body_type === "suv" && c.third_row === 1 && c.price <= 45000 },
     { id: "Q02", style: "spec", allowed: ["body_types", "drivetrains", "price_max"], q: "fun AWD sedan for snowy commute under $25k", fit: (c) => c.body_type === "sedan" && c.drivetrain === "AWD" && c.price <= 25000 },
